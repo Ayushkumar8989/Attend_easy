@@ -1,5 +1,5 @@
-import 'package:attendance/faculty/loginfac.dart';
-import 'package:attendance/faculty/signinfac.dart';
+import 'package:attend_easy/faculty/loginfac.dart';
+import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
 
 class DecisionFac extends StatefulWidget {
