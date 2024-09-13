@@ -1,4 +1,4 @@
-import 'package:attendance/faculty/loginfac.dart';
+import 'package:attend_easy/faculty/loginfac.dart';
 import 'package:flutter/material.dart';
 
 class Verification extends StatefulWidget {
