@@ -1,5 +1,5 @@
-import 'package:attendance/student/loginstu.dart';
-import 'package:attendance/student/signinstu.dart';
+import 'package:attend_easy/student/loginstu.dart';
+import 'package:attend_easy/student/signinstu.dart';
 import 'package:flutter/material.dart';
 
 class DecisionStu extends StatefulWidget {

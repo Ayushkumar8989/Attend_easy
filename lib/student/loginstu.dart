@@ -1,4 +1,4 @@
-import 'package:attendance/student/signinstu.dart';
+import 'package:attend_easy/student/signinstu.dart';
 import 'package:flutter/material.dart';
 
 class LoginStu extends StatefulWidget {
