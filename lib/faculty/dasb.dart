@@ -71,7 +71,6 @@ class _DasbState extends State<Dasb> {
                       children: [
                         Container(
                           child: CircleAvatar(
-                            size: 45,
                             child: Icon(
                               Icons.save,
                               size: 50,
