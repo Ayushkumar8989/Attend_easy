@@ -1,5 +1,5 @@
-import 'package:attendance/faculty/decisionfac.dart';
-import 'package:attendance/student/decisionstu.dart';
+import 'package:attend_easy/faculty/decisionfac.dart';
+import 'package:attend_easy/student/decisionstu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
