@@ -1,5 +1,4 @@
-import 'package:attendance/faculty/loginfac.dart';
-import 'package:attendance/student/loginstu.dart';
+import 'package:attend_easy/student/loginstu.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
