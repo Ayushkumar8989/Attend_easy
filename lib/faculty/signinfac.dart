@@ -1,5 +1,5 @@
-import 'package:attendance/faculty/loginfac.dart';
-import 'package:attendance/faculty/verification.dart';
+import 'package:attend_easy/faculty/loginfac.dart';
+import 'package:attend_easy/faculty/verification.dart';
 import 'package:flutter/material.dart';
 
 class SignInFac extends StatefulWidget {
