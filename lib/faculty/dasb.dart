@@ -66,16 +66,16 @@ class _DasbState extends State<Dasb> {
             Container(
               width: screenWidth * 0.8,
               height: screenHeight * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: screenWidth * 0.35,
                     height: screenHeight * 0.3,
-                    color: Color(0xffD9D9D9),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color(0xffD9D9D9),
+                    ),
                     child: Column(
                       children: [
                         Container(
