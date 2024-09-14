@@ -63,20 +63,20 @@ class _DasbState extends State<Dasb> {
             SizedBox(height: 0.01),
             Container(
               width: screenWidth * 0.8,
-              height: screenHeight * 0.4,
+              height: screenHeight * 0.3,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: screenWidth * 0.39,
-                    height: screenHeight * 0.39,
+                    height: screenHeight * 0.3,
                     color: Color(0xffD9D9D9),
                     child: Column(
                       children: [
                         Container(
                           margin: EdgeInsets.only(
-                            right: screenWidth * 0.24,
-                            top: screenHeight * 0.02,
+                            right: 140,
+                            top: 5,
                           ),
                           child: CircleAvatar(
                             backgroundColor: Color(0xff1DC99E),
@@ -88,15 +88,22 @@ class _DasbState extends State<Dasb> {
                           ),
                         ),
                         SizedBox(
-                          height: 190,
+                          height: 140,
                         ),
                         Container(
                           width: screenWidth * 0.8,
-                          margin: EdgeInsets.only(left: 20),
+                          margin: EdgeInsets.only(left: 15),
                           child: Row(
                             children: [
                               Container(
-                                child: Text('Attendance Reports'),
+                                child: Text(
+                                  'Attendance Reports',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'DM Sans',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                               Container(
                                 child: Icon(Icons.arrow_forward),
@@ -109,7 +116,7 @@ class _DasbState extends State<Dasb> {
                   ),
                   Container(
                     width: screenWidth * 0.39,
-                    height: screenHeight * 0.39,
+                    height: screenHeight * 0.3,
                     color: Color(0xffD9D9D9),
                   ),
                 ],
