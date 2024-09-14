@@ -66,37 +66,47 @@ class _DasbState extends State<Dasb> {
             Container(
               width: screenWidth * 0.8,
               height: screenHeight * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: screenWidth * 0.39,
+                    width: screenWidth * 0.35,
                     height: screenHeight * 0.3,
                     color: Color(0xffD9D9D9),
                     child: Column(
                       children: [
                         Container(
-                          width: screenWidth * 0.1,
-                          color: Color(0xff1C5B41),
-                          //margin: EdgeInsets.only(right: ),
+                          width: screenWidth * 0.12,
+                          height: screenHeight * 0.1,
+                          //color: Color(0xff1C5B41),
+                          margin: EdgeInsets.only(
+                            right: screenWidth * 0.18,
+                            top: 1,
+                          ),
                           child: CircleAvatar(
                             backgroundColor: Color(0xff1DC99E),
                             child: Icon(
                               Icons.save,
-                              size: 40,
+                              size: 50,
                               color: Colors.white,
                             ),
                           ),
                         ),
                         SizedBox(
-                          height: 140,
+                          height: screenHeight * 0.1,
                         ),
                         Container(
-                          width: screenWidth * 0.8,
-                          margin: EdgeInsets.only(left: 15),
+                          width: screenWidth * 0.3,
+                          margin: EdgeInsets.only(left: 10),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Container(
+                                width: screenWidth * 0.2,
+                                height: screenHeight * 0.09,
                                 child: Text(
                                   'Attendance Reports',
                                   style: TextStyle(
@@ -107,7 +117,10 @@ class _DasbState extends State<Dasb> {
                                 ),
                               ),
                               Container(
-                                child: Icon(Icons.arrow_forward),
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 30,
+                                ),
                               )
                             ],
                           ),
@@ -116,7 +129,7 @@ class _DasbState extends State<Dasb> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * 0.39,
+                    width: screenWidth * 0.35,
                     height: screenHeight * 0.3,
                     color: Color(0xffD9D9D9),
                   ),
