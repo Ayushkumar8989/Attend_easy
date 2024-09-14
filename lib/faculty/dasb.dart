@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/animation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
@@ -200,18 +201,46 @@ class _DasbState extends State<Dasb> {
             Container(
               width: screenWidth * 0.8,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: screenWidth * 3.5,
-                    child: Text('Ongoing attendance'),
+                    width: screenWidth * 0.35,
+                    child: Text(
+                      'Ongoing attendance',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'DM Sans',
+                      ),
+                    ),
                   ),
                   Container(
-                    width: screenWidth * 3.5,
-                    child: Text('Ongoing attendance'),
+                    width: screenWidth * 0.35,
+                    child: Text(
+                      'Ongoing attendance',
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'DM Sans',
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
+            Container(
+              width: screenWidth * 0.7,
+              height: screenHeight * 0.3,
+              color: Colors.red,
+              child: Container(
+                width: screenWidth * 0.3,
+                color: Colors.blue,
+                child: Center(
+                  child: Text(
+                      'There in no longer attendance session Start a new one to take attendance'),
+                ),
+              ),
+            )
           ],
         ),
       ),
