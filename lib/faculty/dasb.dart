@@ -131,7 +131,61 @@ class _DasbState extends State<Dasb> {
                   Container(
                     width: screenWidth * 0.35,
                     height: screenHeight * 0.3,
-                    color: Color(0xffD9D9D9),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: Color(0xffD9D9D9),
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          width: screenWidth * 0.12,
+                          height: screenHeight * 0.1,
+                          //color: Color(0xff1C5B41),
+                          margin: EdgeInsets.only(
+                            right: screenWidth * 0.18,
+                            top: 1,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xff1DC99E),
+                            child: Icon(
+                              Icons.save,
+                              size: 50,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: screenHeight * 0.1,
+                        ),
+                        Container(
+                          width: screenWidth * 0.3,
+                          margin: EdgeInsets.only(left: 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                width: screenWidth * 0.2,
+                                height: screenHeight * 0.09,
+                                child: Text(
+                                  'Attendance Reports',
+                                  style: TextStyle(
+                                    fontSize: 15,
+                                    fontFamily: 'DM Sans',
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                child: Icon(
+                                  Icons.arrow_forward,
+                                  size: 30,
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
