@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class Dasb extends StatefulWidget {
@@ -23,31 +24,33 @@ class _DasbState extends State<Dasb> {
         margin: EdgeInsets.only(top: 70),
         child: Column(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: screenWidth * 0.6,
-                  margin: EdgeInsets.only(left: 45),
-                  child: Text(
-                    'Hey Ayush11060!',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'DM Sans',
-                      fontWeight: FontWeight.bold,
+            Container(
+              width: screenWidth * 0.8,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: screenWidth * 0.71,
+                    child: Text(
+                      'Hey Ayush11060!',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  width: screenWidth * 0.2,
-                  child: CircleAvatar(
-                    child: Icon(Icons.account_circle),
-                  ),
-                )
-              ],
+                  Container(
+                    width: screenWidth * 0.09,
+                    child: CircleAvatar(
+                      child: Icon(Icons.account_circle),
+                    ),
+                  )
+                ],
+              ),
             ),
             Container(
-              width: screenWidth * 0.71,
+              width: screenWidth * 0.8,
               child: Text(
                 'Welcome back to AttendEasy!',
                 style: TextStyle(
@@ -65,29 +68,47 @@ class _DasbState extends State<Dasb> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    width: screenWidth * 0.36,
+                    width: screenWidth * 0.39,
                     height: screenHeight * 0.39,
                     color: Color(0xffD9D9D9),
                     child: Column(
                       children: [
                         Container(
-                            margin: EdgeInsets.only(
-                              right: 120,
-                              top: screenHeight * 0.01,
+                          margin: EdgeInsets.only(
+                            right: screenWidth * 0.24,
+                            top: screenHeight * 0.02,
+                          ),
+                          child: CircleAvatar(
+                            backgroundColor: Color(0xff1DC99E),
+                            child: Icon(
+                              Icons.save,
+                              size: 40,
+                              color: Colors.white,
                             ),
-                            child: CircleAvatar(
-                              backgroundColor: Color(0xff1DC99E),
-                              child: Icon(
-                                Icons.save,
-                                size: 40,
-                                color: Colors.white,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 190,
+                        ),
+                        Container(
+                          width: screenWidth * 0.8,
+                          margin: EdgeInsets.only(left: 20),
+                          child: Row(
+                            children: [
+                              Container(
+                                child: Text('Attendance Reports'),
                               ),
-                            ))
+                              Container(
+                                child: Icon(Icons.arrow_forward),
+                              )
+                            ],
+                          ),
+                        )
                       ],
                     ),
                   ),
                   Container(
-                    width: screenWidth * 0.35,
+                    width: screenWidth * 0.39,
                     height: screenHeight * 0.39,
                     color: Color(0xffD9D9D9),
                   ),
