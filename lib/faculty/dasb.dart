@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -70,14 +71,15 @@ class _DasbState extends State<Dasb> {
                     child: Column(
                       children: [
                         Container(
+                            margin: EdgeInsets.only(right: screenWidth * 0.18),
                             child: CircleAvatar(
-                          backgroundColor: Color(0xff1DC99E),
-                          child: Icon(
-                            Icons.save,
-                            size: 40,
-                            color: Colors.white,
-                          ),
-                        ))
+                              backgroundColor: Color(0xff1DC99E),
+                              child: Icon(
+                                Icons.save,
+                                size: 40,
+                                color: Colors.white,
+                              ),
+                            ))
                       ],
                     ),
                   ),
