@@ -76,7 +76,7 @@ class _DasbState extends State<Dasb> {
                     child: Column(
                       children: [
                         Container(
-                          width: screenWidth * 0.1,
+                          width: 45,
                           margin: EdgeInsets.only(top: 5),
                           color: Color(0xff1C5B41),
                           child: CircleAvatar(
