@@ -57,38 +57,37 @@ class _DasbState extends State<Dasb> {
               ),
             ),
             SizedBox(height: 0.01),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {},
-                  child: Container(
-                    width: screenWidth * 0.35,
-                    height: screenHeight * 0.4,
-                    margin: EdgeInsets.only(left: 45),
+            Container(
+              width: screenWidth * 0.8,
+              height: screenHeight * 0.4,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    width: screenWidth * 0.36,
+                    height: screenHeight * 0.39,
                     color: Color(0xffD9D9D9),
                     child: Column(
                       children: [
                         Container(
-                          child: CircleAvatar(
-                            child: Icon(
-                              Icons.save,
-                              size: 50,
-                            ),
+                            child: CircleAvatar(
+                          backgroundColor: Color(0xff1DC99E),
+                          child: Icon(
+                            Icons.save,
+                            size: 40,
+                            color: Colors.white,
                           ),
-                        ),
+                        ))
                       ],
                     ),
                   ),
-                ),
-                InkWell(
-                  child: Container(
+                  Container(
                     width: screenWidth * 0.35,
-                    height: screenHeight * 0.4,
+                    height: screenHeight * 0.39,
                     color: Color(0xffD9D9D9),
                   ),
-                ),
-              ],
+                ],
+              ),
             )
           ],
         ),
