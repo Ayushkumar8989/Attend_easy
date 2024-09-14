@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 
 class Dasb extends StatefulWidget {
@@ -74,10 +75,8 @@ class _DasbState extends State<Dasb> {
                     child: Column(
                       children: [
                         Container(
-                          margin: EdgeInsets.only(
-                            right: 140,
-                            top: 5,
-                          ),
+                          width: screenWidth * 0.1,
+                          color: Color(0xff1C5B41),
                           child: CircleAvatar(
                             backgroundColor: Color(0xff1DC99E),
                             child: Icon(
