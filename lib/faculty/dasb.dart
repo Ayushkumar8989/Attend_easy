@@ -193,7 +193,25 @@ class _DasbState extends State<Dasb> {
                   ),
                 ],
               ),
-            )
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Container(
+              width: screenWidth * 0.8,
+              child: Row(
+                children: [
+                  Container(
+                    width: screenWidth * 3.5,
+                    child: Text('Ongoing attendance'),
+                  ),
+                  Container(
+                    width: screenWidth * 3.5,
+                    child: Text('Ongoing attendance'),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
