@@ -113,6 +113,7 @@ class _DasbState extends State<Dasb> {
                                     fontSize: 15,
                                     fontFamily: 'DM Sans',
                                     fontWeight: FontWeight.bold,
+                                    color: Color(0xff1C5B41),
                                   ),
                                 ),
                               ),
@@ -120,6 +121,7 @@ class _DasbState extends State<Dasb> {
                                 child: Icon(
                                   Icons.arrow_forward,
                                   size: 30,
+                                  color: Color(0xff1C5B41),
                                 ),
                               )
                             ],
@@ -167,11 +169,12 @@ class _DasbState extends State<Dasb> {
                                 width: screenWidth * 0.2,
                                 height: screenHeight * 0.09,
                                 child: Text(
-                                  'Attendance Reports',
+                                  'Manages Courses',
                                   style: TextStyle(
                                     fontSize: 15,
                                     fontFamily: 'DM Sans',
                                     fontWeight: FontWeight.bold,
+                                    color: Color(0xff1C5B41),
                                   ),
                                 ),
                               ),
@@ -179,6 +182,7 @@ class _DasbState extends State<Dasb> {
                                 child: Icon(
                                   Icons.arrow_forward,
                                   size: 30,
+                                  color: Color(0xff1C5B41),
                                 ),
                               )
                             ],
