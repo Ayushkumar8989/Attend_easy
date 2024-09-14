@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -76,6 +77,7 @@ class _DasbState extends State<Dasb> {
                       children: [
                         Container(
                           width: screenWidth * 0.1,
+                          margin: EdgeInsets.only(top: 5),
                           color: Color(0xff1C5B41),
                           child: CircleAvatar(
                             backgroundColor: Color(0xff1DC99E),
