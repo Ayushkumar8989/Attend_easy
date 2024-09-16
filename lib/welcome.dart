@@ -1,5 +1,6 @@
 import 'package:attend_easy/faculty/decisionfac.dart';
 import 'package:attend_easy/student/decisionstu.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -25,7 +26,7 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             children: [
               Container(
-                width: screenWidth * (isDesktop ? 0.7 : 0.9),
+                width: screenWidth * (isDesktop ? 0.6 : 0.9),
                 height: screenHeight * (isDesktop ? 0.6 : 0.5),
                 child: Padding(
                   padding: const EdgeInsets.only(top: 45),
@@ -34,16 +35,18 @@ class _WelcomeState extends State<Welcome> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       // Left Icon
-                      if (isDesktop)
-                        Container(
-                          width: screenWidth * 0.10,
-                          height: screenHeight * 0.1,
-                          child: Icon(
-                            Icons.calendar_month,
-                            size: 40,
-                            color: Color(0xFF1C5B41),
-                          ),
+                      Container(
+                        width: screenWidth * (isDesktop ? 0.1 : 0.1),
+                        height: screenHeight * (isDesktop ? 0.1 : 0.1),
+                        margin: EdgeInsets.only(
+                          top: screenHeight * (isDesktop ? 0.42 : 0.37),
                         ),
+                        child: Icon(
+                          Icons.calendar_month,
+                          size: 40,
+                          color: Color(0xFF1C5B41),
+                        ),
+                      ),
                       // Center Image
                       Expanded(
                         child: Container(
@@ -57,12 +60,14 @@ class _WelcomeState extends State<Welcome> {
                         ),
                       ),
                       // Right Icon
-                      if (isDesktop)
-                        Container(
-                          width: screenWidth * 0.10,
-                          height: screenHeight * 0.1,
-                          child: Image.asset('assets/open_book.png'),
+                      Container(
+                        width: screenWidth * (isDesktop ? 0.1 : 0.1),
+                        height: screenHeight * (isDesktop ? 0.1 : 0.1),
+                        margin: EdgeInsets.only(
+                          bottom: screenHeight * (isDesktop ? 0.42 : 0.37),
                         ),
+                        child: Image.asset('assets/open_book.png'),
+                      ),
                     ],
                   ),
                 ),
