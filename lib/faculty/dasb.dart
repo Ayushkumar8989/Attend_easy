@@ -229,18 +229,31 @@ class _DasbState extends State<Dasb> {
               ),
             ),
             Container(
-              width: screenWidth * 0.7,
-              height: screenHeight * 0.3,
-              color: Colors.red,
+              width: screenWidth * 0.5,
+              height: screenHeight * 0.2,
               child: Container(
                 width: screenWidth * 0.3,
-                color: Colors.blue,
                 child: Center(
                   child: Text(
                       'There in no longer attendance session Start a new one to take attendance'),
                 ),
               ),
-            )
+            ),
+            Container(
+              width: screenWidth * 0.75,
+              height: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: Text(
+                  'New Session',
+                  style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                ),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF1DC99E),
+                  foregroundColor: Color(0xFFFFFFFF),
+                ),
+              ),
+            ),
           ],
         ),
       ),
