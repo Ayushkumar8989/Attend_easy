@@ -20,116 +20,125 @@ class _LoginFacState extends State<LoginFac> {
           double screenHeight = constraints.maxHeight;
 
           return SingleChildScrollView(
-            child: Container(
-              width: screenWidth * 0.9,
-              height: screenHeight * (isDesktop ? 0.9 : 0.8),
-              color: Color.fromARGB(255, 249, 249, 249),
-              margin: EdgeInsets.only(top: isDesktop ? 50 : 70),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                    height: 50,
-                    margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
-                    child: Text(
-                      'Welcome back to AttendEasy!',
-                      style: TextStyle(
-                        fontSize: isDesktop ? 24 : 20,
-                        color: Colors.black,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                    height: 50,
-                    margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
-                    child: Text(
-                      'Log in to manage classes and track attendance seamlessly.',
-                      style: TextStyle(
-                        fontSize: isDesktop ? 16 : 12,
-                        color: Colors.black,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  _buildTextFieldSection(
-                      'Staff ID', 'Enter your number', isDesktop, screenWidth),
-                  _buildTextFieldSection('Password', 'Enter your password',
-                      isDesktop, screenWidth),
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                    margin: EdgeInsets.only(left: isDesktop ? 55 : 38),
-                    child: Row(
-                      children: [
-                        Text('Forgot Password?'),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            'Reset it',
-                            style: TextStyle(
-                              color: Color(0xFF1C5B41),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                    margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
-                    height: 50,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Dasb(),
-                          ),
-                        );
-                      },
+            child: Center(
+              child: Container(
+                width: screenWidth * 0.9,
+                height: screenHeight * (isDesktop ? 0.9 : 0.8),
+                color: Color.fromARGB(255, 249, 249, 249),
+                margin: EdgeInsets.only(top: isDesktop ? 50 : 70),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.7 : 0.7),
+                      height: 50,
+                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
                       child: Text(
-                        'Login',
+                        'Welcome back to AttendEasy!',
                         style: TextStyle(
-                          fontSize: isDesktop ? 22 : 20,
-                          fontFamily: 'Inter',
+                          fontSize: isDesktop ? 24 : 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1DC99E),
-                        foregroundColor: Colors.white,
+                    ),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                      height: 50,
+                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
+                      child: Text(
+                        'Log in to manage classes and track attendance seamlessly.',
+                        style: TextStyle(
+                          fontSize: isDesktop ? 16 : 12,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                    margin: EdgeInsets.only(left: isDesktop ? 60 : 45, top: 10),
-                    child: Row(
-                      children: [
-                        Text("Don't have an account?"),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => SignInFac(),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.7 : 0.9),
+                      child: _buildTextFieldSection('Staff ID',
+                          'Enter your number', isDesktop, screenWidth),
+                    ),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.7 : 0.9),
+                      child: _buildTextFieldSection('Password',
+                          'Enter your password', isDesktop, screenWidth),
+                    ),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                      margin: EdgeInsets.only(left: isDesktop ? 55 : 38),
+                      child: Row(
+                        children: [
+                          Text('Forgot Password?'),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Reset it',
+                              style: TextStyle(
+                                color: Color(0xFF1C5B41),
                               ),
-                            );
-                          },
-                          child: Text(
-                            'Sign Up',
-                            style: TextStyle(
-                              color: Color(0xFF1DC99E),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
+                      height: 50,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Dasb(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                            fontSize: isDesktop ? 22 : 20,
+                            fontFamily: 'Inter',
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color(0xFF1DC99E),
+                          foregroundColor: Colors.white,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                      margin:
+                          EdgeInsets.only(left: isDesktop ? 60 : 45, top: 10),
+                      child: Row(
+                        children: [
+                          Text("Don't have an account?"),
+                          TextButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => SignInFac(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'Sign Up',
+                              style: TextStyle(
+                                color: Color(0xFF1DC99E),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

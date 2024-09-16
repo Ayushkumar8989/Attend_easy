@@ -254,6 +254,19 @@ class _DasbState extends State<Dasb> {
                 ),
               ),
             ),
+            Container(
+              child: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                items: [
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.home), label: 'Home'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.book), label: 'Booking'),
+                  BottomNavigationBarItem(
+                      icon: Icon(Icons.account_box), label: 'Account')
+                ],
+              ),
+            )
           ],
         ),
       ),
