@@ -1,84 +1,130 @@
 import 'package:attend_easy/faculty/dasb.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class LoginFac extends StatefulWidget {
   const LoginFac({super.key});
 
   @override
-  State<LoginFac> createState() => _LoginFacState();
+  State<LoginFac> createState() => _LoginState();
 }
 
-class _LoginFacState extends State<LoginFac> {
+class _LoginState extends State<LoginFac> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          bool isDesktop = constraints.maxWidth > 600;
-          double screenWidth = constraints.maxWidth;
-          double screenHeight = constraints.maxHeight;
-
-          return SingleChildScrollView(
+    return LayoutBuilder(
+      builder: (conntext, Constraints) {
+        bool isDesktop = Constraints.maxWidth > 600;
+        double screenWidth = Constraints.maxWidth;
+        double screenHeight = Constraints.maxHeight;
+        return Scaffold(
+          // appBar: AppBar(
+          //   title: Text('Welcome back to AttendEasy!'),
+          // ),
+          body: SingleChildScrollView(
             child: Center(
               child: Container(
-                width: screenWidth * 0.9,
-                height: screenHeight * (isDesktop ? 0.9 : 0.8),
-                color: Color.fromARGB(255, 249, 249, 249),
-                margin: EdgeInsets.only(top: isDesktop ? 50 : 70),
+                width: screenWidth * 1.0,
+                height: screenHeight * (isDesktop ? 1.0 : 1.0),
+                color: Colors.white,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      width: screenWidth * (isDesktop ? 0.7 : 0.7),
+                      width: screenWidth * 0.7,
                       height: 50,
-                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
+                      margin: EdgeInsets.only(top: 70),
                       child: Text(
                         'Welcome back to AttendEasy!',
                         style: TextStyle(
-                          fontSize: isDesktop ? 24 : 20,
-                          color: Colors.black,
-                          fontFamily: 'DM Sans',
-                          fontWeight: FontWeight.bold,
-                        ),
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                      width: screenWidth * 0.7,
                       height: 50,
-                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
+                      //margin: EdgeInsets.only(left: 45),
                       child: Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(
-                          fontSize: isDesktop ? 16 : 12,
-                          color: Colors.black,
-                          fontFamily: 'DM Sans',
-                          fontWeight: FontWeight.bold,
+                            fontSize: 12,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      width: screenWidth * 0.7,
+                      height: 50,
+                      //margin: EdgeInsets.only(left: 45),
+                      child: Text(
+                        'Staff ID',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
+                      height: 50,
+                      //margin: EdgeInsets.only(left: 45),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: ' Enter your number',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
                         ),
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.7 : 0.9),
-                      child: _buildTextFieldSection('Staff ID',
-                          'Enter your number', isDesktop, screenWidth),
+                      width: screenWidth * 0.7,
+                      height: 50,
+                      // margin: EdgeInsets.only(left: 45),
+                      child: Text(
+                        'Password',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.7 : 0.9),
-                      child: _buildTextFieldSection('Password',
-                          'Enter your password', isDesktop, screenWidth),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
+                      height: 50,
+                      //margin: EdgeInsets.only(left: 45),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: ' Enter your password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                      margin: EdgeInsets.only(left: isDesktop ? 55 : 38),
+                      width: screenWidth * (isDesktop ? 0.7 : 0.6),
+                      //margin: EdgeInsets.only(left: 45),
                       child: Row(
                         children: [
-                          Text('Forgot Password?'),
-                          TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              'Reset it',
-                              style: TextStyle(
-                                color: Color(0xFF1C5B41),
+                          Container(
+                            child: Text('Forgot Password?'),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 15),
+                            child: TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                'Reset it',
+                                style: TextStyle(
+                                  color: Color(0xFF1C5B41),
+                                ),
                               ),
                             ),
                           ),
@@ -86,9 +132,9 @@ class _LoginFacState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                      margin: EdgeInsets.only(left: isDesktop ? 60 : 45),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
                       height: 50,
+                      //margin: EdgeInsets.only(left: 45),
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -100,10 +146,7 @@ class _LoginFacState extends State<LoginFac> {
                         },
                         child: Text(
                           'Login',
-                          style: TextStyle(
-                            fontSize: isDesktop ? 22 : 20,
-                            fontFamily: 'Inter',
-                          ),
+                          style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF1DC99E),
@@ -112,25 +155,29 @@ class _LoginFacState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.5 : 0.7),
-                      margin:
-                          EdgeInsets.only(left: isDesktop ? 60 : 45, top: 10),
+                      margin: EdgeInsets.only(left: 45),
+                      width: screenWidth * 0.7,
                       child: Row(
                         children: [
-                          Text("Don't have an account?"),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => SignInFac(),
+                          Container(
+                            child: Text('Dont have an account'),
+                          ),
+                          Container(
+                            margin: EdgeInsets.only(right: 15),
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => SignInFac(),
+                                  ),
+                                );
+                              },
+                              child: Text(
+                                'Sign Up',
+                                style: TextStyle(
+                                  color: Color(0xFF1DC99E),
                                 ),
-                              );
-                            },
-                            child: Text(
-                              'Sign Up',
-                              style: TextStyle(
-                                color: Color(0xFF1DC99E),
                               ),
                             ),
                           ),
@@ -141,45 +188,9 @@ class _LoginFacState extends State<LoginFac> {
                 ),
               ),
             ),
-          );
-        },
-      ),
-    );
-  }
-
-  // Helper method to reduce code repetition for TextFields
-  Widget _buildTextFieldSection(
-      String label, String hintText, bool isDesktop, double screenWidth) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: screenWidth * (isDesktop ? 0.5 : 0.7),
-          margin: EdgeInsets.only(left: isDesktop ? 60 : 45, top: 10),
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: isDesktop ? 22 : 20,
-              color: Colors.black,
-              fontFamily: 'DM Sans',
-              fontWeight: FontWeight.bold,
-            ),
           ),
-        ),
-        Container(
-          width: screenWidth * (isDesktop ? 0.5 : 0.7),
-          height: 50,
-          margin: EdgeInsets.only(left: isDesktop ? 60 : 45, top: 5),
-          child: TextField(
-            decoration: InputDecoration(
-              hintText: hintText,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-            ),
-          ),
-        ),
-      ],
+        );
+      },
     );
   }
 }
