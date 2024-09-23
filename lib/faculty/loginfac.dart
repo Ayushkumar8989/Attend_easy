@@ -1,4 +1,4 @@
-import 'package:attend_easy/faculty/dasb.dart';
+import 'package:attend_easy/faculty/home.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -140,7 +140,7 @@ class _LoginState extends State<LoginFac> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Dasb(),
+                              builder: (context) => Home(),
                             ),
                           );
                         },

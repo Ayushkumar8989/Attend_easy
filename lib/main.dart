@@ -1,5 +1,3 @@
-import 'package:attend_easy/faculty/dasb.dart';
-import 'package:attend_easy/faculty/home.dart';
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Welcome(),
     );
   }
 }
