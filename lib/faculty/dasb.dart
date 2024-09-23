@@ -26,12 +26,13 @@ class _DasbState extends State<Dasb> {
         return Scaffold(
           body: Container(
             width: screenWidth * 1.0,
-            height: screenHeight * 1.0,
-            margin: EdgeInsets.only(top: 70),
+            height: screenHeight * (isDesktop ? 1.0 : 1.0),
+            color: Colors.white,
             child: Column(
               children: [
                 Container(
                   width: screenWidth * 0.8,
+                  margin: EdgeInsets.only(top: 70),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -272,11 +273,12 @@ class _DasbState extends State<Dasb> {
                 //     ],
                 //   ),
                 // )
-                SizedBox(height: 15),
+
                 Container(
                   width: screenHeight * (isDesktop ? 0.8 : 0.6),
                   margin: EdgeInsets.only(left: 45),
                   child: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
                     items: [
                       BottomNavigationBarItem(
                         icon: Icon(Icons.home),
