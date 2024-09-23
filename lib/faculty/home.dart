@@ -49,8 +49,212 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  width: screenHeight * (isDesktop ? 0.8 : 0.6),
-                  margin: EdgeInsets.only(left: 45),
+                  width: screenWidth * 0.8,
+                  child: Text(
+                    'Welcome back to AttendEasy!',
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontFamily: 'DM Sans',
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 0.01),
+                Container(
+                  width: screenWidth * 0.8,
+                  height: screenHeight * 0.3,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: screenWidth * 0.35,
+                        height: screenHeight * 0.25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color(0xffD9D9D9),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: screenWidth * 0.12,
+                              height: screenHeight * 0.1,
+                              //color: Color(0xff1C5B41),
+                              margin: EdgeInsets.only(
+                                right: screenWidth * 0.18,
+                                top: 1,
+                              ),
+                              child: CircleAvatar(
+                                backgroundColor: Color(0xff1DC99E),
+                                child: Icon(
+                                  Icons.save,
+                                  size: 40,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: screenHeight * 0.05,
+                            ),
+                            Container(
+                              width: screenWidth * 0.3,
+                              margin: EdgeInsets.only(left: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width: screenWidth * 0.2,
+                                    height: screenHeight * 0.09,
+                                    child: Text(
+                                      'Attendance Reports',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: 'DM Sans',
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff1C5B41),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      size: 30,
+                                      color: Color(0xff1C5B41),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      Container(
+                        width: screenWidth * 0.35,
+                        height: screenHeight * 0.25,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15),
+                          color: Color(0xffD9D9D9),
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: screenWidth * 0.12,
+                              height: screenHeight * 0.1,
+                              //color: Color(0xff1C5B41),
+                              margin: EdgeInsets.only(
+                                right: screenWidth * 0.18,
+                                top: 1,
+                              ),
+                              child: CircleAvatar(
+                                backgroundColor: Color(0xff1DC99E),
+                                child: Icon(
+                                  Icons.save,
+                                  size: 40,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: screenHeight * 0.05,
+                            ),
+                            Container(
+                              width: screenWidth * 0.3,
+                              margin: EdgeInsets.only(left: 10),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    width: screenWidth * 0.2,
+                                    height: screenHeight * 0.09,
+                                    child: Text(
+                                      'Manages Courses',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: 'DM Sans',
+                                        fontWeight: FontWeight.bold,
+                                        color: Color(0xff1C5B41),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Icon(
+                                      Icons.arrow_forward,
+                                      size: 30,
+                                      color: Color(0xff1C5B41),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: screenWidth * 0.8,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        width: screenWidth * 0.35,
+                        child: Text(
+                          'Ongoing attendance',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'DM Sans',
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: screenWidth * 0.35,
+                        child: Text(
+                          'Ongoing attendance',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: 'DM Sans',
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  width: screenWidth * 0.6,
+                  height: screenHeight * 0.15,
+                  child: Container(
+                    width: screenWidth * 0.3,
+                    child: Center(
+                      child: Text(
+                          'There in no longer attendance session Start a new one to take attendance'),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: screenWidth * 0.75,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    child: Text(
+                      'New Session',
+                      style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFF1DC99E),
+                      foregroundColor: Color(0xFFFFFFFF),
+                    ),
+                  ),
+                ),
+                Container(
+                  width: screenHeight * 0.9,
+                  margin: EdgeInsets.only(top: 45),
                   child: BottomNavigationBar(
                     type: BottomNavigationBarType.fixed,
                     items: [
