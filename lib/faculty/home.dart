@@ -47,7 +47,28 @@ class _HomeState extends State<Home> {
                       )
                     ],
                   ),
-                )
+                ),
+                Container(
+                  width: screenHeight * (isDesktop ? 0.8 : 0.6),
+                  margin: EdgeInsets.only(left: 45),
+                  child: BottomNavigationBar(
+                    type: BottomNavigationBarType.fixed,
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.home),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.book),
+                        label: 'History',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.account_circle),
+                        label: 'Profile',
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
