@@ -24,12 +24,13 @@ class _HomeState extends State<Home> {
             child: Column(
               children: [
                 Container(
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   margin: EdgeInsets.only(top: 70),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: screenWidth * 0.71,
+                        // width: screenWidth * 0.71,
                         child: Text(
                           'Hey Ayush11060!',
                           style: TextStyle(
@@ -40,7 +41,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Container(
-                        width: screenWidth * 0.09,
+                        // width: screenWidth * 0.09,
                         child: CircleAvatar(
                           child: Icon(Icons.account_circle),
                         ),
@@ -49,7 +50,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  width: screenWidth * 0.8,
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: Text(
                     'Welcome back to AttendEasy!',
                     style: TextStyle(
@@ -61,7 +62,7 @@ class _HomeState extends State<Home> {
                 ),
                 SizedBox(height: 0.01),
                 Container(
-                  width: screenWidth * 0.8,
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   height: screenHeight * 0.3,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -199,12 +200,13 @@ class _HomeState extends State<Home> {
                   height: 10,
                 ),
                 Container(
-                  width: screenWidth * 0.8,
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Container(
-                        width: screenWidth * 0.35,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.4),
+                        color: Colors.amber,
                         child: Text(
                           'Ongoing attendance',
                           style: TextStyle(
@@ -215,9 +217,11 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Container(
-                        width: screenWidth * 0.35,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.4),
+                        color: Colors.amber,
+                        margin: EdgeInsets.only(left: 10),
                         child: Text(
-                          'Ongoing attendance',
+                          'Finished Today',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.w400,
@@ -229,7 +233,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  width: screenWidth * 0.6,
+                  width: screenWidth * 0.35,
                   height: screenHeight * 0.15,
                   child: Container(
                     width: screenWidth * 0.3,
@@ -240,7 +244,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  width: screenWidth * 0.75,
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {},
@@ -255,7 +259,7 @@ class _HomeState extends State<Home> {
                   ),
                 ),
                 Container(
-                  width: screenHeight * 0.9,
+                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: BottomNavigationBar(
                     type: BottomNavigationBarType.fixed,
                     items: [
