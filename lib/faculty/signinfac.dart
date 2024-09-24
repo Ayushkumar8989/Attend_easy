@@ -33,7 +33,7 @@ class _SignInState extends State<SignInFac> {
                 children: [
                   Container(
                     //margin: EdgeInsets.only(top: 70),
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45, top: 70),
                     child: Text(
@@ -46,7 +46,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: Text(
@@ -59,7 +59,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: Text(
@@ -72,7 +72,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: TextFormField(
@@ -85,7 +85,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: Text(
@@ -98,7 +98,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: TextField(
@@ -111,7 +111,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: Text(
@@ -124,7 +124,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: TextField(
@@ -137,7 +137,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: Text(
@@ -150,7 +150,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     height: 50,
                     margin: EdgeInsets.only(left: 45),
                     child: TextField(
@@ -163,7 +163,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     margin: EdgeInsets.only(left: 38),
                     child: Row(
                       children: [
@@ -201,7 +201,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                   ),
                   Container(
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     margin: EdgeInsets.only(left: 45),
                     height: 50,
                     child: ElevatedButton(
@@ -224,7 +224,7 @@ class _SignInState extends State<SignInFac> {
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 45),
-                    width: screenWidth * (isDesktop ? 0.5 : 0.85),
+                    width: screenWidth * (isDesktop ? 0.55 : 0.85),
                     child: Row(
                       children: [
                         Container(
