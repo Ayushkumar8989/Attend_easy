@@ -67,7 +67,7 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: screenWidth * 0.35,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
                         height: screenHeight * 0.25,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
@@ -129,7 +129,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Container(
-                        width: screenWidth * 0.35,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
                         height: screenHeight * 0.25,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
