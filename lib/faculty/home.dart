@@ -202,11 +202,10 @@ class _HomeState extends State<Home> {
                 Container(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.4),
-                        color: Colors.amber,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
                         child: Text(
                           'Ongoing attendance',
                           style: TextStyle(
@@ -217,8 +216,7 @@ class _HomeState extends State<Home> {
                         ),
                       ),
                       Container(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.4),
-                        color: Colors.amber,
+                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
                         margin: EdgeInsets.only(left: 10),
                         child: Text(
                           'Finished Today',
@@ -258,11 +256,33 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                Container(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  child: BottomNavigationBar(
+                SizedBox(
+                  height: 0.2,
+                ),
+                // Container(
+                //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                //   child: BottomNavigationBar(
+                //     type: BottomNavigationBarType.fixed,
+                //     items: [
+                //       BottomNavigationBarItem(
+                //         icon: Icon(Icons.home),
+                //         label: 'Home',
+                //       ),
+                //       BottomNavigationBarItem(
+                //         icon: Icon(Icons.book),
+                //         label: 'History',
+                //       ),
+                //       BottomNavigationBarItem(
+                //         icon: Icon(Icons.account_circle),
+                //         label: 'Profile',
+                //       ),
+                //     ],
+                //   ),
+                // ),
+
+                BottomNavigationBar(
                     type: BottomNavigationBarType.fixed,
-                    items: [
+                    items: const [
                       BottomNavigationBarItem(
                         icon: Icon(Icons.home),
                         label: 'Home',
@@ -275,9 +295,7 @@ class _HomeState extends State<Home> {
                         icon: Icon(Icons.account_circle),
                         label: 'Profile',
                       ),
-                    ],
-                  ),
-                ),
+                    ])
               ],
             ),
           ),
