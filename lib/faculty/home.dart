@@ -279,23 +279,6 @@ class _HomeState extends State<Home> {
                 //     ],
                 //   ),
                 // ),
-
-                BottomNavigationBar(
-                    type: BottomNavigationBarType.fixed,
-                    items: const [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.book),
-                        label: 'History',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.account_circle),
-                        label: 'Profile',
-                      ),
-                    ])
               ],
             ),
           ),
