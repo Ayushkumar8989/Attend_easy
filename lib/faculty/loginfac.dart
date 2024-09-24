@@ -1,3 +1,4 @@
+import 'package:attend_easy/faculty/bottom_nav.dart';
 import 'package:attend_easy/faculty/home.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
@@ -143,7 +144,7 @@ class _LoginState extends State<LoginFac> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Home(),
+                              builder: (context) => Bottom_Nav(),
                             ),
                           );
                         },
