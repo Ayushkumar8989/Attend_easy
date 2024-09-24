@@ -19,8 +19,8 @@ class _HomeState extends State<Home> {
       return Scaffold(
         body: Center(
           child: Container(
-            width: screenWidth * 0.9,
-            height: screenHeight * (isDesktop ? 1.0 : 1.0),
+            width: screenWidth * 1.0,
+            height: screenHeight * 1.0,
             child: Column(
               children: [
                 Container(
@@ -103,7 +103,8 @@ class _HomeState extends State<Home> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: screenWidth * 0.2,
+                                    width:
+                                        screenWidth * (isDesktop ? 0.15 : 0.2),
                                     height: screenHeight * 0.09,
                                     child: Text(
                                       'Attendance Reports',
@@ -165,7 +166,8 @@ class _HomeState extends State<Home> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    width: screenWidth * 0.2,
+                                    width:
+                                        screenWidth * (isDesktop ? 0.15 : 0.2),
                                     height: screenHeight * 0.09,
                                     child: Text(
                                       'Manages Courses',
@@ -254,7 +256,6 @@ class _HomeState extends State<Home> {
                 ),
                 Container(
                   width: screenHeight * 0.9,
-                  margin: EdgeInsets.only(top: 45),
                   child: BottomNavigationBar(
                     type: BottomNavigationBarType.fixed,
                     items: [
