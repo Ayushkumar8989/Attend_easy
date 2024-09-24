@@ -31,7 +31,8 @@ class _LoginState extends State<LoginFac> {
                 child: Column(
                   children: [
                     Container(
-                      width: screenWidth * 0.7,
+                      //width: screenWidth * 0.7,
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       margin: EdgeInsets.only(top: 70),
                       child: Text(
@@ -44,7 +45,8 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * 0.7,
+                      //width: screenWidth * 0.7,
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
                       child: Text(
@@ -57,7 +59,8 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * 0.7,
+                      //width: screenWidth * 0.7,
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
                       child: Text(
@@ -70,7 +73,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
                       child: TextField(
@@ -83,7 +86,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * 0.7,
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       // margin: EdgeInsets.only(left: 45),
                       child: Text(
@@ -96,7 +99,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
                       child: TextField(
@@ -109,7 +112,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.7 : 0.6),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: EdgeInsets.only(left: 45),
                       child: Row(
                         children: [
@@ -132,7 +135,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      width: screenWidth * (isDesktop ? 0.6 : 0.7),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
                       child: ElevatedButton(
@@ -155,8 +158,7 @@ class _LoginState extends State<LoginFac> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 45),
-                      width: screenWidth * 0.7,
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       child: Row(
                         children: [
                           Container(
