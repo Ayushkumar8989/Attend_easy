@@ -28,7 +28,7 @@ class _SignInState extends State<SignInFac> {
             child: Container(
               width: screenWidth * 1.0,
               height: screenHeight * 1.0,
-              // color: Color.fromARGB(255, 249, 249, 249),
+              color: Colors.white,
               child: Column(
                 children: [
                   Container(
