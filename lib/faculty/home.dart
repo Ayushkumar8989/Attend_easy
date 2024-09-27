@@ -1,3 +1,4 @@
+import 'package:attend_easy/faculty/new_session.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -245,7 +246,14 @@ class _HomeState extends State<Home> {
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   height: 50,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => NewSession(),
+                        ),
+                      );
+                    },
                     child: Text(
                       'New Session',
                       style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
