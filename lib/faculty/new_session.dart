@@ -16,10 +16,28 @@ class _NewSessionState extends State<NewSession> {
       double screenwidth = Constraints.maxWidth;
       double screenheight = Constraints.maxHeight;
       return Scaffold(
-        body: Container(
-          width: screenwidth * 1.0,
-          height: screenheight * 1.0,
-          color: Colors.white,
+        body: Center(
+          child: Container(
+              width: screenwidth * 1.0,
+              height: screenheight * 1.0,
+              color: Colors.white,
+              child: Column(
+                children: [
+                  Container(
+                    width: isDesktop ? 0.6 : 0.85,
+                    height: 50,
+                    margin: EdgeInsets.only(top: 70),
+                    child: Text(
+                      'New Attendance Session',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              )),
         ),
       );
     });
