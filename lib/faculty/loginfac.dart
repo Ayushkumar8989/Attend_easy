@@ -1,5 +1,4 @@
 import 'package:attend_easy/faculty/bottom_nav.dart';
-import 'package:attend_easy/faculty/home.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
