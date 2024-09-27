@@ -256,29 +256,6 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 0.2,
-                ),
-                // Container(
-                //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                //   child: BottomNavigationBar(
-                //     type: BottomNavigationBarType.fixed,
-                //     items: [
-                //       BottomNavigationBarItem(
-                //         icon: Icon(Icons.home),
-                //         label: 'Home',
-                //       ),
-                //       BottomNavigationBarItem(
-                //         icon: Icon(Icons.book),
-                //         label: 'History',
-                //       ),
-                //       BottomNavigationBarItem(
-                //         icon: Icon(Icons.account_circle),
-                //         label: 'Profile',
-                //       ),
-                //     ],
-                //   ),
-                // ),
               ],
             ),
           ),
