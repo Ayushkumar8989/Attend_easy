@@ -36,7 +36,7 @@ class _SignInState extends State<SignInFac> {
                       //margin: EdgeInsets.only(top: 70),
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30, top: 70),
+                      margin: EdgeInsets.only(top: 70),
                       child: Text(
                         'Join AttendEasy Today!',
                         style: TextStyle(
@@ -49,7 +49,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Text(
                         'Create your account to manage classes and track attendance effortlessly.',
                         style: TextStyle(
@@ -62,7 +62,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Text(
                         'Staff ID',
                         style: TextStyle(
@@ -75,7 +75,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: ' Enter your id number',
@@ -88,7 +88,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Text(
                         'Phone No.',
                         style: TextStyle(
@@ -101,7 +101,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter your phone number',
@@ -114,7 +114,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Text(
                         'Password',
                         style: TextStyle(
@@ -127,7 +127,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Choose password',
@@ -140,7 +140,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Text(
                         'Confirm Password',
                         style: TextStyle(
@@ -153,7 +153,7 @@ class _SignInState extends State<SignInFac> {
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Confirm password',
@@ -165,7 +165,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       child: Row(
                         children: [
                           Container(
@@ -203,7 +203,7 @@ class _SignInState extends State<SignInFac> {
                     ),
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
@@ -224,7 +224,7 @@ class _SignInState extends State<SignInFac> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 30),
+                      //margin: EdgeInsets.only(left: 30),
                       width: screenWidth * (isDesktop ? 0.55 : 0.85),
                       child: Row(
                         children: [
