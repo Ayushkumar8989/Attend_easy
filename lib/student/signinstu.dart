@@ -19,7 +19,7 @@ class _SignInState extends State<SignInStu> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          width: screenWidth * 0.9,
+          width: screenWidth * 1.0,
           height: screenHeight * 1.0,
           color: Color.fromARGB(255, 249, 249, 249),
           margin: EdgeInsets.only(top: 70),
