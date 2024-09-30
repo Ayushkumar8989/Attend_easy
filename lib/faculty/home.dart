@@ -249,9 +249,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(
-                          builder: (context) => NewSession(),
-                        ),
+                        MaterialPageRoute(builder: (context) => NewSession()),
                       );
                     },
                     child: Text(
