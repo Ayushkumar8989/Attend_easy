@@ -19,17 +19,17 @@ class _NewSessionState extends State<NewSession> {
       double screenWidth = Constraints.maxWidth;
       double screenHeight = Constraints.maxHeight;
       return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'New Attendance Session',
-            style: TextStyle(
-                fontSize: 20,
-                color: Colors.black,
-                fontFamily: 'DM Sans',
-                fontWeight: FontWeight.bold),
-          ),
-          centerTitle: true,
-        ),
+        // appBar: AppBar(
+        //   title: Text(
+        //     'New Attendance Session',
+        //     style: TextStyle(
+        //         fontSize: 20,
+        //         color: Colors.black,
+        //         fontFamily: 'DM Sans',
+        //         fontWeight: FontWeight.bold),
+        //   ),
+        //   centerTitle: true,
+        // ),
         body: SingleChildScrollView(
           child: Center(
             child: Container(
@@ -38,6 +38,20 @@ class _NewSessionState extends State<NewSession> {
               color: Colors.white,
               child: Column(
                 children: [
+                  Container(
+                    //width: screenWidth * 0.7,
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    margin: EdgeInsets.only(top: 70),
+                    child: Text(
+                      'New Attendance Session',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
@@ -79,6 +93,119 @@ class _NewSessionState extends State<NewSession> {
                             ),
                           ),
                         ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Date',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Venue',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    //margin: EdgeInsets.only(left: 45),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: ' Enter attendance venue',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Geolocation Radius',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    //margin: EdgeInsets.only(left: 45),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: ' Enter raduis in meter',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    margin: EdgeInsets.only(top: 10),
+                    child: Text(
+                      'Code Duration',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    //margin: EdgeInsets.only(left: 45),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: ' Enter duration in minutes',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Generate Session Code',
+                        style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Color(0xFF1DC99E),
+                        foregroundColor: Colors.white,
                       ),
                     ),
                   ),
