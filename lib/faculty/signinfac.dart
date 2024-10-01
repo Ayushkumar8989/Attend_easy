@@ -14,9 +14,6 @@ class _SignInState extends State<SignInFac> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width;
-    // double screenHeight = MediaQuery.of(context).size.height;
-
     return LayoutBuilder(builder: (context, Constraints) {
       bool isDesktop = Constraints.maxWidth > 600;
       double screenWidth = Constraints.maxWidth;
@@ -24,6 +21,17 @@ class _SignInState extends State<SignInFac> {
 
       return Center(
         child: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              'Join AttendEasy Today!',
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontFamily: 'DM Sans',
+                  fontWeight: FontWeight.bold),
+            ),
+            centerTitle: true,
+          ),
           body: SingleChildScrollView(
             child: Form(
               child: Container(
@@ -33,19 +41,19 @@ class _SignInState extends State<SignInFac> {
                 child: Column(
                   children: [
                     Container(
-                      //margin: EdgeInsets.only(top: 70),
-                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      height: 50,
-                      margin: EdgeInsets.only(top: 70),
-                      child: Text(
-                        'Join AttendEasy Today!',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
+                        //margin: EdgeInsets.only(top: 70),
+                        // width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                        // height: 50,
+                        // margin: EdgeInsets.only(top: 70),
+                        // child: Text(
+                        //   'Join AttendEasy Today!',
+                        //   style: TextStyle(
+                        //       fontSize: 20,
+                        //       color: Colors.black,
+                        //       fontFamily: 'DM Sans',
+                        //       fontWeight: FontWeight.bold),
+                        // ),
+                        ),
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
