@@ -23,9 +23,9 @@ class _AttendanceRepState extends State<AttendanceRep> {
               color: Colors.white,
               child: Column(
                 children: [
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    child: Center(
+                    child: const Center(
                       child: Text(
                         'Attendance Report',
                         style: TextStyle(
@@ -36,7 +36,7 @@ class _AttendanceRepState extends State<AttendanceRep> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 1.0,
                     height: 5,
                   ),

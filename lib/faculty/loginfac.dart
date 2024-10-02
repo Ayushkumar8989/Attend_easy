@@ -34,7 +34,7 @@ class _LoginState extends State<LoginFac> {
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       margin: const EdgeInsets.only(top: 70),
-                      child: Text(
+                      child: const Text(
                         'Welcome back to AttendEasy!',
                         style: TextStyle(
                             fontSize: 20,
@@ -43,10 +43,10 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(
                             fontSize: 12,
@@ -55,10 +55,10 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Staff ID',
                         style: TextStyle(
                             fontSize: 20,
@@ -67,7 +67,7 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -79,10 +79,10 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -91,7 +91,7 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -103,7 +103,7 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
@@ -126,7 +126,7 @@ class _LoginState extends State<LoginFac> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -148,7 +148,7 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(

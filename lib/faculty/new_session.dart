@@ -56,7 +56,7 @@ class _NewSessionState extends State<NewSession> {
                   // SizedBox(
                   //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   // ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 60,
                     child: Center(
@@ -119,7 +119,7 @@ class _NewSessionState extends State<NewSession> {
                   //   height: 10,
                   // ),
                   //margin: EdgeInsets.only(left: 45),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 60,
                     child: TextField(
@@ -151,7 +151,7 @@ class _NewSessionState extends State<NewSession> {
                   // SizedBox(
                   //   height: 5,
                   // ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 60,
                     child: TextField(
@@ -180,7 +180,7 @@ class _NewSessionState extends State<NewSession> {
                   // SizedBox(
                   //   height: 5,
                   // ), //margin: EdgeInsets.only(left: 45),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 60,
                     child: TextField(
@@ -207,18 +207,18 @@ class _NewSessionState extends State<NewSession> {
                   //     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   //   ),
                   // ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () => showDialog<String>(
                         context: context,
                         builder: (BuildContext context) => AlertDialog(
-                          title: Center(
-                            child: const Text(
+                          title: const Center(
+                            child: Text(
                               '123456',
                               style: TextStyle(
                                   fontSize: 30,

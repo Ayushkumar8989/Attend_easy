@@ -248,7 +248,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       PersistentNavBarNavigator.pushNewScreen(
                         context,
-                        screen: NewSession(),
+                        screen: const NewSession(),
                         withNavBar: false,
                       );
                     },
