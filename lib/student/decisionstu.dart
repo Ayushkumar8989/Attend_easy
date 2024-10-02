@@ -47,7 +47,7 @@ class _DecisionStuState extends State<DecisionStu> {
                 backgroundColor: const Color(0xFF1DC99E),
                 foregroundColor: Colors.white,
               ),
-              child: Text(
+              child: const Text(
                 'Login',
                 style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
               ),
@@ -72,7 +72,7 @@ class _DecisionStuState extends State<DecisionStu> {
                 backgroundColor: const Color(0xFFD9D9D9),
                 foregroundColor: const Color(0xFF1C5B41),
               ),
-              child: Text(
+              child: const Text(
                 'Signin',
                 style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
               ),
