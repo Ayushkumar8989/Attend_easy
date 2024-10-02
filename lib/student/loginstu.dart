@@ -1,4 +1,6 @@
+import 'package:attend_easy/main.dart';
 import 'package:attend_easy/student/signinstu.dart';
+import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:flutter/material.dart';
 
 class LoginStu extends StatefulWidget {
@@ -128,7 +130,14 @@ class _LoginState extends State<LoginStu> {
                 margin: const EdgeInsets.only(left: 45),
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AttendEasyScreen(),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF1DC99E),
                     foregroundColor: Colors.white,
