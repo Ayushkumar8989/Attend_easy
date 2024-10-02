@@ -204,7 +204,7 @@ class _SignInState extends State<SignInFac> {
                     // ),
                     Container(
                       width: screenWidth * 1.0,
-                      margin: const EdgeInsets.only(left: 38),
+                      //margin: const EdgeInsets.only(left: 38),
                       child: Row(
                         children: [
                           Container(
