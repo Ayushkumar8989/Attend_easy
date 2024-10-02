@@ -1,8 +1,5 @@
-import 'package:attend_easy/faculty/loginfac.dart';
-import 'package:attend_easy/faculty/verification.dart';
 import 'package:attend_easy/student/loginstu.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class SignInStu extends StatefulWidget {
   const SignInStu({super.key});
@@ -55,10 +52,10 @@ class _SignInState extends State<SignInStu> {
                         //       fontWeight: FontWeight.bold),
                         // ),
                         ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Create your account to manage classes and track attendance effortlessly.',
                         style: TextStyle(
                             fontSize: 12,
@@ -67,10 +64,10 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Stud ID',
                         style: TextStyle(
                             fontSize: 20,
@@ -79,7 +76,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextFormField(
@@ -91,10 +88,10 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Phone No.',
                         style: TextStyle(
                             fontSize: 20,
@@ -103,7 +100,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -115,10 +112,10 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -127,7 +124,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -139,10 +136,10 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      child: Text(
+                      child: const Text(
                         'Confirm Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -151,7 +148,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -203,7 +200,7 @@ class _SignInState extends State<SignInStu> {
                     //     ],
                     //   ),
                     // ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: const EdgeInsets.only(left: 38),
                       child: Row(
@@ -241,7 +238,7 @@ class _SignInState extends State<SignInStu> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -256,13 +253,13 @@ class _SignInState extends State<SignInStu> {
                           backgroundColor: const Color(0xFF1DC99E),
                           foregroundColor: Colors.white,
                         ),
-                        child: Text(
+                        child: const Text(
                           'Sign Up',
                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
