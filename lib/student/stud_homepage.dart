@@ -29,6 +29,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
   String formattedTime = '';
   String formattedDate = '';
   Timer? timer; // For updating time periodically
+  TextEditingController sessionCodeController = TextEditingController();
 
   @override
   void initState() {
@@ -52,7 +53,80 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
   @override
   void dispose() {
     timer?.cancel(); // Stop the timer when widget is disposed
+    sessionCodeController.dispose();
     super.dispose();
+  }
+
+  void _showCheckInBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled:
+          true, // To make sure the bottom sheet adapts to content size
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
+      ),
+      builder: (BuildContext context) {
+        return Padding(
+          padding: MediaQuery.of(context).viewInsets, // Adjust for keyboard
+          child: Container(
+            padding: EdgeInsets.all(16.0),
+            height: 300, // Set height for the bottom sheet
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  "Check In",
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 8.0),
+                Text(
+                  "Enter the session code that was provided by your lecturer to check in",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 14.0,
+                    color: Colors.grey[700],
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                TextField(
+                  controller: sessionCodeController,
+                  keyboardType: TextInputType.number,
+                  decoration: InputDecoration(
+                    labelText: "Session Code",
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: () {
+                    // Here you can add the functionality to handle check-in
+                    print("Session Code: ${sessionCodeController.text}");
+                    Navigator.pop(
+                        context); // Close the bottom sheet after check-in
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Color(0xFF43c6ac),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                  ),
+                  child: Text(
+                    "Click to Check in",
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 
   @override
@@ -91,7 +165,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                   ),
                   SizedBox(height: height * 0.01),
                   Text(
-                    'Welcome back to AttendEasy!',
+                    'Welcome back to SmartAttend!',
                     style: TextStyle(
                       fontSize: width * 0.045, // Responsive text size
                       color: Colors.grey,
@@ -116,7 +190,8 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                   SizedBox(height: height * 0.08),
                   GestureDetector(
                     onTap: () {
-                      _updateDateTime(); // Update time and date when button is tapped
+                      _showCheckInBottomSheet(
+                          context); // Show the bottom sheet when tapped
                     },
                     child: Container(
                       height: width * 0.5,
