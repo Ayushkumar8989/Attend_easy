@@ -204,8 +204,8 @@ class _SignInState extends State<SignInStu> {
                     //   ),
                     // ),
                     Container(
-                      width: screenWidth * 1.0,
-                      margin: const EdgeInsets.only(left: 38),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      //margin: const EdgeInsets.only(left: 38),
                       child: Row(
                         children: [
                           Container(
