@@ -1,5 +1,3 @@
-import 'package:attend_easy/faculty/attendance_rep.dart';
-import 'package:attend_easy/faculty/new_session.dart';
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 
