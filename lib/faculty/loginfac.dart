@@ -1,7 +1,6 @@
 import 'package:attend_easy/faculty/bottom_nav.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class LoginFac extends StatefulWidget {
   const LoginFac({super.key});
@@ -14,7 +13,7 @@ class _LoginState extends State<LoginFac> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (conntext, Constraints) {
+      builder: (context, Constraints) {
         bool isDesktop = Constraints.maxWidth > 600;
         double screenWidth = Constraints.maxWidth;
         double screenHeight = Constraints.maxHeight;
@@ -35,7 +34,7 @@ class _LoginState extends State<LoginFac> {
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       margin: const EdgeInsets.only(top: 70),
-                      child: const Text(
+                      child: Text(
                         'Welcome back to AttendEasy!',
                         style: TextStyle(
                             fontSize: 20,
@@ -44,12 +43,10 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
-                      //width: screenWidth * 0.7,
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 45),
-                      child: const Text(
+                      child: Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(
                             fontSize: 12,
@@ -58,12 +55,10 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
-                      //width: screenWidth * 0.7,
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 45),
-                      child: const Text(
+                      child: Text(
                         'Staff ID',
                         style: TextStyle(
                             fontSize: 20,
@@ -72,10 +67,9 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 45),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter your number',
@@ -85,11 +79,10 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      // margin: EdgeInsets.only(left: 45),
-                      child: const Text(
+                      child: Text(
                         'Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -98,10 +91,9 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 45),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter your password',
@@ -111,9 +103,9 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      //margin: EdgeInsets.only(left: 45),
+                      height: 50,
                       child: Row(
                         children: [
                           Container(
@@ -134,10 +126,9 @@ class _LoginState extends State<LoginFac> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 45),
                       child: ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -151,14 +142,15 @@ class _LoginState extends State<LoginFac> {
                           backgroundColor: const Color(0xFF1DC99E),
                           foregroundColor: Colors.white,
                         ),
-                        child: Text(
+                        child: const Text(
                           'Login',
                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
                       child: Row(
                         children: [
                           Container(
