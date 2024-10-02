@@ -133,7 +133,7 @@ class _LoginState extends State<LoginStu> {
                     backgroundColor: const Color(0xFF1DC99E),
                     foregroundColor: Colors.white,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
