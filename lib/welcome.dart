@@ -25,7 +25,7 @@ class _WelcomeState extends State<Welcome> {
           color: Colors.white,
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: screenWidth * (isDesktop ? 0.6 : 0.9),
                 height: screenHeight * (isDesktop ? 0.6 : 0.5),
                 child: Padding(
@@ -41,7 +41,7 @@ class _WelcomeState extends State<Welcome> {
                         margin: EdgeInsets.only(
                           top: screenHeight * (isDesktop ? 0.42 : 0.37),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.calendar_month,
                           size: 40,
                           color: Color(0xFF1C5B41),
@@ -51,7 +51,7 @@ class _WelcomeState extends State<Welcome> {
                       Expanded(
                         child: Container(
                           height: screenHeight * (isDesktop ? 0.6 : 0.5),
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage('assets/boy_study.jpg'),
                               fit: BoxFit.contain,
@@ -74,7 +74,7 @@ class _WelcomeState extends State<Welcome> {
               ),
               SizedBox(height: screenHeight * 0.2),
               // Lecturer Button
-              Container(
+              SizedBox(
                 width: screenWidth * (isDesktop ? 0.5 : 0.75),
                 height: 50,
                 child: ElevatedButton(
@@ -82,23 +82,23 @@ class _WelcomeState extends State<Welcome> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DecisionFac(),
+                          builder: (context) => const DecisionFac(),
                         ),
                         (route) => false);
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1DC99E),
+                    foregroundColor: Colors.white,
+                  ),
                   child: Text(
                     'I am a Lecturer',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF1DC99E),
-                    foregroundColor: Colors.white,
-                  ),
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               // Student Button
-              Container(
+              SizedBox(
                 width: screenWidth * (isDesktop ? 0.5 : 0.75),
                 height: 50,
                 child: ElevatedButton(
@@ -106,17 +106,17 @@ class _WelcomeState extends State<Welcome> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => DecisionStu(),
+                          builder: (context) => const DecisionStu(),
                         ),
                         (route) => false);
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD9D9D9),
+                    foregroundColor: const Color(0xFF1C5B41),
+                  ),
                   child: Text(
                     'I am a Student',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFD9D9D9),
-                    foregroundColor: Color(0xFF1C5B41),
                   ),
                 ),
               ),

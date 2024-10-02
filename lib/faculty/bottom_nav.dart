@@ -25,17 +25,17 @@ class _Bottom_NavState extends State<Bottom_Nav> {
   List<PersistentBottomNavBarItem> navBarItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.home),
+        icon: const Icon(Icons.home),
         title: "Home",
         activeColorPrimary: Colors.blue,
         inactiveColorPrimary: Colors.yellow,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.history),
+        icon: const Icon(Icons.history),
         title: "History",
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(Icons.account_circle),
+        icon: const Icon(Icons.account_circle),
         title: "Profile",
       ),
     ];

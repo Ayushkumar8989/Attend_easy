@@ -21,8 +21,8 @@ class _DecisionStuState extends State<DecisionStu> {
           Container(
             width: screenWidth * 0.7,
             height: screenHeight * 0.5,
-            margin: EdgeInsets.only(top: 45),
-            decoration: BoxDecoration(
+            margin: const EdgeInsets.only(top: 45),
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('assets/studing_cloud_comp.jpg'),
               ),
@@ -31,7 +31,7 @@ class _DecisionStuState extends State<DecisionStu> {
           SizedBox(
             height: screenHeight * 0.15,
           ),
-          Container(
+          SizedBox(
             width: screenWidth * 0.75,
             height: 50,
             child: ElevatedButton(
@@ -39,24 +39,24 @@ class _DecisionStuState extends State<DecisionStu> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => LoginStu(),
+                    builder: (context) => const LoginStu(),
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF1DC99E),
+                foregroundColor: Colors.white,
+              ),
               child: Text(
                 'Login',
                 style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
               ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF1DC99E),
-                foregroundColor: Colors.white,
-              ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          Container(
+          SizedBox(
             width: screenWidth * 0.75,
             height: 50,
             child: ElevatedButton(
@@ -64,17 +64,17 @@ class _DecisionStuState extends State<DecisionStu> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SignInStu(),
+                    builder: (context) => const SignInStu(),
                   ),
                 );
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFD9D9D9),
+                foregroundColor: const Color(0xFF1C5B41),
+              ),
               child: Text(
                 'Signin',
                 style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFFD9D9D9),
-                foregroundColor: Color(0xFF1C5B41),
               ),
             ),
           ),

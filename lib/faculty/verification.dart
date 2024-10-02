@@ -18,12 +18,12 @@ class _VerificationState extends State<Verification> {
         child: Container(
           width: screenWidth * 1.0,
           height: screenHeight * 1.0,
-          margin: EdgeInsets.only(top: 70),
+          margin: const EdgeInsets.only(top: 70),
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
-                child: Text(
+                child: const Text(
                   'User Verification!',
                   style: TextStyle(
                     fontSize: 20,
@@ -31,21 +31,21 @@ class _VerificationState extends State<Verification> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
-                child: Text(
+                child: const Text(
                   'We just sent a one-time password to your registered phone +91XX XX89 XX54 to make sure it’s you.',
                   style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
-                child: Text(
+                child: const Text(
                   'Verification Code',
                   style: TextStyle(
                     fontSize: 20,
@@ -53,7 +53,7 @@ class _VerificationState extends State<Verification> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
                 child: TextField(
                   decoration: InputDecoration(
@@ -64,14 +64,14 @@ class _VerificationState extends State<Verification> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
                 child: Row(
                   children: [
                     Container(
                       child: TextButton(
                         onPressed: () {},
-                        child: Text(
+                        child: const Text(
                           'Reset OTP',
                           style: TextStyle(
                             color: Color(0xFF1C5B41),
@@ -81,7 +81,7 @@ class _VerificationState extends State<Verification> {
                       ),
                     ),
                     Container(
-                      child: Text(
+                      child: const Text(
                         ' Didn’t receive OTP?',
                         style: TextStyle(
                           fontSize: 12,
@@ -91,23 +91,23 @@ class _VerificationState extends State<Verification> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * 0.8,
                 height: 50,
                 child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => LoginFac()),
+                        MaterialPageRoute(builder: (context) => const LoginFac()),
                       );
                     },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1DC99E),
+                      foregroundColor: Colors.white,
+                    ),
                     child: Text(
                       'Continue',
                       style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF1DC99E),
-                      foregroundColor: Colors.white,
                     )),
               ),
             ],

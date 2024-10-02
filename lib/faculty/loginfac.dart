@@ -34,8 +34,8 @@ class _LoginState extends State<LoginFac> {
                       //width: screenWidth * 0.7,
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: EdgeInsets.only(top: 70),
-                      child: Text(
+                      margin: const EdgeInsets.only(top: 70),
+                      child: const Text(
                         'Welcome back to AttendEasy!',
                         style: TextStyle(
                             fontSize: 20,
@@ -44,12 +44,12 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       //width: screenWidth * 0.7,
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
-                      child: Text(
+                      child: const Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(
                             fontSize: 12,
@@ -58,12 +58,12 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       //width: screenWidth * 0.7,
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
-                      child: Text(
+                      child: const Text(
                         'Staff ID',
                         style: TextStyle(
                             fontSize: 20,
@@ -72,7 +72,7 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
@@ -85,11 +85,11 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       // margin: EdgeInsets.only(left: 45),
-                      child: Text(
+                      child: const Text(
                         'Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -98,7 +98,7 @@ class _LoginState extends State<LoginFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
@@ -111,19 +111,19 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: EdgeInsets.only(left: 45),
                       child: Row(
                         children: [
                           Container(
-                            child: Text('Forgot Password?'),
+                            child: const Text('Forgot Password?'),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 15),
+                            margin: const EdgeInsets.only(right: 15),
                             child: TextButton(
                               onPressed: () {},
-                              child: Text(
+                              child: const Text(
                                 'Reset it',
                                 style: TextStyle(
                                   color: Color(0xFF1C5B41),
@@ -134,7 +134,7 @@ class _LoginState extends State<LoginFac> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 45),
@@ -143,39 +143,39 @@ class _LoginState extends State<LoginFac> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => Bottom_Nav(),
+                              builder: (context) => const Bottom_Nav(),
                             ),
                           );
                         },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1DC99E),
+                          foregroundColor: Colors.white,
+                        ),
                         child: Text(
                           'Login',
                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF1DC99E),
-                          foregroundColor: Colors.white,
-                        ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       child: Row(
                         children: [
                           Container(
-                            child: Text('Dont have an account'),
+                            child: const Text('Dont have an account'),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 15),
+                            margin: const EdgeInsets.only(right: 15),
                             child: TextButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => SignInFac(),
+                                    builder: (context) => const SignInFac(),
                                   ),
                                 );
                               },
-                              child: Text(
+                              child: const Text(
                                 'Sign Up',
                                 style: TextStyle(
                                   color: Color(0xFF1DC99E),

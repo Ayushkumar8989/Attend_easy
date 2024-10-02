@@ -27,7 +27,7 @@ class _DecisionFacState extends State<DecisionFac> {
                 width: screenWidth * (isDesktop ? 0.5 : 0.7),
                 height: screenHeight * (isDesktop ? 0.6 : 0.5),
                 margin: EdgeInsets.only(top: isDesktop ? 20 : 45),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage('assets/studing_cloud_comp.jpg'),
                     fit: BoxFit.cover,
@@ -37,7 +37,7 @@ class _DecisionFacState extends State<DecisionFac> {
               SizedBox(
                 height: screenHeight * (isDesktop ? 0.2 : 0.15),
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * (isDesktop ? 0.4 : 0.75),
                 height: 50,
                 child: ElevatedButton(
@@ -45,24 +45,24 @@ class _DecisionFacState extends State<DecisionFac> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => LoginFac(),
+                        builder: (context) => const LoginFac(),
                       ),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF1DC99E),
+                    foregroundColor: Colors.white,
+                  ),
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF1DC99E),
-                    foregroundColor: Colors.white,
-                  ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 width: screenWidth * (isDesktop ? 0.4 : 0.75),
                 height: 50,
                 child: ElevatedButton(
@@ -70,17 +70,17 @@ class _DecisionFacState extends State<DecisionFac> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SignInFac(),
+                        builder: (context) => const SignInFac(),
                       ),
                     );
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD9D9D9),
+                    foregroundColor: const Color(0xFF1C5B41),
+                  ),
                   child: Text(
                     'Signin',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFFD9D9D9),
-                    foregroundColor: Color(0xFF1C5B41),
                   ),
                 ),
               ),

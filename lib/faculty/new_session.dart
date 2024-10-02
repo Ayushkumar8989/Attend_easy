@@ -9,9 +9,9 @@ class NewSession extends StatefulWidget {
 }
 
 class _NewSessionState extends State<NewSession> {
-  List<String> _dropDownItems = ['B.Tech', 'M.Tech', 'MBA', 'BBA', 'BCA'];
+  final List<String> _dropDownItems = ['B.Tech', 'M.Tech', 'MBA', 'BBA', 'BCA'];
   String _selectedItem = "B.Tech";
-  String _selectedTextFieldItem = 'B.Tech';
+  final String _selectedTextFieldItem = 'B.Tech';
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
@@ -42,8 +42,8 @@ class _NewSessionState extends State<NewSession> {
                     //width: screenWidth * 0.7,
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
-                    margin: EdgeInsets.only(top: 70),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 70),
+                    child: const Text(
                       'New Attendance Session',
                       style: TextStyle(
                           fontSize: 20,
@@ -55,8 +55,8 @@ class _NewSessionState extends State<NewSession> {
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: const Text(
                       'Course',
                       style: TextStyle(
                         fontSize: 20,
@@ -66,7 +66,7 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     child: Center(
                       child: Column(
@@ -96,25 +96,25 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // Container(
+                  //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                  //   height: 50,
+                  //   margin: EdgeInsets.only(top: 10),
+                  //   child: Text(
+                  //     'Date',
+                  //     style: TextStyle(
+                  //       fontSize: 20,
+                  //       color: Colors.black,
+                  //       fontFamily: 'DM Sans',
+                  //       fontWeight: FontWeight.bold,
+                  //     ),
+                  //   ),
+                  // ),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Text(
-                      'Date',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontFamily: 'DM Sans',
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: const Text(
                       'Venue',
                       style: TextStyle(
                         fontSize: 20,
@@ -124,7 +124,7 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     //margin: EdgeInsets.only(left: 45),
@@ -140,8 +140,8 @@ class _NewSessionState extends State<NewSession> {
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: const Text(
                       'Geolocation Radius',
                       style: TextStyle(
                         fontSize: 20,
@@ -151,7 +151,7 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     //margin: EdgeInsets.only(left: 45),
@@ -167,8 +167,8 @@ class _NewSessionState extends State<NewSession> {
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
-                    margin: EdgeInsets.only(top: 10),
-                    child: Text(
+                    margin: const EdgeInsets.only(top: 10),
+                    child: const Text(
                       'Code Duration',
                       style: TextStyle(
                         fontSize: 20,
@@ -178,7 +178,7 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     //margin: EdgeInsets.only(left: 45),
@@ -191,21 +191,21 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1DC99E),
+                        foregroundColor: Colors.white,
+                      ),
                       child: Text(
                         'Generate Session Code',
                         style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF1DC99E),
-                        foregroundColor: Colors.white,
                       ),
                     ),
                   ),

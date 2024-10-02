@@ -22,7 +22,7 @@ class _SignInState extends State<SignInFac> {
       return Center(
         child: Scaffold(
           appBar: AppBar(
-            title: Text(
+            title: const Text(
               'Join AttendEasy Today!',
               style: TextStyle(
                   fontSize: 20,
@@ -54,11 +54,11 @@ class _SignInState extends State<SignInFac> {
                         //       fontWeight: FontWeight.bold),
                         // ),
                         ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: const Text(
                         'Create your account to manage classes and track attendance effortlessly.',
                         style: TextStyle(
                             fontSize: 12,
@@ -67,11 +67,11 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: const Text(
                         'Staff ID',
                         style: TextStyle(
                             fontSize: 20,
@@ -80,7 +80,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
@@ -93,11 +93,11 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: const Text(
                         'Phone No.',
                         style: TextStyle(
                             fontSize: 20,
@@ -106,7 +106,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
@@ -119,11 +119,11 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: const Text(
                         'Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -132,7 +132,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
@@ -145,11 +145,11 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
-                      child: Text(
+                      child: const Text(
                         'Confirm Password',
                         style: TextStyle(
                             fontSize: 20,
@@ -158,7 +158,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       //margin: EdgeInsets.only(left: 30),
@@ -171,7 +171,7 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: EdgeInsets.only(left: 30),
                       child: Row(
@@ -189,7 +189,7 @@ class _SignInState extends State<SignInFac> {
                             ),
                           ),
                           Container(
-                            child: Text(
+                            child: const Text(
                               'You have agreed with our',
                               style: TextStyle(
                                   fontSize: 10, fontWeight: FontWeight.w500),
@@ -198,7 +198,7 @@ class _SignInState extends State<SignInFac> {
                           Container(
                             child: TextButton(
                               onPressed: () {},
-                              child: Text(
+                              child: const Text(
                                 'Term & Condition',
                                 style: TextStyle(
                                   color: Color(0xFF1C5B41),
@@ -209,7 +209,7 @@ class _SignInState extends State<SignInFac> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: EdgeInsets.only(left: 30),
                       height: 50,
@@ -218,38 +218,38 @@ class _SignInState extends State<SignInFac> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Verification()),
+                                builder: (context) => const Verification()),
                           );
                         },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF1DC99E),
+                          foregroundColor: Colors.white,
+                        ),
                         child: Text(
                           'Sign Up',
                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Color(0xFF1DC99E),
-                          foregroundColor: Colors.white,
-                        ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       //margin: EdgeInsets.only(left: 30),
                       width: screenWidth * (isDesktop ? 0.55 : 0.85),
                       child: Row(
                         children: [
                           Container(
-                            child: Text('Already have an account?'),
+                            child: const Text('Already have an account?'),
                           ),
                           Container(
-                            margin: EdgeInsets.only(right: 15),
+                            margin: const EdgeInsets.only(right: 15),
                             child: TextButton(
                               onPressed: () {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => LoginFac()),
+                                      builder: (context) => const LoginFac()),
                                 );
                               },
-                              child: Text(
+                              child: const Text(
                                 'Log In',
                                 style: TextStyle(
                                   color: Color(0xFF1DC99E),
