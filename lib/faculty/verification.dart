@@ -98,14 +98,15 @@ class _VerificationState extends State<Verification> {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const LoginFac()),
+                        MaterialPageRoute(
+                            builder: (context) => const LoginFac()),
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1DC99E),
                       foregroundColor: Colors.white,
                     ),
-                    child: Text(
+                    child: const Text(
                       'Continue',
                       style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                     )),
