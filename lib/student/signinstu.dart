@@ -1,7 +1,5 @@
 import 'package:attend_easy/student/loginstu.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class SignInStu extends StatefulWidget {
   const SignInStu({super.key});
@@ -208,7 +206,7 @@ class _SignInState extends State<SignInStu> {
                     backgroundColor: const Color(0xFF1DC99E),
                     foregroundColor: Colors.white,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Sign Up',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
@@ -228,7 +226,8 @@ class _SignInState extends State<SignInStu> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const LoginStu()),
+                            MaterialPageRoute(
+                                builder: (context) => const LoginStu()),
                           );
                         },
                         child: const Text(
