@@ -16,13 +16,13 @@ class _NewSessionState extends State<NewSession> {
     return LayoutBuilder(builder: (context, Constraints) {
       bool isDesktop = Constraints.maxWidth > 600;
       double screenWidth = Constraints.maxWidth;
-      //double screenHeight = Constraints.maxHeight;
+      double screenHeight = Constraints.maxHeight;
       return Scaffold(
         body: SingleChildScrollView(
           child: Center(
             child: Container(
               width: screenWidth * 1.0,
-              //height: screenHeight * 1.0,
+              height: screenHeight * 1.0,
               color: Colors.white,
               child: Column(
                 children: [
@@ -58,7 +58,7 @@ class _NewSessionState extends State<NewSession> {
                   // ),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
+                    height: 60,
                     child: Center(
                       child: Column(
                         children: [
@@ -121,7 +121,7 @@ class _NewSessionState extends State<NewSession> {
                   //margin: EdgeInsets.only(left: 45),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter attendance venue',
@@ -151,10 +151,9 @@ class _NewSessionState extends State<NewSession> {
                   // SizedBox(
                   //   height: 5,
                   // ),
-                  //margin: EdgeInsets.only(left: 45),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter raduis in meter',
@@ -183,7 +182,7 @@ class _NewSessionState extends State<NewSession> {
                   // ), //margin: EdgeInsets.only(left: 45),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter duration in minutes',
