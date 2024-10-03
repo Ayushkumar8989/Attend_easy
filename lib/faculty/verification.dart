@@ -36,7 +36,7 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: const Text(
                     'We just sent a one-time password to your registered phone +91XX XX89 XX54 to make sure it’s you.',
@@ -45,7 +45,7 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: const Text(
                     'Verification Code',
@@ -55,7 +55,7 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: TextField(
                     decoration: InputDecoration(
@@ -66,7 +66,7 @@ class _VerificationState extends State<Verification> {
                     ),
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   child: Row(
                     children: [
@@ -93,7 +93,7 @@ class _VerificationState extends State<Verification> {
                     ],
                   ),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.6 : 0.85),
                   height: 50,
                   child: ElevatedButton(

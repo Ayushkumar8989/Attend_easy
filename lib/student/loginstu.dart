@@ -42,7 +42,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -54,7 +54,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -66,7 +66,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -78,7 +78,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -90,7 +90,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -102,7 +102,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
@@ -125,7 +125,7 @@ class _LoginState extends State<LoginStu> {
                         ],
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -140,7 +140,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
