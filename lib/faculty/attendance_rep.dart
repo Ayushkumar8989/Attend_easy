@@ -25,7 +25,7 @@ class _AttendanceRepState extends State<AttendanceRep> {
                 children: [
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    margin: EdgeInsets.only(top: 70),
+                    margin: const EdgeInsets.only(top: 70),
                     child: const Center(
                       child: Text(
                         'Attendance Report',
@@ -37,17 +37,17 @@ class _AttendanceRepState extends State<AttendanceRep> {
                       ),
                     ),
                   ),
-                  Container(
+                  SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.9),
                     child: TextField(
                       decoration: InputDecoration(
                           contentPadding:
-                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                              const EdgeInsets.symmetric(vertical: 10, horizontal: 5),
                           hintText: 'Search',
-                          suffixIcon: Icon(Icons.search),
+                          suffixIcon: const Icon(Icons.search),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
-                            borderSide: BorderSide(),
+                            borderSide: const BorderSide(),
                           )),
                     ),
                   ),
