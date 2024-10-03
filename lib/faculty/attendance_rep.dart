@@ -23,22 +23,33 @@ class _AttendanceRepState extends State<AttendanceRep> {
               color: Colors.white,
               child: Column(
                 children: [
-                  SizedBox(
+                  Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    margin: EdgeInsets.only(top: 70),
                     child: const Center(
                       child: Text(
                         'Attendance Report',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 30,
                             color: Colors.black,
                             fontFamily: 'DM Sans',
                             fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                  const SizedBox(
-                    width: 1.0,
-                    height: 5,
+                  Container(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.9),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(vertical: 10, horizontal: 5),
+                          hintText: 'Search',
+                          suffixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(),
+                          )),
+                    ),
                   ),
                 ],
               ),

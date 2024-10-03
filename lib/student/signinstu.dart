@@ -52,7 +52,7 @@ class _SignInState extends State<SignInStu> {
                         //       fontWeight: FontWeight.bold),
                         // ),
                         ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -64,7 +64,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -76,7 +76,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextFormField(
@@ -88,7 +88,7 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -100,7 +100,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -112,7 +112,7 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -124,7 +124,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -136,7 +136,7 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -148,7 +148,7 @@ class _SignInState extends State<SignInStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -200,7 +200,7 @@ class _SignInState extends State<SignInStu> {
                     //     ],
                     //   ),
                     // ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       //margin: const EdgeInsets.only(left: 38),
                       child: Row(
@@ -238,7 +238,7 @@ class _SignInState extends State<SignInStu> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -259,7 +259,7 @@ class _SignInState extends State<SignInStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(

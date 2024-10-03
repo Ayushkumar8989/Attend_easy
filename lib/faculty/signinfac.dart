@@ -40,20 +40,6 @@ class _SignInState extends State<SignInFac> {
                 child: Column(
                   children: [
                     Container(
-                        //margin: EdgeInsets.only(top: 70),
-                        // width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                        // height: 50,
-                        // margin: EdgeInsets.only(top: 70),
-                        // child: Text(
-                        //   'Join AttendEasy Today!',
-                        //   style: TextStyle(
-                        //       fontSize: 20,
-                        //       color: Colors.black,
-                        //       fontFamily: 'DM Sans',
-                        //       fontWeight: FontWeight.bold),
-                        // ),
-                        ),
-                    SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -65,7 +51,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -77,7 +63,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextFormField(
@@ -89,7 +75,7 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -101,7 +87,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -113,7 +99,7 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -125,7 +111,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -137,7 +123,7 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -149,7 +135,7 @@ class _SignInState extends State<SignInFac> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -161,49 +147,8 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    // Container(
-                    //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    //   height: 50,
-                    //   child: Row(
-                    //     children: [
-                    //       Container(
-                    //         child: Checkbox(
-                    //           value: isChecked,
-                    //           onChanged: (bool? newValue) {
-                    //             setState(
-                    //               () {
-                    //                 isChecked = newValue!;
-                    //               },
-                    //             );
-                    //           },
-                    //         ),
-                    //       ),
-                    //       Container(
-                    //         width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    //         height: 50,
-                    //         child: const Text(
-                    //           'You have agreed with our',
-                    //           style: TextStyle(
-                    //               fontSize: 10, fontWeight: FontWeight.w500),
-                    //         ),
-                    //       ),
-                    //       Container(
-                    //         child: TextButton(
-                    //           onPressed: () {},
-                    //           child: const Text(
-                    //             'Term & Condition',
-                    //             style: TextStyle(
-                    //               color: Color(0xFF1C5B41),
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    SizedBox(
-                      width: screenWidth * 1.0,
-                      //margin: const EdgeInsets.only(left: 38),
+                    Container(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       child: Row(
                         children: [
                           Container(
@@ -239,7 +184,7 @@ class _SignInState extends State<SignInFac> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -260,7 +205,7 @@ class _SignInState extends State<SignInFac> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
