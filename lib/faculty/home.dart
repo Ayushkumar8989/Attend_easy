@@ -1,7 +1,6 @@
 import 'package:attend_easy/faculty/new_session.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -247,16 +246,17 @@ class _HomeState extends State<Home> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
+                      PersistentNavBarNavigator.pushNewScreen(
                         context,
-                        MaterialPageRoute(builder: (context) => const NewSession()),
+                        screen: const NewSession(),
+                        withNavBar: false,
                       );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1DC99E),
                       foregroundColor: const Color(0xFFFFFFFF),
                     ),
-                    child: Text(
+                    child: const Text(
                       'New Session',
                       style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                     ),

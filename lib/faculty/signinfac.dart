@@ -1,7 +1,6 @@
 import 'package:attend_easy/faculty/loginfac.dart';
 import 'package:attend_easy/faculty/verification.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class SignInFac extends StatefulWidget {
   const SignInFac({super.key});
@@ -40,24 +39,9 @@ class _SignInState extends State<SignInFac> {
                 color: Colors.white,
                 child: Column(
                   children: [
-                    Container(
-                        //margin: EdgeInsets.only(top: 70),
-                        // width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                        // height: 50,
-                        // margin: EdgeInsets.only(top: 70),
-                        // child: Text(
-                        //   'Join AttendEasy Today!',
-                        //   style: TextStyle(
-                        //       fontSize: 20,
-                        //       color: Colors.black,
-                        //       fontFamily: 'DM Sans',
-                        //       fontWeight: FontWeight.bold),
-                        // ),
-                        ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: const Text(
                         'Create your account to manage classes and track attendance effortlessly.',
                         style: TextStyle(
@@ -70,7 +54,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: const Text(
                         'Staff ID',
                         style: TextStyle(
@@ -83,7 +66,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: ' Enter your id number',
@@ -96,7 +78,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: const Text(
                         'Phone No.',
                         style: TextStyle(
@@ -109,7 +90,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Enter your phone number',
@@ -122,7 +102,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: const Text(
                         'Password',
                         style: TextStyle(
@@ -135,7 +114,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Choose password',
@@ -148,7 +126,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: const Text(
                         'Confirm Password',
                         style: TextStyle(
@@ -161,7 +138,6 @@ class _SignInState extends State<SignInFac> {
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      //margin: EdgeInsets.only(left: 30),
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: ' Confirm password',
@@ -173,7 +149,6 @@ class _SignInState extends State<SignInFac> {
                     ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      //margin: EdgeInsets.only(left: 30),
                       child: Row(
                         children: [
                           Container(
@@ -211,7 +186,6 @@ class _SignInState extends State<SignInFac> {
                     ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      //margin: EdgeInsets.only(left: 30),
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
@@ -225,15 +199,15 @@ class _SignInState extends State<SignInFac> {
                           backgroundColor: const Color(0xFF1DC99E),
                           foregroundColor: Colors.white,
                         ),
-                        child: Text(
+                        child: const Text(
                           'Sign Up',
                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                         ),
                       ),
                     ),
                     SizedBox(
-                      //margin: EdgeInsets.only(left: 30),
-                      width: screenWidth * (isDesktop ? 0.55 : 0.85),
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
                       child: Row(
                         children: [
                           Container(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class NewSession extends StatefulWidget {
   const NewSession({super.key});
@@ -19,17 +18,6 @@ class _NewSessionState extends State<NewSession> {
       double screenWidth = Constraints.maxWidth;
       double screenHeight = Constraints.maxHeight;
       return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(
-        //     'New Attendance Session',
-        //     style: TextStyle(
-        //         fontSize: 20,
-        //         color: Colors.black,
-        //         fontFamily: 'DM Sans',
-        //         fontWeight: FontWeight.bold),
-        //   ),
-        //   centerTitle: true,
-        // ),
         body: SingleChildScrollView(
           child: Center(
             child: Container(
@@ -39,7 +27,6 @@ class _NewSessionState extends State<NewSession> {
               child: Column(
                 children: [
                   Container(
-                    //width: screenWidth * 0.7,
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     margin: const EdgeInsets.only(top: 70),
@@ -66,8 +53,12 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                  // ),
                   SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 60,
                     child: Center(
                       child: Column(
                         children: [
@@ -124,10 +115,13 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
+                  //margin: EdgeInsets.only(left: 45),
                   SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
-                    //margin: EdgeInsets.only(left: 45),
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter attendance venue',
@@ -137,6 +131,9 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 10,
+                  // ),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
@@ -151,10 +148,12 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
                   SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
-                    //margin: EdgeInsets.only(left: 45),
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter raduis in meter',
@@ -178,10 +177,12 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ), //margin: EdgeInsets.only(left: 45),
                   SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
-                    //margin: EdgeInsets.only(left: 45),
+                    height: 60,
                     child: TextField(
                       decoration: InputDecoration(
                         hintText: ' Enter duration in minutes',
@@ -191,19 +192,70 @@ class _NewSessionState extends State<NewSession> {
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   height: 5,
+                  // ),
+
+                  // child: ElevatedButton(
+                  //   onPressed: () {},
+                  //   style: ElevatedButton.styleFrom(
+                  //     backgroundColor: const Color(0xFF1DC99E),
+                  //     foregroundColor: Colors.white,
+                  //   ),
+                  //   child: const Text(
+                  //     'Generate Session Code',
+                  //     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                  //   ),
+                  // ),
                   const SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   SizedBox(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,
                     child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () => showDialog<String>(
+                        context: context,
+                        builder: (BuildContext context) => AlertDialog(
+                          title: const Center(
+                            child: Text(
+                              '123456',
+                              style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Inter'),
+                            ),
+                          ),
+                          content: const Text(
+                            'This code will expire in the next 10 minutes',
+                            style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                          ),
+                          actions: <Widget>[
+                            ElevatedButton(
+                              onPressed: () => Navigator.pop(context, 'Cancel'),
+                              child: const Text(
+                                'Cancel',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Inter'),
+                              ),
+                            ),
+                            ElevatedButton(
+                              //onPressed: () => Navigator.pop(context, 'Start'),
+                              onPressed: () {},
+                              child: const Text(
+                                'Start',
+                                style: TextStyle(
+                                    fontSize: 20, fontFamily: 'Inter'),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF1DC99E),
                         foregroundColor: Colors.white,
                       ),
-                      child: Text(
+                      child: const Text(
                         'Generate Session Code',
                         style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                       ),

@@ -1,8 +1,6 @@
 import 'package:attend_easy/faculty/decisionfac.dart';
 import 'package:attend_easy/student/decisionstu.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -90,7 +88,7 @@ class _WelcomeState extends State<Welcome> {
                     backgroundColor: const Color(0xFF1DC99E),
                     foregroundColor: Colors.white,
                   ),
-                  child: Text(
+                  child: const Text(
                     'I am a Lecturer',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
@@ -114,7 +112,7 @@ class _WelcomeState extends State<Welcome> {
                     backgroundColor: const Color(0xFFD9D9D9),
                     foregroundColor: const Color(0xFF1C5B41),
                   ),
-                  child: Text(
+                  child: const Text(
                     'I am a Student',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
