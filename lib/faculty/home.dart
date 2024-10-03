@@ -1,3 +1,5 @@
+import 'package:attend_easy/faculty/Manages_courses.dart';
+import 'package:attend_easy/faculty/attendance_rep.dart';
 import 'package:attend_easy/faculty/new_session.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -76,121 +78,157 @@ class _HomeState extends State<Home> {
                         ),
                         child: Column(
                           children: [
-                            Container(
-                              width: screenWidth * 0.12,
-                              height: screenHeight * 0.1,
-                              //color: Color(0xff1C5B41),
-                              margin: EdgeInsets.only(
-                                right: screenWidth * 0.18,
-                                top: 1,
-                              ),
-                              child: const CircleAvatar(
-                                backgroundColor: Color(0xff1DC99E),
-                                child: Icon(
-                                  Icons.save,
-                                  size: 40,
-                                  color: Colors.white,
+                            InkWell(
+                              onTap: () {
+                                PersistentNavBarNavigator.pushNewScreen(
+                                  context,
+                                  screen: const AttendanceRep(),
+                                  withNavBar: false,
+                                );
+                              },
+                              child: Container(
+                                width: screenWidth * 0.12,
+                                height: screenHeight * 0.1,
+                                //color: Color(0xff1C5B41),
+                                margin: EdgeInsets.only(
+                                  right: screenWidth * 0.18,
+                                  top: 1,
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundColor: Color(0xff1DC99E),
+                                  child: Icon(
+                                    Icons.save,
+                                    size: 40,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             ),
                             SizedBox(
                               height: screenHeight * 0.05,
                             ),
-                            Container(
-                              width: screenWidth * 0.3,
-                              margin: const EdgeInsets.only(left: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        screenWidth * (isDesktop ? 0.15 : 0.2),
-                                    height: screenHeight * 0.09,
-                                    child: const Text(
-                                      'Attendance Reports',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff1C5B41),
+                            InkWell(
+                              onTap: () {
+                                PersistentNavBarNavigator.pushNewScreen(
+                                  context,
+                                  screen: const AttendanceRep(),
+                                  withNavBar: false,
+                                );
+                              },
+                              child: Container(
+                                width: screenWidth * 0.3,
+                                margin: const EdgeInsets.only(left: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      width: screenWidth *
+                                          (isDesktop ? 0.15 : 0.2),
+                                      height: screenHeight * 0.09,
+                                      child: const Text(
+                                        'Attendance Reports',
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          fontFamily: 'DM Sans',
+                                          fontWeight: FontWeight.bold,
+                                          color: Color(0xff1C5B41),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    child: const Icon(
-                                      Icons.arrow_forward,
-                                      size: 30,
-                                      color: Color(0xff1C5B41),
-                                    ),
-                                  )
-                                ],
+                                    Container(
+                                      child: const Icon(
+                                        Icons.arrow_forward,
+                                        size: 30,
+                                        color: Color(0xff1C5B41),
+                                      ),
+                                    )
+                                  ],
+                                ),
                               ),
                             )
                           ],
                         ),
                       ),
-                      Container(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
-                        height: screenHeight * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color(0xffD9D9D9),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(
-                              width: screenWidth * 0.12,
-                              height: screenHeight * 0.1,
-                              //color: Color(0xff1C5B41),
-                              margin: EdgeInsets.only(
-                                right: screenWidth * 0.18,
-                                top: 1,
-                              ),
-                              child: const CircleAvatar(
-                                backgroundColor: Color(0xff1DC99E),
-                                child: Icon(
-                                  Icons.save,
-                                  size: 40,
-                                  color: Colors.white,
+                      InkWell(
+                        onTap: () {
+                          PersistentNavBarNavigator.pushNewScreen(
+                            context,
+                            screen: const MAnagesCourses(),
+                            withNavBar: false,
+                          );
+                        },
+                        child: Container(
+                          width: screenWidth * (isDesktop ? 0.25 : 0.35),
+                          height: screenHeight * 0.25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            color: const Color(0xffD9D9D9),
+                          ),
+                          child: Column(
+                            children: [
+                              Container(
+                                width: screenWidth * 0.12,
+                                height: screenHeight * 0.1,
+                                //color: Color(0xff1C5B41),
+                                margin: EdgeInsets.only(
+                                  right: screenWidth * 0.18,
+                                  top: 1,
+                                ),
+                                child: const CircleAvatar(
+                                  backgroundColor: Color(0xff1DC99E),
+                                  child: Icon(
+                                    Icons.save,
+                                    size: 40,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              height: screenHeight * 0.05,
-                            ),
-                            Container(
-                              width: screenWidth * 0.3,
-                              margin: const EdgeInsets.only(left: 10),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    width:
-                                        screenWidth * (isDesktop ? 0.15 : 0.2),
-                                    height: screenHeight * 0.09,
-                                    child: const Text(
-                                      'Manages Courses',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        fontFamily: 'DM Sans',
-                                        fontWeight: FontWeight.bold,
-                                        color: Color(0xff1C5B41),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    child: const Icon(
-                                      Icons.arrow_forward,
-                                      size: 30,
-                                      color: Color(0xff1C5B41),
-                                    ),
-                                  )
-                                ],
+                              SizedBox(
+                                height: screenHeight * 0.05,
                               ),
-                            )
-                          ],
+                              InkWell(
+                                onTap: () {
+                                  PersistentNavBarNavigator.pushNewScreen(
+                                    context,
+                                    screen: const AttendanceRep(),
+                                    withNavBar: false,
+                                  );
+                                },
+                                child: Container(
+                                  width: screenWidth * 0.3,
+                                  margin: const EdgeInsets.only(left: 10),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      SizedBox(
+                                        width: screenWidth *
+                                            (isDesktop ? 0.15 : 0.2),
+                                        height: screenHeight * 0.09,
+                                        child: const Text(
+                                          'Manages Courses',
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontFamily: 'DM Sans',
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xff1C5B41),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        child: const Icon(
+                                          Icons.arrow_forward,
+                                          size: 30,
+                                          color: Color(0xff1C5B41),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ],

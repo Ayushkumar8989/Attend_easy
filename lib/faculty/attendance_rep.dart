@@ -18,6 +18,21 @@ class _AttendanceRepState extends State<AttendanceRep> {
     {"id": "22SOEIT11066", "attendance": "80"},
     {"id": "22SOEIT11067", "attendance": "80"}
   ];
+  List<Map<String, dynamic>> filteredStudents = [];
+
+  void _filterStudents(String query) {
+    final results = students.where((student) {
+      final studentIdLower = student['id'].toLowerCase();
+      final queryLower = query.toLowerCase();
+
+      return studentIdLower.contains(queryLower);
+    }).toList();
+
+    setState(() {
+      filteredStudents = results;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
@@ -28,7 +43,7 @@ class _AttendanceRepState extends State<AttendanceRep> {
         length: 3,
         child: Scaffold(
           appBar: AppBar(
-            title: Center(child: const Text('Attendance Report')),
+            title: const Center(child: Text('Attendance Report')),
             bottom: const TabBar(
               tabs: [Tab(text: 'flutter'), Tab(text: '.Net'), Tab(text: 'Php')],
             ),
@@ -43,8 +58,9 @@ class _AttendanceRepState extends State<AttendanceRep> {
                   children: [
                     Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.9),
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       child: TextField(
+                        onChanged: _filterStudents,
                         decoration: InputDecoration(
                             contentPadding: const EdgeInsets.symmetric(
                                 vertical: 10, horizontal: 5),
@@ -56,15 +72,14 @@ class _AttendanceRepState extends State<AttendanceRep> {
                             )),
                       ),
                     ),
-                    Container(
-                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    Expanded(
                       child: ListView.builder(
                         itemCount: students.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            leading: CircleAvatar(
-                              backgroundColor: Color(0xD9D9D9),
-                              child: Icon(Icons.person, color: Colors.white),
+                            leading: const CircleAvatar(
+                              backgroundColor: Color(0x007A7474),
+                              child: Icon(Icons.person, color: Colors.blue),
                             ),
                             title: Text(students[index]['id']),
                             trailing: Text('${students[index]['attendance']}%'),
