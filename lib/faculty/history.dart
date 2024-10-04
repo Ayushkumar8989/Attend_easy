@@ -10,8 +10,10 @@ class History extends StatefulWidget {
 class _HistoryState extends State<History> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Text('History'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('History'),
+      ),
     );
   }
 }

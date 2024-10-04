@@ -18,6 +18,15 @@ class _NewSessionState extends State<NewSession> {
       double screenWidth = Constraints.maxWidth;
       double screenHeight = Constraints.maxHeight;
       return Scaffold(
+        appBar: AppBar(
+            title: Text(
+          'New Attendance Session',
+          style: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+              fontFamily: 'DM Sans',
+              fontWeight: FontWeight.bold),
+        )),
         body: SingleChildScrollView(
           child: Center(
             child: Container(
@@ -26,19 +35,19 @@ class _NewSessionState extends State<NewSession> {
               color: Colors.white,
               child: Column(
                 children: [
-                  Container(
-                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                    height: 50,
-                    margin: const EdgeInsets.only(top: 70),
-                    child: const Text(
-                      'New Attendance Session',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontFamily: 'DM Sans',
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                  // Container(
+                  //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                  //   height: 50,
+                  //   margin: const EdgeInsets.only(top: 70),
+                  //   child: const Text(
+                  //     'New Attendance Session',
+                  //     style: TextStyle(
+                  //         fontSize: 20,
+                  //         color: Colors.black,
+                  //         fontFamily: 'DM Sans',
+                  //         fontWeight: FontWeight.bold),
+                  //   ),
+                  // ),
                   Container(
                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
                     height: 50,

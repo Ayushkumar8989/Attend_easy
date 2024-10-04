@@ -32,6 +32,19 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
+                          // child: const Icon(
+                          //   Icons.arrow_back,
+
+                          //   size: 30,
+                          //   color: Color(0xff1C5B41),
+                          // ),
+                          child: IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )),
+                      Container(
                         // width: screenWidth * 0.71,
                         child: const Text(
                           'Hey Ayush11060!',

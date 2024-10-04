@@ -18,9 +18,16 @@ class _LoginState extends State<LoginFac> {
         double screenWidth = Constraints.maxWidth;
         double screenHeight = Constraints.maxHeight;
         return Scaffold(
-          // appBar: AppBar(
-          //   title: Text('Welcome back to AttendEasy!'),
-          // ),
+          appBar: AppBar(
+            title: const Text(
+              'Welcome back to AttendEasy!',
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.black,
+                  fontFamily: 'DM Sans',
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
           body: SingleChildScrollView(
             child: Center(
               child: Container(
@@ -29,23 +36,24 @@ class _LoginState extends State<LoginFac> {
                 color: Colors.white,
                 child: Column(
                   children: [
+                    // Container(
+                    //   //width: screenWidth * 0.7,
+                    //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    //   height: 50,
+                    //   margin: const EdgeInsets.only(top: 70),
+                    //   child: const Text(
+                    //     'Welcome back to AttendEasy!',
+                    //     style: TextStyle(
+                    //         fontSize: 20,
+                    //         color: Colors.black,
+                    //         fontFamily: 'DM Sans',
+                    //         fontWeight: FontWeight.bold),
+                    //   ),
+                    // ),
                     Container(
-                      //width: screenWidth * 0.7,
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
-                      margin: const EdgeInsets.only(top: 70),
-                      child: const Text(
-                        'Welcome back to AttendEasy!',
-                        style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    SizedBox(
-                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                      height: 50,
+                      margin: const EdgeInsets.only(top: 10),
                       child: const Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(

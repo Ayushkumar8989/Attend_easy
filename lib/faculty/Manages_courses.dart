@@ -22,10 +22,10 @@ class _MAnagesCoursesState extends State<MAnagesCourses> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          title: Center(
+          title: const Center(
             child: Text('Courses'),
           ),
-          bottom: TabBar(
+          bottom: const TabBar(
             tabs: [
               Tab(text: '2022/23'),
               Tab(text: '2023/24'),
@@ -38,12 +38,12 @@ class _MAnagesCoursesState extends State<MAnagesCourses> {
             itemCount: courses.length,
             itemBuilder: (context, index) {
               return ListTile(
-                leading: CircleAvatar(
+                leading: const CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Icon(Icons.file_copy, color: Colors.blue),
                 ),
                 title: Text(courses[index]['course']),
-                trailing: CircleAvatar(
+                trailing: const CircleAvatar(
                   backgroundColor: Colors.white,
                   child: Icon(Icons.delete, color: Colors.black),
                 ),
