@@ -1,30 +1,27 @@
 import 'dart:async'; // Import for Timer
+import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: const Color(0xFF43c6ac),
+        primaryColor: Color(0xFF43c6ac),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const AttendEasyScreen(),
+      home: AttendEasyScreen(),
     );
   }
 }
 
 class AttendEasyScreen extends StatefulWidget {
-  const AttendEasyScreen({super.key});
-
   @override
   _AttendEasyScreenState createState() => _AttendEasyScreenState();
 }
@@ -41,7 +38,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
     _updateDateTime(); // Get the initial time and date
     // Update time every second
     timer =
-        Timer.periodic(const Duration(seconds: 1), (Timer t) => _updateDateTime());
+        Timer.periodic(Duration(seconds: 1), (Timer t) => _updateDateTime());
   }
 
   void _updateDateTime() {
@@ -66,19 +63,19 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
       context: context,
       isScrollControlled:
           true, // To make sure the bottom sheet adapts to content size
-      shape: const RoundedRectangleBorder(
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
         return Padding(
           padding: MediaQuery.of(context).viewInsets, // Adjust for keyboard
           child: Container(
-            padding: const EdgeInsets.all(16.0),
+            padding: EdgeInsets.all(16.0),
             height: 300, // Set height for the bottom sheet
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
+                Text(
                   "Check In",
                   style: TextStyle(
                     fontSize: 20.0,
@@ -86,7 +83,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                     color: Colors.black,
                   ),
                 ),
-                const SizedBox(height: 8.0),
+                SizedBox(height: 8.0),
                 Text(
                   "Enter the session code that was provided by your lecturer to check in",
                   textAlign: TextAlign.center,
@@ -95,16 +92,16 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                     color: Colors.grey[700],
                   ),
                 ),
-                const SizedBox(height: 16.0),
+                SizedBox(height: 16.0),
                 TextField(
                   controller: sessionCodeController,
                   keyboardType: TextInputType.number,
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: "Session Code",
                     border: OutlineInputBorder(),
                   ),
                 ),
-                const SizedBox(height: 16.0),
+                SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
                     // Here you can add the functionality to handle check-in
@@ -113,14 +110,14 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                         context); // Close the bottom sheet after check-in
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: const Color(0xFF43c6ac),
+                    foregroundColor: Color(0xFF43c6ac),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
                   ),
-                  child: const Text(
+                  child: Text(
                     "Click to Check in",
                     style: TextStyle(fontSize: 16.0),
                   ),
@@ -201,17 +198,17 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                       height: width * 0.5,
                       width: width * 0.5,
                       decoration: BoxDecoration(
-                        color: const Color(0xFF43c6ac).withOpacity(0.1),
+                        color: Color(0xFF43c6ac).withOpacity(0.1),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: const Color(0xFF43c6ac),
+                          color: Color(0xFF43c6ac),
                           width: 4,
                         ),
                       ),
                       child: Center(
                         child: Icon(
                           Icons.fingerprint,
-                          color: const Color(0xFF43c6ac),
+                          color: Color(0xFF43c6ac),
                           size: width * 0.18, // Responsive icon size
                         ),
                       ),
@@ -225,9 +222,17 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        selectedItemColor: const Color(0xFF43c6ac),
+        selectedItemColor: Color(0xFF43c6ac),
         unselectedItemColor: Colors.grey,
-        items: const [
+        onTap: (int index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+          }
+        },
+        items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
