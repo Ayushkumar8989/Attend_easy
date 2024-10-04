@@ -19,7 +19,7 @@ class _NewSessionState extends State<NewSession> {
       double screenHeight = Constraints.maxHeight;
       return Scaffold(
         appBar: AppBar(
-            title: Text(
+            title: const Text(
           'New Attendance Session',
           style: TextStyle(
               fontSize: 20,
