@@ -1,4 +1,5 @@
 import 'dart:async'; // Import for Timer
+import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 
@@ -223,6 +224,14 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
         currentIndex: 0,
         selectedItemColor: Color(0xFF43c6ac),
         unselectedItemColor: Colors.grey,
+        onTap: (int index) {
+          if (index == 2) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfileScreen()),
+            );
+          }
+        },
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

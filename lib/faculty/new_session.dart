@@ -10,7 +10,6 @@ class NewSession extends StatefulWidget {
 class _NewSessionState extends State<NewSession> {
   final List<String> _dropDownItems = ['B.Tech', 'M.Tech', 'MBA', 'BBA', 'BCA'];
   String _selectedItem = "B.Tech";
-  final String _selectedTextFieldItem = 'B.Tech';
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, Constraints) {
