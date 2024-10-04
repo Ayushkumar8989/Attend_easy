@@ -1,4 +1,3 @@
-// import 'package:attend_easy/main.dart';
 import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +133,7 @@ class _LoginState extends State<LoginStu> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => AttendEasyScreen(),
+                        builder: (context) => const AttendEasyScreen(),
                       ),
                     );
                   },
@@ -142,7 +141,7 @@ class _LoginState extends State<LoginStu> {
                     backgroundColor: const Color(0xFF1DC99E),
                     foregroundColor: Colors.white,
                   ),
-                  child: Text(
+                  child: const Text(
                     'Login',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),

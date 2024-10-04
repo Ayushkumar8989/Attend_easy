@@ -1,6 +1,5 @@
 import 'package:attend_easy/faculty/loginfac.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class Verification extends StatefulWidget {
   const Verification({super.key});
