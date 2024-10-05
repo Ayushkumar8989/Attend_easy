@@ -156,7 +156,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
