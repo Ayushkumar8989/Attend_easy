@@ -3,34 +3,34 @@ import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 
-void main() {
-  runApp(MyApp());
-}
+// void main() {
+//   runApp(MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       theme: ThemeData(
+//         primaryColor: const Color(0xFF43c6ac),
+//         scaffoldBackgroundColor: Colors.white,
+//       ),
+//       home: AttendEasyScreen(),
+//     );
+//   }
+// }
+
+class StudHomePage extends StatefulWidget {
+  const StudHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: const Color(0xFF43c6ac),
-        scaffoldBackgroundColor: Colors.white,
-      ),
-      home: AttendEasyScreen(),
-    );
-  }
+  _StudHomePageState createState() => _StudHomePageState();
 }
 
-class AttendEasyScreen extends StatefulWidget {
-  const AttendEasyScreen({super.key});
-
-  @override
-  _AttendEasyScreenState createState() => _AttendEasyScreenState();
-}
-
-class _AttendEasyScreenState extends State<AttendEasyScreen> {
+class _StudHomePageState extends State<StudHomePage> {
   String formattedTime = '';
   String formattedDate = '';
   Timer? timer; // For updating time periodically
@@ -41,8 +41,8 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
     super.initState();
     _updateDateTime(); // Get the initial time and date
     // Update time every second
-    timer =
-        Timer.periodic(const Duration(seconds: 1), (Timer t) => _updateDateTime());
+    timer = Timer.periodic(
+        const Duration(seconds: 1), (Timer t) => _updateDateTime());
   }
 
   void _updateDateTime() {
@@ -118,8 +118,8 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32.0, vertical: 12.0),
                   ),
                   child: const Text(
                     "Click to Check in",
