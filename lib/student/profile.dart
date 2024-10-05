@@ -5,6 +5,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,26 +17,28 @@ class MyApp extends StatelessWidget {
 }
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
         backgroundColor: const Color(0xFF1DC99E), // Custom color
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 20),
-            CircleAvatar(
+            const SizedBox(height: 20),
+            const CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage(
                   'assets/profile_pic.jpg'), // Replace with actual image
             ),
-            SizedBox(height: 10),
-            Text(
+            const SizedBox(height: 10),
+            const Text(
               'SHIVAM KUMAR',
               style: TextStyle(
                 fontSize: 24,
@@ -42,13 +46,13 @@ class ProfileScreen extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
-            Text(
+            const Text(
               'skumar988@gmail.com',
               style: TextStyle(fontSize: 16, color: Colors.black54),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
                 color: const Color(0xFF1DC99E), // Custom color
                 borderRadius: BorderRadius.circular(10),
@@ -62,7 +66,7 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             buildSectionTitle('Personal Details'),
             buildDetailItem('Email', 'skumar988@rku.ac.in'),
             buildDetailItem('Gender', 'Male'),
@@ -70,7 +74,7 @@ class ProfileScreen extends StatelessWidget {
             buildDetailItem('Aadhar No', '2889420024744160'),
             buildDetailItem('Mobile No', '9431844y498699'),
             buildDetailItem('ABC ID', '644980989274774735'),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Add more sections like Academic Details, Contact Details if needed
           ],
         ),
@@ -83,12 +87,12 @@ class ProfileScreen extends StatelessWidget {
       children: [
         Text(
           title,
-          style: TextStyle(fontSize: 14, color: Colors.white70),
+          style: const TextStyle(fontSize: 14, color: Colors.white70),
         ),
-        SizedBox(height: 4),
+        const SizedBox(height: 4),
         Text(
           value,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -105,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: Colors.black,
@@ -124,11 +128,11 @@ class ProfileScreen extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 16, color: Colors.black54),
+            style: const TextStyle(fontSize: 16, color: Colors.black54),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 16, color: Colors.black),
+            style: const TextStyle(fontSize: 16, color: Colors.black),
           ),
         ],
       ),
