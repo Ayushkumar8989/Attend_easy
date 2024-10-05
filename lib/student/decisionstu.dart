@@ -3,14 +3,14 @@ import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 
-class DecisionFac extends StatefulWidget {
-  const DecisionFac({super.key});
+class DecisionStu extends StatefulWidget {
+  const DecisionStu({super.key});
 
   @override
-  State<DecisionFac> createState() => _DecisionFacState();
+  State<DecisionStu> createState() => _DecisionStuState();
 }
 
-class _DecisionFacState extends State<DecisionFac> {
+class _DecisionStuState extends State<DecisionStu> {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
