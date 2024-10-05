@@ -133,7 +133,7 @@ class _LoginState extends State<LoginStu> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const AttendEasyScreen(),
+                        builder: (context) => AttendEasyScreen(),
                       ),
                     );
                   },
