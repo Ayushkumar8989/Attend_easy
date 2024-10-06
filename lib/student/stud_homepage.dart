@@ -8,12 +8,14 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primaryColor: Color(0xFF43c6ac),
+        primaryColor: const Color(0xFF43c6ac),
         scaffoldBackgroundColor: Colors.white,
       ),
       home: AttendEasyScreen(),
@@ -22,6 +24,8 @@ class MyApp extends StatelessWidget {
 }
 
 class AttendEasyScreen extends StatefulWidget {
+  const AttendEasyScreen({super.key});
+
   @override
   _AttendEasyScreenState createState() => _AttendEasyScreenState();
 }
@@ -37,8 +41,8 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
     super.initState();
     _updateDateTime(); // Get the initial time and date
     // Update time every second
-    timer =
-        Timer.periodic(Duration(seconds: 1), (Timer t) => _updateDateTime());
+    timer = Timer.periodic(
+        const Duration(seconds: 1), (Timer t) => _updateDateTime());
   }
 
   void _updateDateTime() {
@@ -63,19 +67,19 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
       context: context,
       isScrollControlled:
           true, // To make sure the bottom sheet adapts to content size
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
         return Padding(
           padding: MediaQuery.of(context).viewInsets, // Adjust for keyboard
           child: Container(
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             height: 300, // Set height for the bottom sheet
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   "Check In",
                   style: TextStyle(
                     fontSize: 20.0,
@@ -83,7 +87,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 8.0),
+                const SizedBox(height: 8.0),
                 Text(
                   "Enter the session code that was provided by your lecturer to check in",
                   textAlign: TextAlign.center,
@@ -92,16 +96,16 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                     color: Colors.grey[700],
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 TextField(
                   controller: sessionCodeController,
                   keyboardType: TextInputType.number,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Session Code",
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: () {
                     // Here you can add the functionality to handle check-in
@@ -110,14 +114,14 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                         context); // Close the bottom sheet after check-in
                   },
                   style: ElevatedButton.styleFrom(
-                    foregroundColor: Color(0xFF43c6ac),
+                    foregroundColor: const Color(0xFF43c6ac),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
                     ),
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 32.0, vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 32.0, vertical: 12.0),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Click to Check in",
                     style: TextStyle(fontSize: 16.0),
                   ),
@@ -198,17 +202,17 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                       height: width * 0.5,
                       width: width * 0.5,
                       decoration: BoxDecoration(
-                        color: Color(0xFF43c6ac).withOpacity(0.1),
+                        color: const Color(0xFF43c6ac).withOpacity(0.1),
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Color(0xFF43c6ac),
+                          color: const Color(0xFF43c6ac),
                           width: 4,
                         ),
                       ),
                       child: Center(
                         child: Icon(
                           Icons.fingerprint,
-                          color: Color(0xFF43c6ac),
+                          color: const Color(0xFF43c6ac),
                           size: width * 0.18, // Responsive icon size
                         ),
                       ),
@@ -222,7 +226,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
-        selectedItemColor: Color(0xFF43c6ac),
+        selectedItemColor: const Color(0xFF43c6ac),
         unselectedItemColor: Colors.grey,
         onTap: (int index) {
           if (index == 2) {
@@ -232,7 +236,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
             );
           }
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
