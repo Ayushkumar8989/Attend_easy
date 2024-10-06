@@ -3,34 +3,34 @@ import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 
-// void main() {
-//   runApp(MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primaryColor: const Color(0xFF43c6ac),
-//         scaffoldBackgroundColor: Colors.white,
-//       ),
-//       home: AttendEasyScreen(),
-//     );
-//   }
-// }
-
-class StudHomePage extends StatefulWidget {
-  const StudHomePage({super.key});
-
-  @override
-  _StudHomePageState createState() => _StudHomePageState();
+void main() {
+  runApp(MyApp());
 }
 
-class _StudHomePageState extends State<StudHomePage> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: const Color(0xFF43c6ac),
+        scaffoldBackgroundColor: Colors.white,
+      ),
+      home: AttendEasyScreen(),
+    );
+  }
+}
+
+class AttendEasyScreen extends StatefulWidget {
+  const AttendEasyScreen({super.key});
+
+  @override
+  _AttendEasyScreenState createState() => _AttendEasyScreenState();
+}
+
+class _AttendEasyScreenState extends State<AttendEasyScreen> {
   String formattedTime = '';
   String formattedDate = '';
   Timer? timer; // For updating time periodically
