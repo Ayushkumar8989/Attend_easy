@@ -1,5 +1,9 @@
+
+
+import 'package:attend_easy/student/forgotpass.dart';
 import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginStu extends StatefulWidget {
@@ -10,6 +14,42 @@ class LoginStu extends StatefulWidget {
 }
 
 class _LoginState extends State<LoginStu> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final TextEditingController stuidController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool _isLoading = false;
+
+  @override
+  void dispose() {
+    stuidController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _login() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      await _auth.signInWithEmailAndPassword(
+        email: stuidController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const AttendEasyScreen()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login failed: ${e.toString()}")),
+      );
+    } finally {
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -63,7 +103,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -75,7 +115,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -87,7 +127,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
@@ -99,7 +139,7 @@ class _LoginState extends State<LoginStu> {
                             fontWeight: FontWeight.bold),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
@@ -111,7 +151,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
@@ -134,7 +174,7 @@ class _LoginState extends State<LoginStu> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
@@ -156,7 +196,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                       ),
                     ),
-                    SizedBox(
+                    Container(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: Row(
