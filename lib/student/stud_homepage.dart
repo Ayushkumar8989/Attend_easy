@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF43c6ac),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: AttendEasyScreen(),
+      home: const AttendEasyScreen(),
     );
   }
 }
