@@ -1,5 +1,3 @@
-
-
 import 'package:attend_easy/student/forgotpass.dart';
 import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
@@ -182,7 +180,8 @@ class _LoginState extends State<LoginStu> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const StudHomePage(),
+                              //builder: (context) => const StudHomePage(),
+                              builder: (context) => const AttendEasyScreen(),
                             ),
                           );
                         },
