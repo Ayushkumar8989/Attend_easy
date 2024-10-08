@@ -22,17 +22,17 @@ class _DecisionStuState extends State<DecisionStu> {
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Welcome(),
+                    builder: (context) => const Welcome(),
                   ),
                 );
               },
             ),
-            title: Text('Student Decision'),
+            title: const Text('Student Decision'),
             backgroundColor: Colors.teal,
           ),
           body: Container(
@@ -54,7 +54,7 @@ class _DecisionStuState extends State<DecisionStu> {
                 SizedBox(
                   height: screenHeight * (isDesktop ? 0.1 : 0.1),
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.4 : 0.75),
                   height: 50,
                   child: ElevatedButton(
@@ -79,7 +79,7 @@ class _DecisionStuState extends State<DecisionStu> {
                 const SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   width: screenWidth * (isDesktop ? 0.4 : 0.75),
                   height: 50,
                   child: ElevatedButton(
