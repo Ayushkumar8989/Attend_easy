@@ -18,7 +18,7 @@ class _Bottom_NavState extends State<Bottom_Nav> {
     return [
       const Home(),
       const History(),
-      const Profile(),
+      const FacultyProfile(),
     ];
   }
 
