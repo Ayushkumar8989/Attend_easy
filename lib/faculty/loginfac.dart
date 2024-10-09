@@ -1,8 +1,9 @@
+// Add these imports at the top of your file
+import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:attend_easy/faculty/bottom_nav.dart';
 import 'package:attend_easy/faculty/signinfac.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginFac extends StatefulWidget {
   const LoginFac({super.key});
@@ -16,6 +17,7 @@ class _LoginState extends State<LoginFac> {
   String staffID = '';
   String password = '';
   String errorMessage = '';
+  bool _rememberMe = false; // Variable to store Remember Me state
 
   @override
   void initState() {
@@ -132,6 +134,19 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: _rememberMe,
+                          onChanged: (value) {
+                            setState(() {
+                              _rememberMe = value ?? false;
+                            });
+                          },
+                        ),
+                        const Text('Remember Me'),
+                      ],
+                    ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
@@ -184,7 +199,7 @@ class _LoginState extends State<LoginFac> {
                       height: 50,
                       child: Row(
                         children: [
-                          const Text('Dont have an account'),
+                          const Text('Don\'t have an account?'),
                           TextButton(
                             onPressed: () {
                               Navigator.push(

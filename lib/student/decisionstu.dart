@@ -1,5 +1,6 @@
 import 'package:attend_easy/student/loginstu.dart';
 import 'package:attend_easy/student/signinstu.dart';
+import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 
 class DecisionStu extends StatefulWidget {
@@ -12,74 +13,99 @@ class DecisionStu extends StatefulWidget {
 class _DecisionStuState extends State<DecisionStu> {
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
-    return Container(
-      color: Colors.white,
-      child: Column(
-        children: [
-          Container(
-            width: screenWidth * 0.7,
-            height: screenHeight * 0.5,
-            margin: const EdgeInsets.only(top: 45),
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/studing_cloud_comp.jpg'),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: screenHeight * 0.15,
-          ),
-          SizedBox(
-            width: screenWidth * 0.75,
-            height: 50,
-            child: ElevatedButton(
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Check if the device is desktop or mobile
+        bool isDesktop = constraints.maxWidth > 600;
+        double screenWidth = constraints.maxWidth;
+        double screenHeight = constraints.maxHeight;
+        return Scaffold(
+          appBar: AppBar(
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const LoginStu(),
+                    builder: (context) => Welcome(),
                   ),
                 );
               },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF1DC99E),
-                foregroundColor: Colors.white,
-              ),
-              child: const Text(
-                'Login',
-                style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-              ),
             ),
+            title: Text('Student Decision'),
+            backgroundColor: Colors.teal,
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            width: screenWidth * 0.75,
-            height: 50,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInStu(),
+          body: Container(
+            width: screenWidth * 1.0,
+            color: Colors.white,
+            child: Column(
+              children: [
+                Container(
+                  width: screenWidth * (isDesktop ? 0.5 : 0.7),
+                  height: screenHeight * (isDesktop ? 0.6 : 0.5),
+                  margin: EdgeInsets.only(top: isDesktop ? 20 : 45),
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/studing_cloud_comp.jpg'),
+                      fit: BoxFit.cover,
+                    ),
                   ),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFD9D9D9),
-                foregroundColor: const Color(0xFF1C5B41),
-              ),
-              child: const Text(
-                'Signin',
-                style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-              ),
+                ),
+                SizedBox(
+                  height: screenHeight * (isDesktop ? 0.1 : 0.1),
+                ),
+                Container(
+                  width: screenWidth * (isDesktop ? 0.4 : 0.75),
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LoginStu(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFF1DC99E),
+                      foregroundColor: Colors.white,
+                    ),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: screenWidth * (isDesktop ? 0.4 : 0.75),
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInStu(),
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color(0xFFD9D9D9),
+                      foregroundColor: const Color(0xFF1C5B41),
+                    ),
+                    child: const Text(
+                      'Signin',
+                      style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
