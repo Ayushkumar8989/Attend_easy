@@ -1,4 +1,7 @@
+import 'package:attend_easy/student/loginstu.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Authentication package
+// Import your login screen
 
 void main() {
   runApp(MyApp());
@@ -25,7 +28,20 @@ class ProfileScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text('Profile'),
-        backgroundColor: const Color(0xFF1DC99E), // Custom color
+        backgroundColor: const Color(0xFF1DC99E),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () async {
+              await FirebaseAuth.instance.signOut(); // Sign out from Firebase
+              Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const LoginStu()), // Redirect to login screen
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
               decoration: BoxDecoration(
-                color: const Color(0xFF1DC99E), // Custom color
+                color: const Color(0xFF1DC99E),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(

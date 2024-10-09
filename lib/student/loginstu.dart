@@ -1,5 +1,7 @@
+// import 'package:attend_easy/student/forgotpass.dart';
 // import 'package:attend_easy/student/signinstu.dart';
 // import 'package:attend_easy/student/stud_homepage.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:flutter/material.dart';
 
 // class LoginStu extends StatefulWidget {
@@ -10,6 +12,42 @@
 // }
 
 // class _LoginState extends State<LoginStu> {
+//   final FirebaseAuth _auth = FirebaseAuth.instance;
+//   final TextEditingController stuidController = TextEditingController();
+//   final TextEditingController passwordController = TextEditingController();
+//   bool _isLoading = false;
+
+//   @override
+//   void dispose() {
+//     stuidController.dispose();
+//     passwordController.dispose();
+//     super.dispose();
+//   }
+
+//   Future<void> _login() async {
+//     setState(() {
+//       _isLoading = true;
+//     });
+//     try {
+//       await _auth.signInWithEmailAndPassword(
+//         email: stuidController.text.trim(),
+//         password: passwordController.text.trim(),
+//       );
+//       Navigator.pushReplacement(
+//         context,
+//         MaterialPageRoute(builder: (context) => AttendEasyScreen()),
+//       );
+//     } catch (e) {
+//       ScaffoldMessenger.of(context).showSnackBar(
+//         SnackBar(content: Text("Login failed: ${e.toString()}")),
+//       );
+//     } finally {
+//       setState(() {
+//         _isLoading = false;
+//       });
+//     }
+//   }
+
 //   @override
 //   Widget build(BuildContext context) {
 //     double screenWidth = MediaQuery.of(context).size.width;
@@ -67,8 +105,9 @@
 //                 height: 50,
 //                 margin: const EdgeInsets.only(left: 45),
 //                 child: TextField(
+//                   controller: stuidController,
 //                   decoration: InputDecoration(
-//                     hintText: ' Enter your id number',
+//                     hintText: 'Enter your email',
 //                     border: OutlineInputBorder(
 //                       borderRadius: BorderRadius.circular(10),
 //                     ),
@@ -93,8 +132,10 @@
 //                 height: 50,
 //                 margin: const EdgeInsets.only(left: 45),
 //                 child: TextField(
+//                   controller: passwordController,
+//                   obscureText: true,
 //                   decoration: InputDecoration(
-//                     hintText: ' Enter your password',
+//                     hintText: 'Enter your password',
 //                     border: OutlineInputBorder(
 //                       borderRadius: BorderRadius.circular(10),
 //                     ),
@@ -106,18 +147,20 @@
 //                 margin: const EdgeInsets.only(left: 38),
 //                 child: Row(
 //                   children: [
-//                     Container(
-//                       child: const Text('Forgot Password?'),
-//                     ),
-//                     Container(
-//                       margin: const EdgeInsets.only(right: 15),
-//                       child: TextButton(
-//                         onPressed: () {},
-//                         child: const Text(
-//                           'Reset it',
-//                           style: TextStyle(
-//                             color: Color(0xFF1C5B41),
+//                     const Text('Forgot Password?'),
+//                     TextButton(
+//                       onPressed: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(
+//                             builder: (context) => Forgot(),
 //                           ),
+//                         );
+//                       },
+//                       child: const Text(
+//                         'Reset it',
+//                         style: TextStyle(
+//                           color: Color(0xFF1C5B41),
 //                         ),
 //                       ),
 //                     ),
@@ -129,22 +172,20 @@
 //                 margin: const EdgeInsets.only(left: 45),
 //                 height: 50,
 //                 child: ElevatedButton(
-//                   onPressed: () {
-//                     Navigator.push(
-//                       context,
-//                       MaterialPageRoute(
-//                         builder: (context) => AttendEasyScreen(),
-//                       ),
-//                     );
-//                   },
+//                   onPressed: _isLoading ? null : _login,
 //                   style: ElevatedButton.styleFrom(
 //                     backgroundColor: const Color(0xFF1DC99E),
 //                     foregroundColor: Colors.white,
 //                   ),
-//                   child: const Text(
-//                     'Login',
-//                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-//                   ),
+//                   child: _isLoading
+//                       ? const CircularProgressIndicator(
+//                           valueColor:
+//                               AlwaysStoppedAnimation<Color>(Colors.white),
+//                         )
+//                       : const Text(
+//                           'Login',
+//                           style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+//                         ),
 //                 ),
 //               ),
 //               Container(
@@ -152,25 +193,20 @@
 //                 width: screenWidth * 0.7,
 //                 child: Row(
 //                   children: [
-//                     Container(
-//                       child: const Text('Dont have an account'),
-//                     ),
-//                     Container(
-//                       margin: const EdgeInsets.only(right: 15),
-//                       child: TextButton(
-//                         onPressed: () {
-//                           Navigator.push(
-//                             context,
-//                             MaterialPageRoute(
-//                               builder: (context) => SignInStu(),
-//                             ),
-//                           );
-//                         },
-//                         child: const Text(
-//                           'Sign Up',
-//                           style: TextStyle(
-//                             color: Color(0xFF1DC99E),
+//                     const Text("Don't have an account?"),
+//                     TextButton(
+//                       onPressed: () {
+//                         Navigator.push(
+//                           context,
+//                           MaterialPageRoute(
+//                             builder: (context) => const SignInStu(),
 //                           ),
+//                         );
+//                       },
+//                       child: const Text(
+//                         'Sign Up',
+//                         style: TextStyle(
+//                           color: Color(0xFF1DC99E),
 //                         ),
 //                       ),
 //                     ),
@@ -185,11 +221,10 @@
 //   }
 // }
 
-import 'package:attend_easy/student/forgotpass.dart';
-import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginStu extends StatefulWidget {
   const LoginStu({super.key});
@@ -203,6 +238,13 @@ class _LoginState extends State<LoginStu> {
   final TextEditingController stuidController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   bool _isLoading = false;
+  bool _rememberMe = false; // For 'Remember Me' feature
+
+  @override
+  void initState() {
+    super.initState();
+    _loadPreferences(); // Load preferences on initialization
+  }
 
   @override
   void dispose() {
@@ -211,15 +253,41 @@ class _LoginState extends State<LoginStu> {
     super.dispose();
   }
 
+  Future<void> _loadPreferences() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? savedEmail = prefs.getString('email'); // Load saved email
+    String? savedPassword = prefs.getString('password'); // Load saved password
+    if (savedEmail != null) {
+      stuidController.text = savedEmail; // Pre-fill email
+    }
+    if (savedPassword != null) {
+      passwordController.text = savedPassword; // Pre-fill password
+      _rememberMe = true; // Set remember me to true if password is loaded
+    }
+  }
+
   Future<void> _login() async {
     setState(() {
       _isLoading = true;
     });
     try {
-      await _auth.signInWithEmailAndPassword(
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
         email: stuidController.text.trim(),
         password: passwordController.text.trim(),
       );
+
+      // Save credentials if 'Remember Me' is checked
+      if (_rememberMe) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('email', stuidController.text.trim());
+        await prefs.setString('password', passwordController.text.trim());
+      } else {
+        // Clear saved credentials if not remembered
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.remove('email');
+        await prefs.remove('password');
+      }
+
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => AttendEasyScreen()),
@@ -248,32 +316,7 @@ class _LoginState extends State<LoginStu> {
           margin: const EdgeInsets.only(top: 70),
           child: Column(
             children: [
-              Container(
-                width: screenWidth * 0.7,
-                height: 50,
-                margin: const EdgeInsets.only(left: 45),
-                child: const Text(
-                  'Welcome back to AttendEasy!',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                      fontFamily: 'DM Sans',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-              Container(
-                width: screenWidth * 0.7,
-                height: 50,
-                margin: const EdgeInsets.only(left: 45),
-                child: const Text(
-                  'Log in to manage classes and track attendance seamlessly.',
-                  style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.black,
-                      fontFamily: 'DM Sans',
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              // Other UI components
               Container(
                 width: screenWidth * 0.7,
                 height: 50,
@@ -329,31 +372,20 @@ class _LoginState extends State<LoginStu> {
                   ),
                 ),
               ),
-              Container(
-                width: screenWidth * 0.7,
-                margin: const EdgeInsets.only(left: 38),
-                child: Row(
-                  children: [
-                    const Text('Forgot Password?'),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Forgot(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Reset it',
-                        style: TextStyle(
-                          color: Color(0xFF1C5B41),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              Row(
+                children: [
+                  Checkbox(
+                    value: _rememberMe,
+                    onChanged: (bool? value) {
+                      setState(() {
+                        _rememberMe = value ?? false; // Update state
+                      });
+                    },
+                  ),
+                  const Text('Remember Me'),
+                ],
               ),
+              // Other UI components
               Container(
                 width: screenWidth * 0.7,
                 margin: const EdgeInsets.only(left: 45),
@@ -375,31 +407,7 @@ class _LoginState extends State<LoginStu> {
                         ),
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(left: 45),
-                width: screenWidth * 0.7,
-                child: Row(
-                  children: [
-                    const Text("Don't have an account?"),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const SignInStu(),
-                          ),
-                        );
-                      },
-                      child: const Text(
-                        'Sign Up',
-                        style: TextStyle(
-                          color: Color(0xFF1DC99E),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              // Additional UI components...
             ],
           ),
         ),
