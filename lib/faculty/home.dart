@@ -299,7 +299,7 @@ class _HomeState extends State<Home> {
                     onPressed: () {
                       PersistentNavBarNavigator.pushNewScreen(
                         context,
-                        screen: const NewAttendanceSessionScreen(),
+                        screen: const NewSession(),
                         withNavBar: false,
                       );
                     },
