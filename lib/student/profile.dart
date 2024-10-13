@@ -4,7 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Authentica
 // Import your login screen
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(primaryColor: const Color(0xFF1DC99E)),
-      home: ProfileScreen(),
+      home: const ProfileScreen(),
     );
   }
 }
