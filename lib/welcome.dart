@@ -1,6 +1,10 @@
+// import 'package:attend_easy/faculty/decisionfac.dart';
+// import 'package:attend_easy/main.dart';
 import 'package:attend_easy/faculty/decisionfac.dart';
-import 'package:attend_easy/student/decisionstu.dart';
+import 'package:attend_easy/routes/route_constant.dart';
+//import 'package:attend_easy/student/decisionstu.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -77,12 +81,14 @@ class _WelcomeState extends State<Welcome> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DecisionFac(),
-                        ),
-                        (route) => false);
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => const DecisionFac(),
+                    //     ),
+                    //     (route) => false);
+                    context
+                        .pushNamed('MyAppRouteConstant.decisionfacRouteScreen');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF1DC99E),
@@ -101,12 +107,14 @@ class _WelcomeState extends State<Welcome> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DecisionStu(),
-                        ),
-                        (route) => false);
+                    // Navigator.pushAndRemoveUntil(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //       builder: (context) => const DecisionStu(),
+                    //     ),
+                    //     (route) => false);
+                    context
+                        .pushNamed('MyAppRouteConstant.decisionstuRouteScreen');
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD9D9D9),

@@ -1,7 +1,9 @@
+import 'package:attend_easy/main.dart';
 import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginStu extends StatefulWidget {
   const LoginStu({super.key});
@@ -176,13 +178,15 @@ class _LoginState extends State<LoginStu> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              //builder: (context) => const StudHomePage(),
-                              builder: (context) => const AttendEasyScreen(),
-                            ),
-                          );
+                          // Navigator.push(
+                          //   context,
+                          //   MaterialPageRoute(
+                          //     //builder: (context) => const StudHomePage(),
+                          //     builder: (context) => const AttendEasyScreen(),
+                          //   ),
+                          // );
+                          context.pushNamed(
+                              'MyAppRouteConstant.stuhomepageRouteScreen');
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1DC99E),
@@ -206,12 +210,14 @@ class _LoginState extends State<LoginStu> {
                             margin: const EdgeInsets.only(right: 15),
                             child: TextButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const SignInStu(),
-                                  ),
-                                );
+                                // Navigator.push(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) => const SignInStu(),
+                                //   ),
+                                // );
+                                context.pushNamed(
+                                    'MyAppRouteConstant.signinstuRouteScreen');
                               },
                               child: const Text(
                                 'Sign Up',
