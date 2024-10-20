@@ -2,6 +2,7 @@ import 'dart:async'; // Import for Timer
 import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
+import 'package:shared_preferences/shared_preferences.dart'; // Import SharedPreferences
 
 void main() {
   runApp(MyApp());
@@ -33,16 +34,27 @@ class AttendEasyScreen extends StatefulWidget {
 class _AttendEasyScreenState extends State<AttendEasyScreen> {
   String formattedTime = '';
   String formattedDate = '';
+  String userName = ''; // User name fetched from SharedPreferences
   Timer? timer; // For updating time periodically
   TextEditingController sessionCodeController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    _loadUserName(); // Load user's name from SharedPreferences
     _updateDateTime(); // Get the initial time and date
     // Update time every second
     timer = Timer.periodic(
         const Duration(seconds: 1), (Timer t) => _updateDateTime());
+  }
+
+  // Method to load user's name from SharedPreferences
+  Future<void> _loadUserName() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      userName = prefs.getString('name') ??
+          'Guest'; // Fetch the user name or set 'Guest' if not found
+    });
   }
 
   void _updateDateTime() {
@@ -160,8 +172,9 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Display dynamic user name from SharedPreferences
                   Text(
-                    'Hey Ayush11060!',
+                    'Hey $userName!',
                     style: TextStyle(
                       fontSize: textMultiplier, // Responsive text size
                       fontWeight: FontWeight.bold,

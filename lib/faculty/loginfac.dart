@@ -1,9 +1,8 @@
-// Add these imports at the top of your file
+import 'package:attend_easy/faculty/home.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:attend_easy/faculty/bottom_nav.dart';
-import 'package:attend_easy/faculty/signinfac.dart';
+import 'package:attend_easy/faculty/signinfac.dart'; // Removed bottom_nav.dart import
 
 class LoginFac extends StatefulWidget {
   const LoginFac({super.key});
@@ -34,7 +33,8 @@ class _LoginState extends State<LoginFac> {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => const Bottom_Nav(),
+          builder: (context) =>
+              const Home(), // Navigate to HomePage (without bottom navigation)
         ),
       );
     }
@@ -165,11 +165,12 @@ class _LoginState extends State<LoginFac> {
                                 await SharedPreferences.getInstance();
                             await prefs.setBool('isLoggedIn', true);
 
-                            // Navigate to the Bottom Navigation on success
+                            // Navigate to the HomePage on success
                             Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const Bottom_Nav(),
+                                builder: (context) =>
+                                    const Home(), // Navigate to the HomePage
                               ),
                             );
                           } catch (e) {
