@@ -1,7 +1,9 @@
+import 'package:attend_easy/main.dart';
 import 'package:attend_easy/student/loginstu.dart';
 import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class DecisionStu extends StatefulWidget {
   const DecisionStu({super.key});
@@ -59,12 +61,13 @@ class _DecisionStuState extends State<DecisionStu> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LoginStu(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const LoginStu(),
+                      //   ),
+                      //);
+                      context.pushNamed('MyAppRouteConstant.loginRouteScreen');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF1DC99E),
@@ -84,12 +87,14 @@ class _DecisionStuState extends State<DecisionStu> {
                   height: 50,
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInStu(),
-                        ),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => const SignInStu(),
+                      //   ),
+                      // );
+                      context
+                          .pushNamed('MyAppRouteConstant.signinstuRouteScreen');
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFFD9D9D9),
