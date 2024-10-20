@@ -1,6 +1,5 @@
 import 'package:attend_easy/faculty/Manages_courses.dart';
 import 'package:attend_easy/faculty/attendance_rep.dart';
-import 'package:attend_easy/faculty/decisionfac.dart';
 import 'package:attend_easy/faculty/new_session.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
