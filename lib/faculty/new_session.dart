@@ -1,4 +1,3 @@
-import 'package:attend_easy/faculty/LecturerCheckInListScreen.dart';
 import 'package:attend_easy/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -60,25 +59,6 @@ class _NewAttendanceSessionScreenState
     _durationController.dispose();
     _radiusController.dispose();
     super.dispose();
-  }
-
-  Future<void> _checkInStudent(String name, String email) async {
-    try {
-      await _firestore
-          .collection('attendance_sessions')
-          .doc(_generatedCode)
-          .collection('check_ins')
-          .add({
-        'student_name': name,
-        // 'email': email,
-        'timestamp': FieldValue.serverTimestamp(),
-        'latitude': _locationData?.latitude, // Save latitude
-        'longitude': _locationData?.longitude, // Save longitude
-      });
-      _showSuccessDialog("Student checked in successfully.");
-    } catch (e) {
-      _showErrorDialog('Failed to check in student: $e');
-    }
   }
 
   Future<void> _requestLocationPermission() async {
@@ -377,25 +357,9 @@ class _NewAttendanceSessionScreenState
                 child: const Text('Generate Session Code'),
               ),
             ),
-            Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          CheckInListPage(sessionCode: _generatedCode),
-                    ),
-                  );
-                },
-                child: const Text('View Check-In List'),
-              ),
-            ),
           ],
         ),
       ),
     );
   }
-
-  void _showSuccessDialog(String s) {}
 }
