@@ -1,7 +1,5 @@
 // import 'package:attend_easy/faculty/decisionfac.dart';
 // import 'package:attend_easy/main.dart';
-import 'package:attend_easy/faculty/decisionfac.dart';
-import 'package:attend_easy/routes/route_constant.dart';
 //import 'package:attend_easy/student/decisionstu.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

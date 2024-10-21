@@ -1,5 +1,3 @@
-import 'package:attend_easy/main.dart';
-import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

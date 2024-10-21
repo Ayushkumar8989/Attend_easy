@@ -296,7 +296,7 @@ void main() async {
 }
 
 class Session extends StatelessWidget {
-  const Session({Key? key}) : super(key: key);
+  const Session({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +308,7 @@ class Session extends StatelessWidget {
 }
 
 class NewAttendanceSessionScreen extends StatefulWidget {
-  const NewAttendanceSessionScreen({Key? key}) : super(key: key);
+  const NewAttendanceSessionScreen({super.key});
 
   @override
   _NewAttendanceSessionScreenState createState() =>
@@ -354,8 +354,9 @@ class _NewAttendanceSessionScreenState
       PermissionStatus permissionGranted = await _location.hasPermission();
       if (permissionGranted == PermissionStatus.denied) {
         permissionGranted = await _location.requestPermission();
-        if (permissionGranted != PermissionStatus.granted)
+        if (permissionGranted != PermissionStatus.granted) {
           return; // Permission not granted
+        }
       }
 
       // Get location data after permission is granted

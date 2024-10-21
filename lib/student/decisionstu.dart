@@ -1,6 +1,3 @@
-import 'package:attend_easy/main.dart';
-import 'package:attend_easy/student/loginstu.dart';
-import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
