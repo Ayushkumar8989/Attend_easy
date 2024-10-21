@@ -1,5 +1,6 @@
-import 'package:attend_easy/faculty/decisionfac.dart';
-import 'package:attend_easy/student/decisionstu.dart';
+import 'package:attend_easy/faculty/loginfac.dart';
+
+import 'package:attend_easy/student/loginstu.dart';
 import 'package:flutter/material.dart';
 
 class Welcome extends StatefulWidget {
@@ -80,7 +81,7 @@ class _WelcomeState extends State<Welcome> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const DecisionFac(),
+                          builder: (context) => const LoginFac(),
                         ),
                         (route) => false);
                   },
@@ -104,7 +105,7 @@ class _WelcomeState extends State<Welcome> {
                     Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const DecisionStu(),
+                          builder: (context) => const LoginStu(),
                         ),
                         (route) => false);
                   },
