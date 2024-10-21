@@ -2,6 +2,8 @@ import 'package:attend_easy/faculty/loginfac.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+// ignore: depend_on_referenced_packages
+
 // Import your login page
 
 class FacultyProfile extends StatelessWidget {
