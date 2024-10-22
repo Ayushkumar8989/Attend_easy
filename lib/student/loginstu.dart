@@ -3,7 +3,7 @@ import 'package:attend_easy/student/signinstu.dart';
 import 'package:attend_easy/student/stud_homepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginStu extends StatefulWidget {
   const LoginStu({super.key});
@@ -74,6 +74,7 @@ class _LoginState extends State<LoginStu> {
 
     try {
       await _auth.signInWithEmailAndPassword(
+      await _auth.signInWithEmailAndPassword(
         email: stuidController.text.trim(),
         password: passwordController.text.trim(),
       );
@@ -87,7 +88,7 @@ class _LoginState extends State<LoginStu> {
 
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => AttendEasyScreen()),
+        MaterialPageRoute(builder: (context) => const AttendEasyScreen()),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

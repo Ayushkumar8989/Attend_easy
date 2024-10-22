@@ -15,7 +15,7 @@ class _SignInState extends State<SignInStu> {
   final passwordController = TextEditingController();
 
   bool isChecked = false;
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -73,6 +73,20 @@ class _SignInState extends State<SignInStu> {
                 color: Colors.white,
                 child: Column(
                   children: [
+                    Container(
+                        //margin: EdgeInsets.only(top: 70),
+                        // width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                        // height: 50,
+                        // margin: EdgeInsets.only(top: 70),
+                        // child: Text(
+                        //   'Join AttendEasy Today!',
+                        //   style: TextStyle(
+                        //       fontSize: 20,
+                        //       color: Colors.black,
+                        //       fontFamily: 'DM Sans',
+                        //       fontWeight: FontWeight.bold),
+                        // ),
+                        ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
@@ -159,6 +173,108 @@ class _SignInState extends State<SignInStu> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: const Text(
+                        'Confirm Password',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: ' Confirm password',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Container(
+                    //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    //   height: 50,
+                    //   child: Row(
+                    //     children: [
+                    //       Container(
+                    //         child: Checkbox(
+                    //           value: isChecked,
+                    //           onChanged: (bool? newValue) {
+                    //             setState(
+                    //               () {
+                    //                 isChecked = newValue!;
+                    //               },
+                    //             );
+                    //           },
+                    //         ),
+                    //       ),
+                    //       Container(
+                    //         width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    //         height: 50,
+                    //         child: const Text(
+                    //           'You have agreed with our',
+                    //           style: TextStyle(
+                    //               fontSize: 10, fontWeight: FontWeight.w500),
+                    //         ),
+                    //       ),
+                    //       Container(
+                    //         child: TextButton(
+                    //           onPressed: () {},
+                    //           child: const Text(
+                    //             'Term & Condition',
+                    //             style: TextStyle(
+                    //               color: Color(0xFF1C5B41),
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      //margin: const EdgeInsets.only(left: 38),
+                      child: Row(
+                        children: [
+                          Container(
+                            child: Checkbox(
+                              value: isChecked,
+                              onChanged: (bool? newValue) {
+                                setState(
+                                  () {
+                                    isChecked = newValue!;
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                          Container(
+                            child: const Text(
+                              'You have agreed with our',
+                              style: TextStyle(
+                                  fontSize: 10, fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                          Container(
+                            child: TextButton(
+                              onPressed: () {},
+                              child: const Text(
+                                'Term & Condition',
+                                style: TextStyle(
+                                  color: Color(0xFF1C5B41),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     Container(),

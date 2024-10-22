@@ -1,6 +1,7 @@
 import 'package:attend_easy/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 
 class splash_screen extends StatefulWidget {
   const splash_screen({super.key});
@@ -16,8 +17,9 @@ class _splash_screenState extends State<splash_screen>
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (_) => const Welcome()));
+      // Navigator.of(context)
+      //     .pushReplacement(MaterialPageRoute(builder: (_) => const Welcome()));
+      context.go('/welcome');
     });
   }
 

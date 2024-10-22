@@ -9,6 +9,7 @@ import 'package:geolocator/geolocator.dart'; // Import Geolocator for location s
 
 void main() {
   runApp(const MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF43c6ac),
         scaffoldBackgroundColor: Colors.white,
       ),
+      home: const AttendEasyScreen(),
       home: const AttendEasyScreen(),
     );
   }

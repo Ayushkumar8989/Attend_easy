@@ -2,6 +2,7 @@ import 'package:attend_easy/faculty/loginfac.dart';
 
 import 'package:attend_easy/student/loginstu.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
