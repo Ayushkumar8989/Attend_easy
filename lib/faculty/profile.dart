@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 // Import your login page
 
 class FacultyProfile extends StatelessWidget {
-  const FacultyProfile({Key? key}) : super(key: key);
+  const FacultyProfile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,8 +66,8 @@ class FacultyProfile extends StatelessWidget {
 
   // Logout method
   void _logout(BuildContext context) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    await _auth.signOut(); // Sign out from Firebase
+    FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.signOut(); // Sign out from Firebase
 
     // Clear the login state
     SharedPreferences prefs = await SharedPreferences.getInstance();
