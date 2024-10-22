@@ -1,34 +1,261 @@
-import 'package:attend_easy/firebase_options.dart';
-import 'package:firebase_core/firebase_core.dart';
+// import 'package:flutter/material.dart';
+// import 'package:geolocator/geolocator.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
+// import 'dart:async';
+// import 'dart:math';
+
+// class NewAttendanceSessionScreen extends StatefulWidget {
+//   @override
+//   _NewAttendanceSessionScreenState createState() =>
+//       _NewAttendanceSessionScreenState();
+// }
+
+// class _NewAttendanceSessionScreenState
+//     extends State<NewAttendanceSessionScreen> {
+//   final TextEditingController _venueController = TextEditingController();
+//   final TextEditingController _radiusController = TextEditingController();
+//   final TextEditingController _durationController = TextEditingController();
+//   final Random _random = Random();
+//   Position? _currentPosition;
+//   String _generatedCode = '';
+//   final FirebaseFirestore _firestore =
+//       FirebaseFirestore.instance; // Firestore instance
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _checkLocationPermission(); // Request location permissions on screen load
+//   }
+
+//   // Check and request location permissions
+//   Future<void> _checkLocationPermission() async {
+//     LocationPermission permission = await Geolocator.checkPermission();
+
+//     if (permission == LocationPermission.denied) {
+//       permission = await Geolocator.requestPermission();
+//       if (permission != LocationPermission.whileInUse &&
+//           permission != LocationPermission.always) {
+//         _showErrorDialog(
+//             "Location permissions are denied. Please allow them in the app settings.");
+//         return;
+//       }
+//     }
+
+//     // After granting permission, get the current location
+//     _getCurrentLocation();
+//   }
+
+//   // Get the current location
+//   Future<void> _getCurrentLocation() async {
+//     try {
+//       _currentPosition = await Geolocator.getCurrentPosition(
+//           desiredAccuracy: LocationAccuracy.high);
+//     } catch (e) {
+//       _showErrorDialog("Could not fetch location: $e");
+//     }
+//   }
+
+//   // Generate a random six-digit session code
+//   String _generateSessionCode() {
+//     return (_random.nextInt(900000) + 100000).toString(); // Six-digit code
+//   }
+
+//   // Store the generated session details in Firestore
+//   Future<void> _storeSessionInFirestore(int duration, int radius) async {
+//     if (_currentPosition != null) {
+//       try {
+//         _generatedCode = _generateSessionCode();
+
+//         await _firestore.collection('attendance_sessions').add({
+//           'sessionCode': _generatedCode,
+//           'lecturer_latitude': _currentPosition!.latitude,
+//           'lecturer_longitude': _currentPosition!.longitude,
+//           'radius': radius,
+//           'createdAt': FieldValue.serverTimestamp(),
+//         });
+
+//         _showCodeDialog(
+//             _generatedCode, duration, radius); // Show success message
+//       } catch (e) {
+//         _showErrorDialog("Error storing session: $e");
+//       }
+//     } else {
+//       _showErrorDialog(
+//           "Location data not available. Please grant permissions.");
+//     }
+//   }
+
+//   // Show error dialog
+//   void _showErrorDialog(String message) {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: const Text('Error'),
+//           content: Text(message),
+//           actions: <Widget>[
+//             TextButton(
+//               child: const Text('OK'),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+
+//   // Handle the session generation
+//   void _onGenerateSessionPressed() {
+//     final int duration = int.tryParse(_durationController.text) ?? 0;
+//     final int radius = int.tryParse(_radiusController.text) ?? 0;
+
+//     // Check if the location data is available
+//     if (_currentPosition == null) {
+//       _showErrorDialog(
+//           "Location data not available. Please grant permissions.");
+//       return;
+//     }
+//     if (duration <= 0 || radius <= 0 || _venueController.text.isEmpty) {
+//       _showErrorDialog("Please fill all fields with valid values.");
+//       return;
+//     }
+
+//     _storeSessionInFirestore(duration, radius); // Store session in Firestore
+//   }
+
+//   // Show dialog for generated session code
+//   void _showCodeDialog(String code, int duration, int radius) {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return AlertDialog(
+//           title: const Text('Session Code'),
+//           content: Text(
+//               'Your session code is: $code\n\nThis code will expire in $duration minutes and is valid within $radius meters.'),
+//           actions: <Widget>[
+//             TextButton(
+//               child: const Text('OK'),
+//               onPressed: () {
+//                 Navigator.of(context).pop();
+//               },
+//             ),
+//           ],
+//         );
+//       },
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text(
+//           'New Attendance Session',
+//           style: TextStyle(
+//             color: Colors.black,
+//             fontFamily: 'DM Sans',
+//           ),
+//         ),
+//         backgroundColor: Colors.transparent,
+//         elevation: 0,
+//         leading: IconButton(
+//           icon: const Icon(Icons.arrow_back, color: Colors.black),
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//         ),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(16.0),
+//         child: Column(
+//           crossAxisAlignment: CrossAxisAlignment.start,
+//           children: [
+//             const TextField(
+//               decoration: InputDecoration(
+//                 labelText: 'Course',
+//                 labelStyle: TextStyle(
+//                   fontFamily: 'DM Sans',
+//                 ),
+//                 hintText: 'Select course',
+//                 border: OutlineInputBorder(),
+//                 suffixIcon: Icon(Icons.arrow_drop_down),
+//               ),
+//             ),
+//             const SizedBox(height: 16),
+//             TextField(
+//               controller: _venueController,
+//               decoration: const InputDecoration(
+//                 labelText: 'Venue',
+//                 labelStyle: TextStyle(
+//                   fontFamily: 'DM Sans',
+//                 ),
+//                 hintText: 'Enter attendance venue',
+//                 border: OutlineInputBorder(),
+//               ),
+//             ),
+//             const SizedBox(height: 16),
+//             TextField(
+//               controller: _radiusController,
+//               decoration: const InputDecoration(
+//                 labelText: 'Geolocation Radius',
+//                 labelStyle: TextStyle(
+//                   fontFamily: 'DM Sans',
+//                 ),
+//                 hintText: 'Choose radius in meters',
+//                 border: OutlineInputBorder(),
+//               ),
+//               keyboardType: TextInputType.number,
+//             ),
+//             const SizedBox(height: 16),
+//             TextField(
+//               controller: _durationController,
+//               decoration: const InputDecoration(
+//                 labelText: 'Code Duration',
+//                 labelStyle: TextStyle(
+//                   fontFamily: 'DM Sans',
+//                 ),
+//                 hintText: 'Choose duration in minutes',
+//                 border: OutlineInputBorder(),
+//               ),
+//               keyboardType: TextInputType.number,
+//             ),
+//             const SizedBox(height: 32),
+//             SizedBox(
+//               width: double.infinity,
+//               height: 50,
+//               child: ElevatedButton(
+//                 onPressed: _onGenerateSessionPressed,
+//                 style: ElevatedButton.styleFrom(
+//                   backgroundColor: const Color(0xFF1DC99E),
+//                   shape: RoundedRectangleBorder(
+//                     borderRadius: BorderRadius.circular(8),
+//                   ),
+//                 ),
+//                 child: const Text(
+//                   'Generate Session Code',
+//                   style: TextStyle(
+//                     fontSize: 18,
+//                     fontFamily: 'DM Sans',
+//                     color: Colors.white,
+//                   ),
+//                 ),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
 import 'package:flutter/material.dart';
-import 'dart:math';
-import 'dart:async';
-import 'package:location/location.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-  runApp(const Session());
-}
-
-class Session extends StatelessWidget {
-  const Session({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: NewAttendanceSessionScreen(),
-    );
-  }
-}
+import 'dart:async';
+import 'dart:math';
 
 class NewAttendanceSessionScreen extends StatefulWidget {
-  const NewAttendanceSessionScreen({Key? key}) : super(key: key);
-
   @override
   _NewAttendanceSessionScreenState createState() =>
       _NewAttendanceSessionScreenState();
@@ -36,261 +263,101 @@ class NewAttendanceSessionScreen extends StatefulWidget {
 
 class _NewAttendanceSessionScreenState
     extends State<NewAttendanceSessionScreen> {
-  final Random _random = Random();
-  String _generatedCode = '';
-  String? selectedCourse;
-
-  final TextEditingController _durationController = TextEditingController();
+  final TextEditingController _venueController = TextEditingController();
   final TextEditingController _radiusController = TextEditingController();
-  LocationData? _locationData;
-  final Location _location = Location();
-  Timer? _locationTimer;
+  final TextEditingController _durationController = TextEditingController();
+  final Random _random = Random();
+  Position? _currentPosition;
+  String _generatedCode = '';
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   void initState() {
     super.initState();
-    _requestLocationPermission();
+    _checkLocationPermission(); // Request location permissions on screen load
   }
 
-  @override
-  void dispose() {
-    _locationTimer?.cancel();
-    _durationController.dispose();
-    _radiusController.dispose();
-    super.dispose();
+  // Check and request location permissions
+  Future<void> _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        _showErrorDialog(
+            "Location permissions are denied. Please allow them in the app settings.");
+        return;
+      }
+    }
+
+    // After granting permission, get the current location
+    _getCurrentLocation();
   }
 
-  Future<void> _requestLocationPermission() async {
+  // Get the current location
+  Future<void> _getCurrentLocation() async {
     try {
-      bool serviceEnabled = await _location.serviceEnabled();
-      if (!serviceEnabled) {
-        serviceEnabled = await _location.requestService();
-        if (!serviceEnabled) return;
-      }
-
-      PermissionStatus permissionGranted = await _location.hasPermission();
-      if (permissionGranted == PermissionStatus.denied) {
-        permissionGranted = await _location.requestPermission();
-        if (permissionGranted != PermissionStatus.granted) return;
-      }
-
-      // Start location service to get the latest location
-      _location.onLocationChanged.listen((LocationData currentLocation) {
-        setState(() {
-          _locationData = currentLocation; // Update the current location
-        });
-      });
-
-      // Get the initial location data
-      _locationData = await _location.getLocation();
+      _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
     } catch (e) {
-      _showErrorDialog("Error requesting location permissions: $e");
+      _showErrorDialog("Could not fetch location: $e");
     }
   }
 
-  void _confirmSessionCodeGeneration() {
-    if (_locationData == null) {
+  // Generate a random six-digit session code
+  String _generateSessionCode() {
+    return (_random.nextInt(900000) + 100000).toString(); // Six-digit code
+  }
+
+  // Store the generated session details in Firestore
+  Future<void> _storeSessionInFirestore(int duration, int radius) async {
+    if (_currentPosition != null) {
+      try {
+        _generatedCode = _generateSessionCode();
+
+        // Add the session document to Firestore
+        final sessionRef =
+            await _firestore.collection('attendance_sessions').add({
+          'sessionCode': _generatedCode,
+          'lecturer_latitude': _currentPosition!.latitude,
+          'lecturer_longitude': _currentPosition!.longitude,
+          'radius': radius,
+          'createdAt': FieldValue.serverTimestamp(),
+        });
+
+        _showCodeDialog(
+            _generatedCode, duration, radius); // Show success message
+
+        // Start the expiry timer
+        _startSessionExpiry(
+            duration, sessionRef.id); // Pass the document ID for deletion
+      } catch (e) {
+        _showErrorDialog("Error storing session: $e");
+      }
+    } else {
       _showErrorDialog(
           "Location data not available. Please grant permissions.");
-      return;
     }
-
-    // Parse duration and radius input
-    final int duration = int.tryParse(_durationController.text) ?? 0;
-    final int radius = int.tryParse(_radiusController.text) ?? 0;
-
-    if (duration <= 0 || radius <= 0) {
-      _showErrorDialog("Please enter valid values for duration and radius.");
-      return;
-    }
-
-    // Show confirmation dialog
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirm Session Code Generation'),
-          content: Text('You are about to generate a session code with:\n\n'
-              'Duration: $duration minutes\n'
-              'Radius: $radius meters\n\n'
-              'Do you want to proceed?'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop(); // Close dialog
-              },
-            ),
-            TextButton(
-              child: const Text('Confirm'),
-              onPressed: () {
-                Navigator.of(context).pop(); // Close dialog
-                _generateSessionCode(
-                    duration, radius); // Proceed with code generation
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 
-  void _generateSessionCode(int duration, int radius) {
-    // Generate a new session code
-    setState(() {
-      _generatedCode = (_random.nextInt(900000) + 100000).toString();
-    });
-
-    // Store session data in Firestore
-    _storeSessionData(_generatedCode, duration, radius, _locationData!);
-    _showCodeDialog(_generatedCode, duration, radius);
-
-    // Start timers for session expiry and location checking
-    _startSessionExpiry(duration);
-    _startLocationChecking(radius);
-  }
-
-  void _startSessionExpiry(int duration) {
-    Timer(Duration(minutes: duration), () {
-      _deleteSessionData(_generatedCode);
-      setState(() {
-        _generatedCode = 'Expired'; // Update UI to show expired code
-      });
-      _showExpiredDialog();
-    });
-  }
-
-  void _startLocationChecking(int radius) {
-    _locationTimer = Timer.periodic(const Duration(seconds: 10), (timer) async {
-      final userLocation =
-          await _location.getLocation(); // Get current user location
-      if (_isWithinRadius(userLocation, _locationData!, radius)) {
-        print('User is within the range');
-      } else {
-        print('User is outside the range');
+  // Expire session after the provided duration
+  void _startSessionExpiry(int duration, String sessionId) {
+    Timer(Duration(minutes: duration), () async {
+      // Delete session from Firestore
+      try {
+        await _firestore
+            .collection('attendance_sessions')
+            .doc(sessionId)
+            .delete();
+        _showExpiredDialog(); // Notify the user that the session has expired
+      } catch (e) {
+        _showErrorDialog("Error deleting session: $e");
       }
     });
   }
 
-  Future<void> _storeSessionData(
-      String code, int duration, int radius, LocationData locationData) async {
-    try {
-      await _firestore.collection('attendance_sessions').add({
-        'sessionCode': code,
-        'lecturer_latitude': locationData.latitude,
-        'lecturer_longitude': locationData.longitude,
-        'radius': radius,
-        'createdAt': FieldValue.serverTimestamp(),
-      });
-    } catch (e) {
-      _showErrorDialog('Failed to store session data: $e');
-    }
-  }
-
-  Future<void> _deleteSessionData(String code) async {
-    try {
-      final querySnapshot = await _firestore
-          .collection('attendance_sessions')
-          .where('sessionCode', isEqualTo: code) // Ensure correct field name
-          .get();
-
-      // Delete all documents with the specified session code
-      for (var doc in querySnapshot.docs) {
-        await doc.reference.delete();
-      }
-    } catch (e) {
-      _showErrorDialog('Failed to delete session data: $e');
-    }
-  }
-
-  bool _isWithinRadius(
-      LocationData userLocation, LocationData sessionLocation, int radius) {
-    if (userLocation.latitude == null ||
-        userLocation.longitude == null ||
-        sessionLocation.latitude == null ||
-        sessionLocation.longitude == null) {
-      print('Location data is missing.');
-      return false; // Fail if any location data is missing
-    }
-
-    final double distance = _calculateDistance(
-      userLocation.latitude!,
-      userLocation.longitude!,
-      sessionLocation.latitude!,
-      sessionLocation.longitude!,
-    );
-    print('Distance from session location: $distance meters');
-    print('Allowed radius: $radius meters');
-
-    return distance <= radius; // Check if within the specified radius
-  }
-
-  double _calculateDistance(
-      double lat1, double lon1, double lat2, double lon2) {
-    const double earthRadius = 6371000; // Radius of the Earth in meters
-    final double lat1Rad = _degreesToRadians(lat1);
-    final double lon1Rad = _degreesToRadians(lon1);
-    final double lat2Rad = _degreesToRadians(lat2);
-    final double lon2Rad = _degreesToRadians(lon2);
-
-    final double dLat = lat2Rad - lat1Rad;
-    final double dLon = lon2Rad - lon1Rad;
-
-    // Haversine formula
-    final double a = sin(dLat / 2) * sin(dLat / 2) +
-        cos(lat1Rad) * cos(lat2Rad) * sin(dLon / 2) * sin(dLon / 2);
-    final double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-
-    return earthRadius * c; // Distance in meters
-  }
-
-  double _degreesToRadians(double degrees) {
-    return degrees * pi / 180;
-  }
-
-  void _showCodeDialog(String code, int duration, int radius) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Session Code'),
-          content: Text(
-              'Your session code is: $code\n\nIt will expire in $duration minutes and is valid within $radius meters.'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  void _showExpiredDialog() {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Session Code Expired'),
-          content: const Text(
-              'The session code has expired. Please generate a new code.'),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('OK'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
-    );
-  }
-
+  // Show error dialog
   void _showErrorDialog(String message) {
     showDialog(
       context: context,
@@ -311,50 +378,163 @@ class _NewAttendanceSessionScreenState
     );
   }
 
+  // Show dialog for generated session code
+  void _showCodeDialog(String code, int duration, int radius) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Session Code'),
+          content: Text(
+              'Your session code is: $code\n\nThis code will expire in $duration minutes and is valid within $radius meters.'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Show session expired dialog
+  void _showExpiredDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Session Expired'),
+          content: const Text(
+              'The session code has expired and the session has been deleted.'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('OK'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  // Handle the session generation
+  void _onGenerateSessionPressed() {
+    final int duration = int.tryParse(_durationController.text) ?? 0;
+    final int radius = int.tryParse(_radiusController.text) ?? 0;
+
+    // Check if the location data is available
+    if (_currentPosition == null) {
+      _showErrorDialog(
+          "Location data not available. Please grant permissions.");
+      return;
+    }
+    if (duration <= 0 || radius <= 0 || _venueController.text.isEmpty) {
+      _showErrorDialog("Please fill all fields with valid values.");
+      return;
+    }
+
+    _storeSessionInFirestore(duration, radius); // Store session in Firestore
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Create Attendance Session'),
+        title: const Text(
+          'New Attendance Session',
+          style: TextStyle(
+            color: Colors.black,
+            fontFamily: 'DM Sans',
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            DropdownButtonFormField<String>(
-              value: selectedCourse,
-              onChanged: (String? value) {
-                setState(() {
-                  selectedCourse = value;
-                });
-              },
-              items: ['Math', 'Science', 'History']
-                  .map((course) => DropdownMenuItem<String>(
-                        value: course,
-                        child: Text(course),
-                      ))
-                  .toList(),
-              decoration: const InputDecoration(
-                labelText: 'Select Course',
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Course',
+                labelStyle: TextStyle(
+                  fontFamily: 'DM Sans',
+                ),
+                hintText: 'Select course',
+                border: OutlineInputBorder(),
+                suffixIcon: Icon(Icons.arrow_drop_down),
               ),
             ),
+            const SizedBox(height: 16),
             TextField(
-              controller: _durationController,
-              keyboardType: TextInputType.number,
+              controller: _venueController,
               decoration: const InputDecoration(
-                  labelText: 'Session Duration (minutes)'),
+                labelText: 'Venue',
+                labelStyle: TextStyle(
+                  fontFamily: 'DM Sans',
+                ),
+                hintText: 'Enter attendance venue',
+                border: OutlineInputBorder(),
+              ),
             ),
+            const SizedBox(height: 16),
             TextField(
               controller: _radiusController,
+              decoration: const InputDecoration(
+                labelText: 'Geolocation Radius',
+                labelStyle: TextStyle(
+                  fontFamily: 'DM Sans',
+                ),
+                hintText: 'Choose radius in meters',
+                border: OutlineInputBorder(),
+              ),
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(labelText: 'Radius (meters)'),
             ),
-            const SizedBox(height: 20),
-            Center(
+            const SizedBox(height: 16),
+            TextField(
+              controller: _durationController,
+              decoration: const InputDecoration(
+                labelText: 'Code Duration',
+                labelStyle: TextStyle(
+                  fontFamily: 'DM Sans',
+                ),
+                hintText: 'Choose duration in minutes',
+                border: OutlineInputBorder(),
+              ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 32),
+            SizedBox(
+              width: double.infinity,
+              height: 50,
               child: ElevatedButton(
-                onPressed: _confirmSessionCodeGeneration,
-                child: const Text('Generate Session Code'),
+                onPressed: _onGenerateSessionPressed,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF1DC99E),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                ),
+                child: const Text(
+                  'Generate Session Code',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontFamily: 'DM Sans',
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ],
