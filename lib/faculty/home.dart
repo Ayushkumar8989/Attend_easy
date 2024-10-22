@@ -1,6 +1,10 @@
 import 'package:attend_easy/faculty/Manages_courses.dart';
 import 'package:attend_easy/faculty/attendance_rep.dart';
 import 'package:attend_easy/faculty/new_session.dart';
+// import 'package:attend_easy/faculty/decisionfac.dart';
+
+import 'package:attend_easy/faculty/profile.dart';
+// import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
@@ -32,17 +36,17 @@ class _HomeState extends State<Home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        child: IconButton(
-                          icon: const Icon(Icons.arrow_back),
-                          onPressed: () {
-                            // PersistentNavBarNavigator.pushNewScreen(
-                            //   context,
-                            //   // screen: const DecisionFac(),
-                            //   withNavBar: false,
-                            // ); // Pops the current screen, going back to the previous one
-                          },
-                        ),
-                      ),
+                          // child: IconButton(
+                          //   icon: const Icon(Icons.arrow_back),
+                          //   onPressed: () {
+                          //     PersistentNavBarNavigator.pushNewScreen(
+                          //       context,
+                          //       screen: const DecisionFac(),
+                          //       withNavBar: false,
+                          //     ); // Pops the current screen, going back to the previous one
+                          //   },
+                          // ),
+                          ),
                       Container(
                         // width: screenWidth * 0.71,
                         child: const Text(
@@ -56,8 +60,16 @@ class _HomeState extends State<Home> {
                       ),
                       Container(
                         // width: screenWidth * 0.09,
-                        child: const CircleAvatar(
-                          child: Icon(Icons.account_circle),
+                        // width: screenWidth * 0.09,
+                        child: IconButton(
+                          icon: const Icon(Icons.account_circle),
+                          onPressed: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => FacultyProfile()),
+                            );
+                          },
                         ),
                       )
                     ],

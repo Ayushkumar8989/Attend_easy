@@ -1,14 +1,14 @@
-import 'package:attend_easy/faculty/loginfac.dart';
-import 'package:attend_easy/faculty/signinfac.dart';
-import 'package:attend_easy/welcome.dart';
-import 'package:flutter/material.dart';
+// import 'package:attend_easy/faculty/loginfac.dart';
+// import 'package:attend_easy/faculty/signinfac.dart';
+// import 'package:attend_easy/welcome.dart';
+// import 'package:flutter/material.dart';
 
-class DecisionFac extends StatefulWidget {
-  const DecisionFac({super.key});
+// class DecisionFac extends StatefulWidget {
+//   const DecisionFac({super.key});
 
-  @override
-  State<DecisionFac> createState() => _DecisionFacState();
-}
+//   @override
+//   State<DecisionFac> createState() => _DecisionFacState();
+// }
 
 class _DecisionFacState extends State<DecisionFac> {
   @override
@@ -22,17 +22,17 @@ class _DecisionFacState extends State<DecisionFac> {
         return Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const Welcome(),
+                    builder: (context) => Welcome(),
                   ),
                 );
               },
             ),
-            title: const Text('Faculty Decision'),
+            title: Text('Faculty Decision'),
             backgroundColor: Colors.teal,
           ),
           body: Container(
@@ -54,7 +54,7 @@ class _DecisionFacState extends State<DecisionFac> {
                 SizedBox(
                   height: screenHeight * (isDesktop ? 0.1 : 0.1),
                 ),
-                SizedBox(
+                Container(
                   width: screenWidth * (isDesktop ? 0.4 : 0.75),
                   height: 50,
                   child: ElevatedButton(
@@ -79,7 +79,7 @@ class _DecisionFacState extends State<DecisionFac> {
                 const SizedBox(
                   height: 10,
                 ),
-                SizedBox(
+                Container(
                   width: screenWidth * (isDesktop ? 0.4 : 0.75),
                   height: 50,
                   child: ElevatedButton(

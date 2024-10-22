@@ -13,6 +13,7 @@ class FacultyProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Faculty Profile',
           style: TextStyle(color: Colors.black),

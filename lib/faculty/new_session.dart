@@ -1,284 +1,3 @@
-// import 'package:flutter/material.dart';
-
-// class NewSession extends StatefulWidget {
-//   const NewSession({super.key});
-
-//   @override
-//   State<NewSession> createState() => _NewSessionState();
-// }
-
-// class _NewSessionState extends State<NewSession> {
-//   final List<String> _dropDownItems = ['B.Tech', 'M.Tech', 'MBA', 'BBA', 'BCA'];
-//   String _selectedItem = "B.Tech";
-//   @override
-//   Widget build(BuildContext context) {
-//     return LayoutBuilder(builder: (context, Constraints) {
-//       bool isDesktop = Constraints.maxWidth > 600;
-//       double screenWidth = Constraints.maxWidth;
-//       double screenHeight = Constraints.maxHeight;
-//       return Scaffold(
-//         appBar: AppBar(
-//             title: const Text(
-//           'New Attendance Session',
-//           style: TextStyle(
-//               fontSize: 20,
-//               color: Colors.black,
-//               fontFamily: 'DM Sans',
-//               fontWeight: FontWeight.bold),
-//         )),
-//         body: SingleChildScrollView(
-//           child: Center(
-//             child: Container(
-//               width: screenWidth * 1.0,
-//               height: screenHeight * 1.0,
-//               color: Colors.white,
-//               child: Column(
-//                 children: [
-//                   // Container(
-//                   //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                   //   height: 50,
-//                   //   margin: const EdgeInsets.only(top: 70),
-//                   //   child: const Text(
-//                   //     'New Attendance Session',
-//                   //     style: TextStyle(
-//                   //         fontSize: 20,
-//                   //         color: Colors.black,
-//                   //         fontFamily: 'DM Sans',
-//                   //         fontWeight: FontWeight.bold),
-//                   //   ),
-//                   // ),
-//                   Container(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 50,
-//                     margin: const EdgeInsets.only(top: 10),
-//                     child: const Text(
-//                       'Course',
-//                       style: TextStyle(
-//                         fontSize: 20,
-//                         color: Colors.black,
-//                         fontFamily: 'DM Sans',
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                   // ),
-//                   SizedBox(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 60,
-//                     child: Center(
-//                       child: Column(
-//                         children: [
-//                           DropdownButtonFormField(
-//                             value: _selectedItem,
-//                             items: _dropDownItems.map((String item) {
-//                               return DropdownMenuItem(
-//                                 value: item,
-//                                 child: Text(item),
-//                               );
-//                             }).toList(),
-//                             onChanged: (String? value) {
-//                               setState(() {
-//                                 _selectedItem = value!;
-//                               });
-//                             },
-//                             icon: const Icon(Icons.arrow_drop_down),
-//                             decoration: InputDecoration(
-//                               hintText: ' Select Courses',
-//                               border: OutlineInputBorder(
-//                                 borderRadius: BorderRadius.circular(10),
-//                               ),
-//                             ),
-//                           ),
-//                         ],
-//                       ),
-//                     ),
-//                   ),
-//                   // Container(
-//                   //   width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                   //   height: 50,
-//                   //   margin: EdgeInsets.only(top: 10),
-//                   //   child: Text(
-//                   //     'Date',
-//                   //     style: TextStyle(
-//                   //       fontSize: 20,
-//                   //       color: Colors.black,
-//                   //       fontFamily: 'DM Sans',
-//                   //       fontWeight: FontWeight.bold,
-//                   //     ),
-//                   //   ),
-//                   // ),
-//                   Container(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 50,
-//                     margin: const EdgeInsets.only(top: 10),
-//                     child: const Text(
-//                       'Venue',
-//                       style: TextStyle(
-//                         fontSize: 20,
-//                         color: Colors.black,
-//                         fontFamily: 'DM Sans',
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   height: 10,
-//                   // ),
-//                   //margin: EdgeInsets.only(left: 45),
-//                   SizedBox(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 60,
-//                     child: TextField(
-//                       decoration: InputDecoration(
-//                         hintText: ' Enter attendance venue',
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(10),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   height: 10,
-//                   // ),
-//                   Container(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 50,
-//                     margin: const EdgeInsets.only(top: 10),
-//                     child: const Text(
-//                       'Geolocation Radius',
-//                       style: TextStyle(
-//                         fontSize: 20,
-//                         color: Colors.black,
-//                         fontFamily: 'DM Sans',
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   height: 5,
-//                   // ),
-//                   SizedBox(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 60,
-//                     child: TextField(
-//                       decoration: InputDecoration(
-//                         hintText: ' Enter raduis in meter',
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(10),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   Container(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 50,
-//                     margin: const EdgeInsets.only(top: 10),
-//                     child: const Text(
-//                       'Code Duration',
-//                       style: TextStyle(
-//                         fontSize: 20,
-//                         color: Colors.black,
-//                         fontFamily: 'DM Sans',
-//                         fontWeight: FontWeight.bold,
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   height: 5,
-//                   // ), //margin: EdgeInsets.only(left: 45),
-//                   SizedBox(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 60,
-//                     child: TextField(
-//                       decoration: InputDecoration(
-//                         hintText: ' Enter duration in minutes',
-//                         border: OutlineInputBorder(
-//                           borderRadius: BorderRadius.circular(10),
-//                         ),
-//                       ),
-//                     ),
-//                   ),
-//                   // SizedBox(
-//                   //   height: 5,
-//                   // ),
-
-//                   // child: ElevatedButton(
-//                   //   onPressed: () {},
-//                   //   style: ElevatedButton.styleFrom(
-//                   //     backgroundColor: const Color(0xFF1DC99E),
-//                   //     foregroundColor: Colors.white,
-//                   //   ),
-//                   //   child: const Text(
-//                   //     'Generate Session Code',
-//                   //     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-//                   //   ),
-//                   // ),
-//                   const SizedBox(
-//                     height: 10,
-//                   ),
-//                   SizedBox(
-//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
-//                     height: 50,
-//                     child: ElevatedButton(
-//                       onPressed: () => showDialog<String>(
-//                         context: context,
-//                         builder: (BuildContext context) => AlertDialog(
-//                           title: const Center(
-//                             child: Text(
-//                               '123456',
-//                               style: TextStyle(
-//                                   fontSize: 30,
-//                                   fontWeight: FontWeight.bold,
-//                                   fontFamily: 'Inter'),
-//                             ),
-//                           ),
-//                           content: const Text(
-//                             'This code will expire in the next 10 minutes',
-//                             style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-//                           ),
-//                           actions: <Widget>[
-//                             ElevatedButton(
-//                               onPressed: () => Navigator.pop(context, 'Cancel'),
-//                               child: const Text(
-//                                 'Cancel',
-//                                 style: TextStyle(
-//                                     fontSize: 20, fontFamily: 'Inter'),
-//                               ),
-//                             ),
-//                             ElevatedButton(
-//                               //onPressed: () => Navigator.pop(context, 'Start'),
-//                               onPressed: () {},
-//                               child: const Text(
-//                                 'Start',
-//                                 style: TextStyle(
-//                                     fontSize: 20, fontFamily: 'Inter'),
-//                               ),
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                       style: ElevatedButton.styleFrom(
-//                         backgroundColor: const Color(0xFF1DC99E),
-//                         foregroundColor: Colors.white,
-//                       ),
-//                       child: const Text(
-//                         'Generate Session Code',
-//                         style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//           ),
-//         ),
-//       );
-//     });
-//   }
-// }
-
 import 'package:attend_easy/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -296,7 +15,7 @@ void main() async {
 }
 
 class Session extends StatelessWidget {
-  const Session({super.key});
+  const Session({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +27,7 @@ class Session extends StatelessWidget {
 }
 
 class NewAttendanceSessionScreen extends StatefulWidget {
-  const NewAttendanceSessionScreen({super.key});
+  const NewAttendanceSessionScreen({Key? key}) : super(key: key);
 
   @override
   _NewAttendanceSessionScreenState createState() =>
@@ -319,8 +38,7 @@ class _NewAttendanceSessionScreenState
     extends State<NewAttendanceSessionScreen> {
   final Random _random = Random();
   String _generatedCode = '';
-  String?
-      selectedCourse; // Declare this at the top of your stateful widget class
+  String? selectedCourse;
 
   final TextEditingController _durationController = TextEditingController();
   final TextEditingController _radiusController = TextEditingController();
@@ -348,18 +66,23 @@ class _NewAttendanceSessionScreenState
       bool serviceEnabled = await _location.serviceEnabled();
       if (!serviceEnabled) {
         serviceEnabled = await _location.requestService();
-        if (!serviceEnabled) return; // Service not enabled
+        if (!serviceEnabled) return;
       }
 
       PermissionStatus permissionGranted = await _location.hasPermission();
       if (permissionGranted == PermissionStatus.denied) {
         permissionGranted = await _location.requestPermission();
-        if (permissionGranted != PermissionStatus.granted) {
-          return; // Permission not granted
-        }
+        if (permissionGranted != PermissionStatus.granted) return;
       }
 
-      // Get location data after permission is granted
+      // Start location service to get the latest location
+      _location.onLocationChanged.listen((LocationData currentLocation) {
+        setState(() {
+          _locationData = currentLocation; // Update the current location
+        });
+      });
+
+      // Get the initial location data
       _locationData = await _location.getLocation();
     } catch (e) {
       _showErrorDialog("Error requesting location permissions: $e");
@@ -440,7 +163,8 @@ class _NewAttendanceSessionScreenState
 
   void _startLocationChecking(int radius) {
     _locationTimer = Timer.periodic(const Duration(seconds: 10), (timer) async {
-      final LocationData userLocation = await _location.getLocation();
+      final userLocation =
+          await _location.getLocation(); // Get current user location
       if (_isWithinRadius(userLocation, _locationData!, radius)) {
         print('User is within the range');
       } else {
@@ -453,7 +177,7 @@ class _NewAttendanceSessionScreenState
       String code, int duration, int radius, LocationData locationData) async {
     try {
       await _firestore.collection('attendance_sessions').add({
-        'code': code,
+        'sessionCode': code,
         'lecturer_latitude': locationData.latitude,
         'lecturer_longitude': locationData.longitude,
         'radius': radius,
@@ -468,7 +192,7 @@ class _NewAttendanceSessionScreenState
     try {
       final querySnapshot = await _firestore
           .collection('attendance_sessions')
-          .where('code', isEqualTo: code)
+          .where('sessionCode', isEqualTo: code) // Ensure correct field name
           .get();
 
       // Delete all documents with the specified session code
@@ -482,33 +206,47 @@ class _NewAttendanceSessionScreenState
 
   bool _isWithinRadius(
       LocationData userLocation, LocationData sessionLocation, int radius) {
+    if (userLocation.latitude == null ||
+        userLocation.longitude == null ||
+        sessionLocation.latitude == null ||
+        sessionLocation.longitude == null) {
+      print('Location data is missing.');
+      return false; // Fail if any location data is missing
+    }
+
     final double distance = _calculateDistance(
       userLocation.latitude!,
       userLocation.longitude!,
       sessionLocation.latitude!,
       sessionLocation.longitude!,
     );
-    return distance <= radius; // Check if within specified radius
+    print('Distance from session location: $distance meters');
+    print('Allowed radius: $radius meters');
+
+    return distance <= radius; // Check if within the specified radius
   }
 
   double _calculateDistance(
       double lat1, double lon1, double lat2, double lon2) {
-    const double p = 0.017453292519943295; // Math.PI / 180
-    final double lat1Rad = lat1 * p;
-    final double lon1Rad = lon1 * p;
-    final double lat2Rad = lat2 * p;
-    final double lon2Rad = lon2 * p;
+    const double earthRadius = 6371000; // Radius of the Earth in meters
+    final double lat1Rad = _degreesToRadians(lat1);
+    final double lon1Rad = _degreesToRadians(lon1);
+    final double lat2Rad = _degreesToRadians(lat2);
+    final double lon2Rad = _degreesToRadians(lon2);
 
     final double dLat = lat2Rad - lat1Rad;
     final double dLon = lon2Rad - lon1Rad;
 
+    // Haversine formula
     final double a = sin(dLat / 2) * sin(dLat / 2) +
         cos(lat1Rad) * cos(lat2Rad) * sin(dLon / 2) * sin(dLon / 2);
-
     final double c = 2 * atan2(sqrt(a), sqrt(1 - a));
 
-    const double R = 6371; // Radius of Earth in kilometers
-    return R * c * 1000; // Convert to meters
+    return earthRadius * c; // Distance in meters
+  }
+
+  double _degreesToRadians(double degrees) {
+    return degrees * pi / 180;
   }
 
   void _showCodeDialog(String code, int duration, int radius) {
@@ -577,64 +315,48 @@ class _NewAttendanceSessionScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Generate Session Code'),
+        title: const Text('Create Attendance Session'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             DropdownButtonFormField<String>(
-              decoration: InputDecoration(
-                labelText: 'Select Course',
-                border: OutlineInputBorder(),
-              ),
-              items: const <String>[
-                'Course 1',
-                'Course 2',
-                'Course 3',
-                'Course 4',
-              ].map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+              value: selectedCourse,
               onChanged: (String? value) {
                 setState(() {
-                  selectedCourse = value; // Update the selected course
+                  selectedCourse = value;
                 });
               },
+              items: ['Math', 'Science', 'History']
+                  .map((course) => DropdownMenuItem<String>(
+                        value: course,
+                        child: Text(course),
+                      ))
+                  .toList(),
+              decoration: const InputDecoration(
+                labelText: 'Select Course',
+              ),
             ),
-            const SizedBox(height: 16),
             TextField(
               controller: _durationController,
-              decoration: const InputDecoration(
-                labelText: 'Duration (minutes)',
-                border: OutlineInputBorder(),
-              ),
               keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                  labelText: 'Session Duration (minutes)'),
             ),
-            const SizedBox(height: 16),
             TextField(
               controller: _radiusController,
-              decoration: const InputDecoration(
-                labelText: 'Radius (meters)',
-                border: OutlineInputBorder(),
-              ),
               keyboardType: TextInputType.number,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _confirmSessionCodeGeneration,
-              child: const Text('Generate Session Code'),
+              decoration: const InputDecoration(labelText: 'Radius (meters)'),
             ),
             const SizedBox(height: 20),
-            if (_generatedCode.isNotEmpty)
-              Text(
-                'Generated Session Code: $_generatedCode',
-                style:
-                    const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Center(
+              child: ElevatedButton(
+                onPressed: _confirmSessionCodeGeneration,
+                child: const Text('Generate Session Code'),
               ),
+            ),
           ],
         ),
       ),

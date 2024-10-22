@@ -103,7 +103,7 @@ class _SignInState extends State<SignInStu> {
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
-                        'Stud ID',
+                        'Stud Name',
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.black,
@@ -117,17 +117,36 @@ class _SignInState extends State<SignInStu> {
                       child: TextFormField(
                         controller: stuidController,
                         decoration: InputDecoration(
-                          hintText: ' Enter your id number',
+                          hintText: ' Enter Your Name',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter your ID number';
-                          }
-                          return null;
-                        },
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: const Text(
+                        'Stud Email',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                            fontFamily: 'DM Sans',
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: TextFormField(
+                        controller: stuidController,
+                        decoration: InputDecoration(
+                          hintText: ' Enter your email',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(
@@ -154,12 +173,6 @@ class _SignInState extends State<SignInStu> {
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.length < 6) {
-                            return 'Password must be at least 6 characters';
-                          }
-                          return null;
-                        },
                       ),
                     ),
                     SizedBox(
