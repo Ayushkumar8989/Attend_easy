@@ -2,7 +2,7 @@ import 'package:attend_easy/faculty/home.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:attend_easy/faculty/signinfac.dart'; // Removed bottom_nav.dart import
+import 'package:attend_easy/faculty/signinfac.dart';
 
 class LoginFac extends StatefulWidget {
   const LoginFac({super.key});
@@ -13,49 +13,99 @@ class LoginFac extends StatefulWidget {
 
 class _LoginState extends State<LoginFac> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  String staffID = '';
-  String password = '';
+  final TextEditingController staffIDController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController =
+      TextEditingController(); // Controller for Name
   String errorMessage = '';
-  bool _rememberMe = false; // Variable to store Remember Me state
+  bool _rememberMe = false;
 
   @override
   void initState() {
     super.initState();
-    _checkLoginStatus(); // Check login status on startup
+    _checkLoginStatus();
   }
 
-  // Method to check login status
+  @override
+  void dispose() {
+    staffIDController.dispose();
+    passwordController.dispose();
+    nameController.dispose(); // Dispose of name controller
+    super.dispose();
+  }
+
+  // Check if the user is already logged in
   void _checkLoginStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
 
     if (isLoggedIn) {
+      String? savedName = prefs.getString('name'); // Get saved name
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) =>
-              const Home(), // Navigate to HomePage (without bottom navigation)
+              Home(facultyName: savedName ?? ''), // Pass name to home page
         ),
       );
+    }
+  }
+
+  // Login function
+  Future<void> _login() async {
+    try {
+      // Attempt sign-in with Firebase
+      await _auth.signInWithEmailAndPassword(
+        email: staffIDController.text.trim(),
+        password: passwordController.text.trim(),
+      );
+
+      // Save login details and name if 'Remember Me' is checked
+      if (_rememberMe) {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('staffID', staffIDController.text.trim());
+        await prefs.setString('password', passwordController.text.trim());
+        await prefs.setString('name', nameController.text.trim()); // Save name
+        await prefs.setBool('isLoggedIn', true);
+      } else {
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.clear(); // Clear credentials if 'Remember Me' is unchecked
+      }
+
+      // Navigate to Home page on success and pass the name
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => Home(
+              facultyName:
+                  nameController.text.trim()), // Pass name to home page
+        ),
+      );
+    } catch (e) {
+      // Show error message if login fails
+      setState(() {
+        errorMessage = e.toString();
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
-      builder: (context, Constraints) {
-        bool isDesktop = Constraints.maxWidth > 600;
-        double screenWidth = Constraints.maxWidth;
-        double screenHeight = Constraints.maxHeight;
+      builder: (context, constraints) {
+        bool isDesktop = constraints.maxWidth > 600;
+        double screenWidth = constraints.maxWidth;
+        double screenHeight = constraints.maxHeight;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
               'Welcome back to AttendEasy!',
               style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.bold),
+                fontSize: 20,
+                color: Colors.black,
+                fontFamily: 'DM Sans',
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           body: SingleChildScrollView(
@@ -73,67 +123,97 @@ class _LoginState extends State<LoginFac> {
                       child: const Text(
                         'Log in to manage classes and track attendance seamlessly.',
                         style: TextStyle(
-                            fontSize: 12,
-                            color: Colors.black,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold),
+                          fontSize: 12,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
+                    // Name Field
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: const Text(
+                        'Name',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                      height: 50,
+                      child: TextField(
+                        controller: nameController, // Capture name input
+                        decoration: InputDecoration(
+                          hintText: 'Enter your name',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                    ),
+                    // Staff ID Field
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
                         'Staff ID',
                         style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
-                        onChanged: (value) {
-                          staffID = value; // Capture staff ID input
-                        },
+                        controller: staffIDController, // Capture staff ID input
                         decoration: InputDecoration(
-                          hintText: ' Enter your number',
+                          hintText: 'Enter your staff ID',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
+                    // Password Field
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: const Text(
                         'Password',
                         style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold),
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontFamily: 'DM Sans',
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: TextField(
-                        onChanged: (value) {
-                          password = value; // Capture password input
-                        },
+                        controller:
+                            passwordController, // Capture password input
                         obscureText: true,
                         decoration: InputDecoration(
-                          hintText: ' Enter your password',
+                          hintText: 'Enter your password',
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),
                         ),
                       ),
                     ),
+                    // Remember Me Checkbox
                     Row(
                       children: [
                         Checkbox(
@@ -147,39 +227,12 @@ class _LoginState extends State<LoginFac> {
                         const Text('Remember Me'),
                       ],
                     ),
+                    // Login Button
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () async {
-                          try {
-                            // Attempt sign-in with Firebase
-                            UserCredential userCredential =
-                                await _auth.signInWithEmailAndPassword(
-                              email: staffID, // Assuming staff ID is the email
-                              password: password,
-                            );
-
-                            // Save login state
-                            SharedPreferences prefs =
-                                await SharedPreferences.getInstance();
-                            await prefs.setBool('isLoggedIn', true);
-
-                            // Navigate to the HomePage on success
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const Home(), // Navigate to the HomePage
-                              ),
-                            );
-                          } catch (e) {
-                            // Show error message if login fails
-                            setState(() {
-                              errorMessage = e.toString();
-                            });
-                          }
-                        },
+                        onPressed: _login,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: const Color(0xFF1DC99E),
                           foregroundColor: Colors.white,
@@ -190,11 +243,13 @@ class _LoginState extends State<LoginFac> {
                         ),
                       ),
                     ),
-                    if (errorMessage.isNotEmpty) // Display error message
+                    // Display error message
+                    if (errorMessage.isNotEmpty)
                       Text(
                         errorMessage,
                         style: const TextStyle(color: Colors.red),
                       ),
+                    // Sign Up Link
                     SizedBox(
                       width: screenWidth * (isDesktop ? 0.6 : 0.85),
                       height: 50,

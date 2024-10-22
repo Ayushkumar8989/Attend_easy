@@ -1,14 +1,36 @@
 import 'package:attend_easy/faculty/loginfac.dart';
 
 import 'package:attend_easy/student/loginstu.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+// import 'package:go_router/go_router.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
 
   @override
   State<Welcome> createState() => _WelcomeState();
+}
+
+Future<bool> _checkLoginStatus() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? savedEmail = prefs.getString('email');
+  String? savedPassword = prefs.getString('password');
+
+  if (savedEmail != null && savedPassword != null) {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: savedEmail,
+        password: savedPassword,
+      );
+      return true; // Successfully logged in
+    } catch (e) {
+      print("Automatic login failed: ${e.toString()}");
+      return false; // Login failed
+    }
+  }
+  return false; // No saved credentials
 }
 
 class _WelcomeState extends State<Welcome> {
