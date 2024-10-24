@@ -3,8 +3,9 @@ import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:cloud_firestore/cloud_firestore.dart'; // If using Firestore
-import 'package:geolocator/geolocator.dart'; // If using Geolocation
+import 'package:geolocator/geolocator.dart'; // Import geolocator for location services
+import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore for database
+import 'package:permission_handler/permission_handler.dart'; // Import permission_handler
 
 void main() {
   runApp(const MyApp());
@@ -37,8 +38,11 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
   String formattedTime = '';
   String formattedDate = '';
   String userName = ''; // User name fetched from SharedPreferences
-  Timer? timer; // For updating time periodically
+  Timer? timer;
+  Position? _currentPosition; // For updating time periodically
   TextEditingController sessionCodeController = TextEditingController();
+  final FirebaseFirestore _firestore =
+      FirebaseFirestore.instance; // Firestore instance
 
   @override
   void initState() {
@@ -116,8 +120,16 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
-                  onPressed: () {
-                    validateSessionAndLocation(sessionCodeController.text);
+                  onPressed: () async {
+                    // Request location permission
+                    PermissionStatus permission =
+                        await _requestLocationPermission();
+                    if (permission == PermissionStatus.granted) {
+                      validateSessionAndLocation(sessionCodeController.text);
+                    } else {
+                      _showErrorDialog(
+                          "Location permission is required to check in.");
+                    }
                     Navigator.pop(context); // Close the bottom sheet
                   },
                   style: ElevatedButton.styleFrom(
@@ -141,7 +153,135 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
     );
   }
 
-  // Your validateSessionAndLocation method here...
+  Future<PermissionStatus> _requestLocationPermission() async {
+    // Request permission to access location
+    PermissionStatus permission = await Permission.location.request();
+    return permission;
+  }
+
+  Future<void> _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        _showErrorDialog(
+            "Location permissions are denied. Please allow them in the app settings.");
+        return;
+      }
+    }
+
+    // After granting permission, get the current location
+    try {
+      _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+    } catch (e) {
+      _showErrorDialog("Could not fetch location: $e");
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+    } catch (e) {
+      _showErrorDialog("Could not fetch location: $e");
+    }
+  }
+
+  Future<void> validateSessionAndLocation(String sessionCode) async {
+    try {
+      // Check if session code exists in Firestore
+      final querySnapshot = await _firestore
+          .collection('attendance_sessions')
+          .where('sessionCode', isEqualTo: sessionCode)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        final sessionData = querySnapshot.docs.first.data();
+        final lecturerLatitude = sessionData['lecturer_latitude'];
+        final lecturerLongitude = sessionData['lecturer_longitude'];
+        final radius = sessionData['radius'];
+
+        // Get student's current location
+        Position currentPosition = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.bestForNavigation);
+
+        double distanceInMeters = Geolocator.distanceBetween(
+          currentPosition.latitude,
+          currentPosition.longitude,
+          lecturerLatitude,
+          lecturerLongitude,
+        );
+
+        // Check if student is within the required range
+        if (distanceInMeters <= radius) {
+          // Mark attendance and add the student data to Firestore
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          String userName = prefs.getString('name') ?? 'Unknown Student';
+
+          await _firestore.collection('checkInHistory').add({
+            'studentName': userName, // Student's name from SharedPreferences
+            'sessionCode': sessionCode,
+            'checkInTime': DateTime.now(),
+            'student_latitude':
+                currentPosition.latitude, // Store student's latitude
+            'student_longitude':
+                currentPosition.longitude, // Store student's longitude
+          });
+          _showSuccessDialog(); // Show success dialog if attendance is marked
+        } else {
+          _showErrorDialog("You are out of range. Attendance not marked.");
+        }
+      } else {
+        _showErrorDialog("Invalid session code. Please try again.");
+      }
+    } catch (e) {
+      _showErrorDialog(
+          "An error occurred while checking attendance: ${e.toString()}");
+    }
+  }
+
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Attendance Successful"),
+          content: const Text("Your attendance has been marked successfully."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error"),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -274,6 +414,4 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
       ),
     );
   }
-
-  void validateSessionAndLocation(String text) {}
 }
