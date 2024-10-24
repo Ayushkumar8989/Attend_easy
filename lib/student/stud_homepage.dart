@@ -1,14 +1,13 @@
-import 'dart:async'; // Import for Timer
-import 'dart:math';
+import 'dart:async';
 import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart'; // For formatting the date and time
-import 'package:shared_preferences/shared_preferences.dart'; // Import SharedPreferences
-import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
-import 'package:geolocator/geolocator.dart'; // Import Geolocator for location services
+import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:geolocator/geolocator.dart'; // Import geolocator for location services
+import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore for database
+import 'package:permission_handler/permission_handler.dart'; // Import permission_handler
 
 void main() {
-  runApp(const MyApp());
   runApp(const MyApp());
 }
 
@@ -23,7 +22,6 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color(0xFF43c6ac),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const AttendEasyScreen(),
       home: const AttendEasyScreen(),
     );
   }
@@ -40,8 +38,11 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
   String formattedTime = '';
   String formattedDate = '';
   String userName = ''; // User name fetched from SharedPreferences
-  Timer? timer; // For updating time periodically
+  Timer? timer;
+  Position? _currentPosition; // For updating time periodically
   TextEditingController sessionCodeController = TextEditingController();
+  final FirebaseFirestore _firestore =
+      FirebaseFirestore.instance; // Firestore instance
 
   @override
   void initState() {
@@ -53,22 +54,18 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
         const Duration(seconds: 1), (Timer t) => _updateDateTime());
   }
 
-  // Method to load user's name from SharedPreferences
   Future<void> _loadUserName() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      userName = prefs.getString('name') ??
-          'Guest'; // Fetch the user name or set 'Guest' if not found
+      userName = prefs.getString('name') ?? 'Guest'; // Fetch user name
     });
   }
 
   void _updateDateTime() {
     DateTime now = DateTime.now();
     setState(() {
-      formattedTime =
-          DateFormat('hh:mm:ss a').format(now); // Format time as 08:00 AM
-      formattedDate = DateFormat('MMM dd yyyy - EEEE')
-          .format(now); // Format date as Aug 04 2024 - Monday
+      formattedTime = DateFormat('hh:mm:ss a').format(now);
+      formattedDate = DateFormat('MMM dd yyyy - EEEE').format(now);
     });
   }
 
@@ -82,17 +79,16 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
   void _showCheckInBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
-      isScrollControlled:
-          true, // To make sure the bottom sheet adapts to content size
+      isScrollControlled: true,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)),
       ),
       builder: (BuildContext context) {
         return Padding(
-          padding: MediaQuery.of(context).viewInsets, // Adjust for keyboard
+          padding: MediaQuery.of(context).viewInsets,
           child: Container(
             padding: const EdgeInsets.all(16.0),
-            height: 300, // Set height for the bottom sheet
+            height: 300,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -106,7 +102,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                 ),
                 const SizedBox(height: 8.0),
                 Text(
-                  "Enter the session code that was provided by your lecturer to check in",
+                  "Enter the session code provided by your lecturer to check in",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 14.0,
@@ -124,10 +120,17 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
-                  onPressed: () {
-                    validateSessionAndLocation(sessionCodeController.text);
-                    Navigator.pop(
-                        context); // Close the bottom sheet after check-in
+                  onPressed: () async {
+                    // Request location permission
+                    PermissionStatus permission =
+                        await _requestLocationPermission();
+                    if (permission == PermissionStatus.granted) {
+                      validateSessionAndLocation(sessionCodeController.text);
+                    } else {
+                      _showErrorDialog(
+                          "Location permission is required to check in.");
+                    }
+                    Navigator.pop(context); // Close the bottom sheet
                   },
                   style: ElevatedButton.styleFrom(
                     foregroundColor: const Color(0xFF43c6ac),
@@ -150,127 +153,153 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
     );
   }
 
-  Future<void> validateSessionAndLocation(String sessionCode) async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+  Future<PermissionStatus> _requestLocationPermission() async {
+    // Request permission to access location
+    PermissionStatus permission = await Permission.location.request();
+    return permission;
+  }
 
+  Future<void> _checkLocationPermission() async {
+    LocationPermission permission = await Geolocator.checkPermission();
+
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission != LocationPermission.whileInUse &&
+          permission != LocationPermission.always) {
+        _showErrorDialog(
+            "Location permissions are denied. Please allow them in the app settings.");
+        return;
+      }
+    }
+
+    // After granting permission, get the current location
     try {
-      QuerySnapshot snapshot = await firestore
+      _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+    } catch (e) {
+      _showErrorDialog("Could not fetch location: $e");
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
+    try {
+      _currentPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+    } catch (e) {
+      _showErrorDialog("Could not fetch location: $e");
+    }
+  }
+
+  Future<void> validateSessionAndLocation(String sessionCode) async {
+    try {
+      // Check if session code exists in Firestore
+      final querySnapshot = await _firestore
           .collection('attendance_sessions')
           .where('sessionCode', isEqualTo: sessionCode)
           .get();
 
-      if (snapshot.docs.isNotEmpty) {
-        DocumentSnapshot docSnapshot = snapshot.docs.first;
+      if (querySnapshot.docs.isNotEmpty) {
+        final sessionData = querySnapshot.docs.first.data();
+        final lecturerLatitude = sessionData['lecturer_latitude'];
+        final lecturerLongitude = sessionData['lecturer_longitude'];
+        final radius = sessionData['radius'];
 
-        if (docSnapshot.exists && docSnapshot.data() != null) {
-          var data = docSnapshot.data() as Map<String, dynamic>;
+        // Get student's current location
+        Position currentPosition = await Geolocator.getCurrentPosition(
+            desiredAccuracy: LocationAccuracy.bestForNavigation);
 
-          if (data.containsKey('lecturer_latitude') &&
-              data.containsKey('lecturer_longitude')) {
-            double lecturerLatitude = data['lecturer_latitude'];
-            double lecturerLongitude = data['lecturer_longitude'];
-            double radius = data['radius'];
+        double distanceInMeters = Geolocator.distanceBetween(
+          currentPosition.latitude,
+          currentPosition.longitude,
+          lecturerLatitude,
+          lecturerLongitude,
+        );
 
-            // Get student's current location
-            Position position = await Geolocator.getCurrentPosition(
-                desiredAccuracy: LocationAccuracy.high);
-            double studentLatitude = position.latitude;
-            double studentLongitude = position.longitude;
+        // Check if student is within the required range
+        if (distanceInMeters <= radius) {
+          // Mark attendance and add the student data to Firestore
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          String userName = prefs.getString('name') ?? 'Unknown Student';
 
-            // Check if student is within range
-            if (_isWithinRange(studentLatitude, studentLongitude,
-                lecturerLatitude, lecturerLongitude, radius)) {
-              // Save attendance to Firestore
-              await saveAttendance(
-                  sessionCode, studentLatitude, studentLongitude);
-              print("Check-in successful!");
-            } else {
-              print("You are out of range for this session.");
-            }
-          } else {
-            print(
-                'Error: lecturer_latitude or lecturer_longitude fields do not exist in the document.');
-          }
+          await _firestore.collection('checkInHistory').add({
+            'studentName': userName, // Student's name from SharedPreferences
+            'sessionCode': sessionCode,
+            'checkInTime': DateTime.now(),
+            'student_latitude':
+                currentPosition.latitude, // Store student's latitude
+            'student_longitude':
+                currentPosition.longitude, // Store student's longitude
+          });
+          _showSuccessDialog(); // Show success dialog if attendance is marked
         } else {
-          print('Session code not found.');
+          _showErrorDialog("You are out of range. Attendance not marked.");
         }
       } else {
-        print('Session code not found.');
+        _showErrorDialog("Invalid session code. Please try again.");
       }
     } catch (e) {
-      print('Error fetching session data: $e');
+      _showErrorDialog(
+          "An error occurred while checking attendance: ${e.toString()}");
     }
   }
 
-  // Check if student is within the radius of the lecturer's location
-  bool _isWithinRange(double studentLat, double studentLng, double lecturerLat,
-      double lecturerLng, double radius) {
-    const double earthRadius = 6371000; // in meters
-
-    // Haversine formula to calculate the distance
-    double dLat = _toRadians(lecturerLat - studentLat);
-    double dLng = _toRadians(lecturerLng - studentLng);
-    double a = (sin(dLat / 2) * sin(dLat / 2)) +
-        (cos(_toRadians(studentLat)) *
-            cos(_toRadians(lecturerLat)) *
-            sin(dLng / 2) *
-            sin(dLng / 2));
-    double c = 2 * atan2(sqrt(a), sqrt(1 - a));
-    double distance = earthRadius * c; // in meters
-
-    return distance <= radius; // Check if within radius
+  void _showSuccessDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Attendance Successful"),
+          content: const Text("Your attendance has been marked successfully."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
-  double _toRadians(double degree) {
-    return degree * (pi / 180);
-  }
-
-  Future<void> saveAttendance(
-      String sessionCode, double latitude, double longitude) async {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-    await firestore.collection('attendance_history').add({
-      'sessionCode': sessionCode,
-      'userName': userName,
-      'checkInTime': FieldValue.serverTimestamp(),
-      'latitude': latitude,
-      'longitude': longitude,
-    });
-
-    print("Attendance saved successfully.");
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Error"),
+          content: Text(message),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.account_circle, color: Colors.grey[400]),
-            onPressed: () {},
-          ),
-        ],
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // Calculate responsive sizes based on layout constraints
           double height = constraints.maxHeight;
           double width = constraints.maxWidth;
-          double textMultiplier =
-              width * 0.06; // Text size responsive multiplier
 
           return Center(
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Display dynamic user name from SharedPreferences
                   Text(
                     'Hey $userName!',
                     style: TextStyle(
-                      fontSize: textMultiplier, // Responsive text size
+                      fontSize: width * 0.06, // Responsive text size
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -279,7 +308,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                   Text(
                     'Welcome back to SmartAttend!',
                     style: TextStyle(
-                      fontSize: width * 0.045, // Responsive text size
+                      fontSize: width * 0.045,
                       color: Colors.grey,
                     ),
                   ),
@@ -333,8 +362,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
                   ),
                   const SizedBox(height: 30),
                   ElevatedButton(
-                    onPressed: () => _showCheckInBottomSheet(
-                        context), // Show bottom sheet to check in
+                    onPressed: () => _showCheckInBottomSheet(context),
                     style: ElevatedButton.styleFrom(
                       foregroundColor: const Color(0xFF43c6ac),
                       shape: RoundedRectangleBorder(
@@ -353,6 +381,36 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
             ),
           );
         },
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.white,
+        height: 70,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.home, color: Color(0xFF43c6ac)),
+              onPressed: () {
+                // You can navigate to Home or perform any action you need
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const AttendEasyScreen()),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.account_circle, color: Color(0xFF43c6ac)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen()),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
