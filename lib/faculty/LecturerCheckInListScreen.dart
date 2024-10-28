@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
+<<<<<<< HEAD
 class CheckInListPage extends StatelessWidget {
   final String sessionCode; // Code for the attendance session
 
@@ -36,48 +38,51 @@ class CheckInListPage extends StatelessWidget {
 
     return students;
   }
+=======
+class CheckedInStudentsPage extends StatelessWidget {
+  const CheckedInStudentsPage({super.key});
+>>>>>>> a7bb1ca9d59171c312c236456189dcfbc428c221
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checked-In Students'),
+        backgroundColor: const Color(0xFF43c6ac),
       ),
-      body: FutureBuilder<List<Map<String, dynamic>>>(
-        future: _getCheckedInStudents(),
-        builder: (context, snapshot) {
+      body: StreamBuilder(
+        stream:
+            FirebaseFirestore.instance.collection('checkInHistory').snapshots(),
+        builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           }
 
-          if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
-          }
-
-          final students = snapshot.data ?? [];
-
-          if (students.isEmpty) {
-            return const Center(child: Text('No students have checked in.'));
+          if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+            return const Center(
+              child: Text('No students have checked in yet.'),
+            );
           }
 
           return ListView.builder(
-            itemCount: students.length,
+            itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
-              final student = students[index];
-              final dateTime = (student['timestamp'] as Timestamp)
-                  .toDate(); // Convert to DateTime
+              var studentData = snapshot.data!.docs[index];
+
+              // Safely handling null value for studentName
+              var studentName = studentData['studentName'] ?? 'Unknown Student';
+
+              // Safely handling the checkInTime field (in case it is null)
+              Timestamp? checkInTimestamp = studentData['checkInTime'];
+              var checkInTime = checkInTimestamp != null
+                  ? checkInTimestamp.toDate()
+                  : DateTime.now(); // default to current time if null
 
               return ListTile(
-                title: Text(student['student_name']),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Text('Email: ${student['email']}'),
-                    Text('Checked in at: ${dateTime.toLocal()}'),
-                    Text(
-                        'Location: ${student['latitude']}, ${student['longitude']}'),
-                  ],
-                ),
+                title: Text(studentName),
+                subtitle: Text(
+                    'Checked in at: ${DateFormat('hh:mm a, MMM dd').format(checkInTime)}'),
+                leading: const Icon(Icons.check_circle, color: Colors.green),
               );
             },
           );

@@ -2,12 +2,12 @@ import 'package:attend_easy/faculty/loginfac.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-// ignore: depend_on_referenced_packages
 
-// Import your login page
-
+// FacultyProfile class that accepts facultyName
 class FacultyProfile extends StatelessWidget {
-  const FacultyProfile({super.key});
+  final String facultyName; // Add facultyName as a field
+
+  const FacultyProfile({Key? key, required this.facultyName}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +39,9 @@ class FacultyProfile extends StatelessWidget {
                   AssetImage('assets/images/faculty.jpg'), // Placeholder image
             ),
             const SizedBox(height: 16),
-            const Text(
-              'Name: Dr. John Doe',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            Text(
+              'Name: $facultyName', // Use dynamic facultyName
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             const Text(
@@ -66,8 +66,8 @@ class FacultyProfile extends StatelessWidget {
 
   // Logout method
   void _logout(BuildContext context) async {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    await auth.signOut(); // Sign out from Firebase
+    FirebaseAuth _auth = FirebaseAuth.instance;
+    await _auth.signOut(); // Sign out from Firebase
 
     // Clear the login state
     SharedPreferences prefs = await SharedPreferences.getInstance();

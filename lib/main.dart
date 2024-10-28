@@ -104,13 +104,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      debugShowCheckedModeBanner: false,
-      routerConfig: _router,
-      // routeInformationParser: MyAppRouter().router.routeInformationParser,
-      // routerDelegate: MyAppRouter().router.routerDelegate,
-      // routeInformationProvider: MyAppRouter().router.routeInformationProvider,
-      //home: splash_screen(),
+    return MaterialApp(
+      home: splash_screen(),
     );
   }
 }

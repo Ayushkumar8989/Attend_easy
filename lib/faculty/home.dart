@@ -1,334 +1,502 @@
+// import 'package:attend_easy/faculty/Manages_courses.dart';
+// import 'package:attend_easy/faculty/attendance_rep.dart';
+// import 'package:attend_easy/faculty/new_session.dart';
+// import 'package:attend_easy/faculty/profile.dart';
+// import 'package:flutter/material.dart';
+// import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+
+// class Home extends StatefulWidget {
+//   final String facultyName;
+//   const Home({Key? key, required this.facultyName}) : super(key: key);
+
+//   @override
+//   State<Home> createState() => _HomeState();
+// }
+
+// class _HomeState extends State<Home> {
+//   late PersistentTabController _controller;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _controller = PersistentTabController(initialIndex: 0); // Set initial tab
+//   }
+
+//   List<Widget> _buildScreens() {
+//     return [
+//       _buildHomeScreen(), // Home screen content
+//       FacultyProfile(
+//         facultyName: widget.facultyName,
+//       ), // Profile page
+//       AttendanceRep(), // History page for attendance reports
+//     ];
+//   }
+
+//   List<PersistentBottomNavBarItem> _navBarsItems() {
+//     return [
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(Icons.home),
+//         title: ("Home"),
+//         activeColorPrimary: const Color(0xFF1DC99E),
+//         inactiveColorPrimary: Colors.grey,
+//       ),
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(Icons.account_circle),
+//         title: ("Profile"),
+//         activeColorPrimary: const Color(0xFF1DC99E),
+//         inactiveColorPrimary: Colors.grey,
+//       ),
+//       PersistentBottomNavBarItem(
+//         icon: const Icon(Icons.history),
+//         title: ("History"),
+//         activeColorPrimary: const Color(0xFF1DC99E),
+//         inactiveColorPrimary: Colors.grey,
+//       ),
+//     ];
+//   }
+
+//   Widget _buildHomeScreen() {
+//     return LayoutBuilder(builder: (context, Constraints) {
+//       bool isDesktop = Constraints.maxWidth > 600;
+//       double screenWidth = Constraints.maxWidth;
+//       double screenHeight = Constraints.maxHeight;
+
+//       return Scaffold(
+//         body: Center(
+//           child: SizedBox(
+//             width: screenWidth * 1.0,
+//             height: screenHeight * 1.0,
+//             child: SingleChildScrollView(
+//               padding: EdgeInsets.symmetric(
+//                   horizontal: isDesktop ? screenWidth * 0.1 : 0, vertical: 10),
+//               child: Column(
+//                 children: [
+//                   // Header
+//                   Container(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     margin: const EdgeInsets.only(top: 70),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         Container(),
+//                         Expanded(
+//                           child: Text(
+//                             'Hello, ${widget.facultyName}!',
+//                             textAlign: TextAlign.center,
+//                             style: const TextStyle(
+//                               fontSize: 24,
+//                               fontFamily: 'DM Sans',
+//                               fontWeight: FontWeight.bold,
+//                             ),
+//                           ),
+//                         ),
+//                         // Container(
+//                         //   child: IconButton(
+//                         //     icon: const Icon(Icons.account_circle),
+//                         //     onPressed: () {
+//                         //       Navigator.pushReplacement(
+//                         //         context,
+//                         //         MaterialPageRoute(
+//                         //             builder: (context) =>
+//                         //                 const FacultyProfile()),
+//                         //       );
+//                         //     },
+//                         //   ),
+//                         // ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     child: const Text(
+//                       'Welcome back to AttendEasy!',
+//                       textAlign: TextAlign.center,
+//                       style: TextStyle(
+//                         fontSize: 16,
+//                         fontFamily: 'DM Sans',
+//                         fontWeight: FontWeight.w600,
+//                       ),
+//                     ),
+//                   ),
+//                   const SizedBox(height: 20),
+//                   // Info Cards
+//                   SizedBox(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     height: screenHeight * 0.3,
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         Expanded(
+//                           child: _buildInfoCard(
+//                             title: 'Attendance Reports',
+//                             icon: Icons.assignment,
+//                             onTap: () {
+//                               PersistentNavBarNavigator.pushNewScreen(
+//                                 context,
+//                                 screen: const AttendanceRep(),
+//                                 withNavBar: false,
+//                               );
+//                             },
+//                           ),
+//                         ),
+//                         const SizedBox(width: 20), // Add space between cards
+//                         Expanded(
+//                           child: _buildInfoCard(
+//                             title: 'Manage Courses',
+//                             icon: Icons.book,
+//                             onTap: () {
+//                               PersistentNavBarNavigator.pushNewScreen(
+//                                 context,
+//                                 screen: const MAnagesCourses(),
+//                                 withNavBar: false,
+//                               );
+//                             },
+//                           ),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                   const SizedBox(height: 20),
+//                   // Ongoing Sessions
+//                   SizedBox(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     child: Row(
+//                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//                       children: [
+//                         const Text(
+//                           'Ongoing Attendance Sessions',
+//                           style: TextStyle(
+//                             fontSize: 18,
+//                             fontWeight: FontWeight.bold,
+//                             fontFamily: 'DM Sans',
+//                           ),
+//                         ),
+//                         // const Text(
+//                         //   'Finished Today',
+//                         //   style: TextStyle(
+//                         //     fontSize: 18,
+//                         //     fontWeight: FontWeight.w400,
+//                         //     fontFamily: 'DM Sans',
+//                         //   ),
+//                         // ),
+//                       ],
+//                     ),
+//                   ),
+//                   SizedBox(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     height: screenHeight * 0.15,
+//                     child: const Center(
+//                       child: Text(
+//                         'There are no ongoing attendance sessions. Start a new one to take attendance.',
+//                         textAlign: TextAlign.center,
+//                       ),
+//                     ),
+//                   ),
+//                   // New Session Button
+//                   SizedBox(
+//                     width: screenWidth * (isDesktop ? 0.6 : 0.85),
+//                     height: 50,
+//                     child: ElevatedButton(
+//                       onPressed: () {
+//                         PersistentNavBarNavigator.pushNewScreen(
+//                           context,
+//                           screen: const NewAttendanceSessionScreen(),
+//                           withNavBar: false,
+//                         );
+//                       },
+//                       style: ElevatedButton.styleFrom(
+//                         backgroundColor: const Color(0xFF1DC99E),
+//                         foregroundColor: const Color(0xFFFFFFFF),
+//                       ),
+//                       child: const Text(
+//                         'New Session',
+//                         style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+//                       ),
+//                     ),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         ),
+//       );
+//     });
+//   }
+
+//   Widget _buildInfoCard(
+//       {required String title,
+//       required IconData icon,
+//       required VoidCallback onTap}) {
+//     return InkWell(
+//       onTap: onTap,
+//       child: Container(
+//         margin:
+//             const EdgeInsets.symmetric(vertical: 10), // Add vertical spacing
+//         padding: const EdgeInsets.all(16), // Add padding
+//         decoration: BoxDecoration(
+//           borderRadius: BorderRadius.circular(15),
+//           color: const Color(0xffD9D9D9),
+//         ),
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: [
+//             CircleAvatar(
+//               backgroundColor: const Color(0xff1DC99E),
+//               radius: 30,
+//               child: Icon(
+//                 icon,
+//                 size: 40,
+//                 color: Colors.white,
+//               ),
+//             ),
+//             const SizedBox(height: 15),
+//             Text(
+//               title,
+//               textAlign: TextAlign.center,
+//               style: const TextStyle(
+//                 fontSize: 16,
+//                 fontFamily: 'DM Sans',
+//                 fontWeight: FontWeight.bold,
+//                 color: Color(0xff1C5B41),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return PersistentTabView(
+//       context,
+//       controller: _controller,
+//       screens: _buildScreens(),
+//       items: _navBarsItems(),
+//       confineToSafeArea: true,
+//       backgroundColor: Colors.white, // Nav bar color
+//       handleAndroidBackButtonPress: true,
+//       resizeToAvoidBottomInset: true,
+//       stateManagement: true,
+//       navBarStyle: NavBarStyle.style3, // Choose the style of the nav bar
+//     );
+//   }
+// }
 import 'package:attend_easy/faculty/Manages_courses.dart';
 import 'package:attend_easy/faculty/attendance_rep.dart';
 import 'package:attend_easy/faculty/new_session.dart';
-// import 'package:attend_easy/faculty/decisionfac.dart';
-
 import 'package:attend_easy/faculty/profile.dart';
-// import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class Home extends StatefulWidget {
-  const Home({super.key});
+  final String facultyName;
+  const Home({Key? key, required this.facultyName}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildHomeScreen() {
     return LayoutBuilder(builder: (context, Constraints) {
       bool isDesktop = Constraints.maxWidth > 600;
       double screenWidth = Constraints.maxWidth;
       double screenHeight = Constraints.maxHeight;
+
       return Scaffold(
+        appBar: AppBar(
+          title: Text('Hello, ${widget.facultyName}!'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.account_circle),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FacultyProfile(
+                      facultyName: widget.facultyName,
+                    ),
+                  ),
+                );
+              },
+            ),
+            IconButton(
+              icon: const Icon(Icons.history),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AttendanceRep(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
         body: Center(
           child: SizedBox(
             width: screenWidth * 1.0,
             height: screenHeight * 1.0,
-            child: Column(
-              children: [
-                Container(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  margin: const EdgeInsets.only(top: 70),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                          // child: IconButton(
-                          //   icon: const Icon(Icons.arrow_back),
-                          //   onPressed: () {
-                          //     PersistentNavBarNavigator.pushNewScreen(
-                          //       context,
-                          //       screen: const DecisionFac(),
-                          //       withNavBar: false,
-                          //     ); // Pops the current screen, going back to the previous one
-                          //   },
-                          // ),
-                          ),
-                      Container(
-                        // width: screenWidth * 0.71,
-                        child: const Text(
-                          'Hey Ayush11060!',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'DM Sans',
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
+            child: SingleChildScrollView(
+              padding: EdgeInsets.symmetric(
+                  horizontal: isDesktop ? screenWidth * 0.1 : 0, vertical: 10),
+              child: Column(
+                children: [
+                  SizedBox(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    child: const Text(
+                      'Welcome back to AttendEasy!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.w600,
                       ),
-                      Container(
-                        // width: screenWidth * 0.09,
-                        // width: screenWidth * 0.09,
-                        child: IconButton(
-                          icon: const Icon(Icons.account_circle),
-                          onPressed: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => FacultyProfile()),
-                            );
-                          },
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  child: const Text(
-                    'Welcome back to AttendEasy!',
-                    style: TextStyle(
-                      fontSize: 15,
-                      fontFamily: 'DM Sans',
-                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-                const SizedBox(height: 0.01),
-                SizedBox(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  height: screenHeight * 0.3,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
-                        height: screenHeight * 0.25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          color: const Color(0xffD9D9D9),
-                        ),
-                        child: Column(
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                PersistentNavBarNavigator.pushNewScreen(
-                                  context,
-                                  screen: const AttendanceRep(),
-                                  withNavBar: false,
-                                );
-                              },
-                              child: Container(
-                                width: screenWidth * 0.12,
-                                height: screenHeight * 0.1,
-                                //color: Color(0xff1C5B41),
-                                margin: EdgeInsets.only(
-                                  right: screenWidth * 0.18,
-                                  top: 1,
-                                ),
-                                child: const CircleAvatar(
-                                  backgroundColor: Color(0xff1DC99E),
-                                  child: Icon(
-                                    Icons.save,
-                                    size: 40,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: screenHeight * 0.05,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                PersistentNavBarNavigator.pushNewScreen(
-                                  context,
-                                  screen: const AttendanceRep(),
-                                  withNavBar: false,
-                                );
-                              },
-                              child: Container(
-                                width: screenWidth * 0.3,
-                                margin: const EdgeInsets.only(left: 10),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      width: screenWidth *
-                                          (isDesktop ? 0.15 : 0.2),
-                                      height: screenHeight * 0.09,
-                                      child: const Text(
-                                        'Attendance Reports',
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontFamily: 'DM Sans',
-                                          fontWeight: FontWeight.bold,
-                                          color: Color(0xff1C5B41),
-                                        ),
-                                      ),
-                                    ),
-                                    Container(
-                                      child: const Icon(
-                                        Icons.arrow_forward,
-                                        size: 30,
-                                        color: Color(0xff1C5B41),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          PersistentNavBarNavigator.pushNewScreen(
-                            context,
-                            screen: const MAnagesCourses(),
-                            withNavBar: false,
-                          );
-                        },
-                        child: Container(
-                          width: screenWidth * (isDesktop ? 0.25 : 0.35),
-                          height: screenHeight * 0.25,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            color: const Color(0xffD9D9D9),
-                          ),
-                          child: Column(
-                            children: [
-                              Container(
-                                width: screenWidth * 0.12,
-                                height: screenHeight * 0.1,
-                                //color: Color(0xff1C5B41),
-                                margin: EdgeInsets.only(
-                                  right: screenWidth * 0.18,
-                                  top: 1,
-                                ),
-                                child: const CircleAvatar(
-                                  backgroundColor: Color(0xff1DC99E),
-                                  child: Icon(
-                                    Icons.save,
-                                    size: 40,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: screenHeight * 0.05,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  PersistentNavBarNavigator.pushNewScreen(
-                                    context,
-                                    screen: const AttendanceRep(),
-                                    withNavBar: false,
-                                  );
-                                },
-                                child: Container(
-                                  width: screenWidth * 0.3,
-                                  margin: const EdgeInsets.only(left: 10),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      SizedBox(
-                                        width: screenWidth *
-                                            (isDesktop ? 0.15 : 0.2),
-                                        height: screenHeight * 0.09,
-                                        child: const Text(
-                                          'Manages Courses',
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontFamily: 'DM Sans',
-                                            fontWeight: FontWeight.bold,
-                                            color: Color(0xff1C5B41),
-                                          ),
-                                        ),
-                                      ),
-                                      Container(
-                                        child: const Icon(
-                                          Icons.arrow_forward,
-                                          size: 30,
-                                          color: Color(0xff1C5B41),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              )
-                            ],
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: screenHeight * 0.3,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: _buildInfoCard(
+                            title: 'Attendance Reports',
+                            icon: Icons.assignment,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const AttendanceRep()),
+                              );
+                            },
                           ),
                         ),
-                      ),
-                    ],
+                        const SizedBox(width: 20), // Add space between cards
+                        Expanded(
+                          child: _buildInfoCard(
+                            title: 'Manage Courses',
+                            icon: Icons.book,
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MAnagesCourses()),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                SizedBox(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
-                        child: const Text(
-                          'Ongoing attendance',
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          'Ongoing Attendance Sessions',
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
                             fontFamily: 'DM Sans',
                           ),
                         ),
-                      ),
-                      Container(
-                        width: screenWidth * (isDesktop ? 0.25 : 0.35),
-                        margin: const EdgeInsets.only(left: 10),
-                        child: const Text(
-                          'Finished Today',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w400,
-                            fontFamily: 'DM Sans',
-                          ),
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-                SizedBox(
-                  width: screenWidth * 0.35,
-                  height: screenHeight * 0.15,
-                  child: SizedBox(
-                    width: screenWidth * 0.3,
+                  SizedBox(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: screenHeight * 0.15,
                     child: const Center(
                       child: Text(
-                          'There in no longer attendance session Start a new one to take attendance'),
+                        'There are no ongoing attendance sessions. Start a new one to take attendance.',
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  width: screenWidth * (isDesktop ? 0.6 : 0.85),
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      PersistentNavBarNavigator.pushNewScreen(
-                        context,
-                        screen: const NewAttendanceSessionScreen(),
-                        withNavBar: false,
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF1DC99E),
-                      foregroundColor: const Color(0xFFFFFFFF),
-                    ),
-                    child: const Text(
-                      'New Session',
-                      style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                  SizedBox(
+                    width: screenWidth * (isDesktop ? 0.6 : 0.85),
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const NewAttendanceSessionScreen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFF1DC99E),
+                        foregroundColor: const Color(0xFFFFFFFF),
+                      ),
+                      child: const Text(
+                        'New Session',
+                        style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
       );
     });
+  }
+
+  Widget _buildInfoCard(
+      {required String title,
+      required IconData icon,
+      required VoidCallback onTap}) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin:
+            const EdgeInsets.symmetric(vertical: 10), // Add vertical spacing
+        padding: const EdgeInsets.all(16), // Add padding
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: const Color(0xffD9D9D9),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              backgroundColor: const Color(0xff1DC99E),
+              radius: 30,
+              child: Icon(
+                icon,
+                size: 40,
+                color: Colors.white,
+              ),
+            ),
+            const SizedBox(height: 15),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontSize: 16,
+                fontFamily: 'DM Sans',
+                fontWeight: FontWeight.bold,
+                color: Color(0xff1C5B41),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return _buildHomeScreen();
   }
 }
