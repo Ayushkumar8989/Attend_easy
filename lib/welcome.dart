@@ -106,7 +106,7 @@ class _WelcomeState extends State<Welcome> {
                         MaterialPageRoute(
                           builder: (context) => const LoginFac(),
                         ),
-                        (route) => false);
+                        (route) => true);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF1DC99E),
@@ -130,7 +130,7 @@ class _WelcomeState extends State<Welcome> {
                         MaterialPageRoute(
                           builder: (context) => const LoginStu(),
                         ),
-                        (route) => false);
+                        (route) => true);
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFFD9D9D9),

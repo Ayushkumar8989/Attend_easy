@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
 class StudentCheckInScreen extends StatefulWidget {
-  const StudentCheckInScreen({Key? key}) : super(key: key);
+  const StudentCheckInScreen({super.key});
 
   @override
   _StudentCheckInScreenState createState() => _StudentCheckInScreenState();

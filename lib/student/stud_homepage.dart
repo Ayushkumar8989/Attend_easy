@@ -1,6 +1,5 @@
 import 'dart:async'; // Import for Timer
 import 'dart:math';
-import 'package:attend_easy/student/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart'; // For formatting the date and time
 import 'package:shared_preferences/shared_preferences.dart'; // Import SharedPreferences
@@ -24,7 +23,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       home: const AttendEasyScreen(),
-      home: const AttendEasyScreen(),
+      //home: const AttendEasyScreen(),
     );
   }
 }
@@ -173,7 +172,7 @@ class _AttendEasyScreenState extends State<AttendEasyScreen> {
 
             // Get student's current location
             Position position = await Geolocator.getCurrentPosition(
-                desiredAccuracy: LocationAccuracy.high);
+            desiredAccuracy: LocationAccuracy.high);
             double studentLatitude = position.latitude;
             double studentLongitude = position.longitude;
 

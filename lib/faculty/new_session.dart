@@ -15,7 +15,7 @@ void main() async {
 }
 
 class Session extends StatelessWidget {
-  const Session({Key? key}) : super(key: key);
+  const Session({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class Session extends StatelessWidget {
 }
 
 class NewAttendanceSessionScreen extends StatefulWidget {
-  const NewAttendanceSessionScreen({Key? key}) : super(key: key);
+  const NewAttendanceSessionScreen({super.key});
 
   @override
   _NewAttendanceSessionScreenState createState() =>

@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class CheckInListPage extends StatelessWidget {
   final String sessionCode; // Code for the attendance session
 
-  CheckInListPage({Key? key, required this.sessionCode}) : super(key: key);
+  const CheckInListPage({super.key, required this.sessionCode});
 
   Future<List<Map<String, dynamic>>> _getCheckedInStudents() async {
     List<Map<String, dynamic>> students = [];
