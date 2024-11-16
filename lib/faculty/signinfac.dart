@@ -1,5 +1,5 @@
 import 'package:attend_easy/faculty/loginfac.dart';
-import 'package:attend_easy/faculty/verification.dart';
+
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -31,10 +31,10 @@ class _SignInState extends State<SignInFac> {
           );
 
           // Navigate to Verification page after successful sign-up
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const Verification()),
-          );
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(builder: (context) => const Verification()),
+          // );
         } on FirebaseAuthException catch (e) {
           // Handle specific errors like email already in use, weak password, etc.
           ScaffoldMessenger.of(context).showSnackBar(

@@ -3,16 +3,27 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-// FacultyProfile class that accepts facultyName
-class FacultyProfile extends StatelessWidget {
-  final String facultyName; // Add facultyName as a field
+class Profile extends StatefulWidget {
+  final String facultyName;
+  final String email; // Add email as a field
 
-  const FacultyProfile({Key? key, required this.facultyName}) : super(key: key);
+  const Profile({super.key, required this.facultyName, required this.email});
 
+  @override
+  State<Profile> createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         automaticallyImplyLeading: false,
         title: const Text(
           'Faculty Profile',
@@ -40,17 +51,17 @@ class FacultyProfile extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Text(
-              'Name: $facultyName', // Use dynamic facultyName
+              'Name: ${widget.facultyName}', // Access facultyName via widget.facultyName
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              'Email: ${widget.email}', // Access email via widget.email
+              style: const TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 8),
             const Text(
               'Department: Computer Science',
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            const Text(
-              'Email: johndoe@example.com',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 16),
@@ -66,8 +77,8 @@ class FacultyProfile extends StatelessWidget {
 
   // Logout method
   void _logout(BuildContext context) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    await _auth.signOut(); // Sign out from Firebase
+    FirebaseAuth auth = FirebaseAuth.instance;
+    await auth.signOut(); // Sign out from Firebase
 
     // Clear the login state
     SharedPreferences prefs = await SharedPreferences.getInstance();
