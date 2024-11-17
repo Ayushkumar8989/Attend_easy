@@ -1,3 +1,4 @@
+import 'package:attend_easy/admin/homepage.dart';
 import 'package:attend_easy/faculty/loginfac.dart';
 
 import 'package:attend_easy/student/loginstu.dart';
@@ -138,6 +139,28 @@ class _WelcomeState extends State<Welcome> {
                   ),
                   child: const Text(
                     'I am a Student',
+                    style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: screenWidth * (isDesktop ? 0.5 : 0.75),
+                height: 50,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AdminPanel(),
+                        ),
+                        (route) => false);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFFD9D9D9),
+                    foregroundColor: const Color(0xFF1C5B41),
+                  ),
+                  child: const Text(
+                    'I am Admin',
                     style: TextStyle(fontSize: 20, fontFamily: 'Inter'),
                   ),
                 ),
